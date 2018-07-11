@@ -7,9 +7,17 @@ public class PlayerCtrl : MonoBehaviour {
 
     private void Update()
     {
-        transform.Translate(moveSpeed * Input.GetAxis("Horizontal") * Time.deltaTime,
-            moveSpeed*Input.GetAxis("Vertical") * Time.deltaTime,
-            0f);
+
+        if(Input.GetKey(KeyCode.Space)) {
+            MoveRevers();
+        }
+        // transform.Translate(moveSpeed * Input.GetAxis("Horizontal") * Time.deltaTime,
+        //     moveSpeed*Input.GetAxis("Vertical") * Time.deltaTime,
+        //     0f);
+    }
+
+    private void MoveRevers() {
+        transform.Translate(moveSpeed * -1 * Time.deltaTime, 0f, 0f);
     }
 
 }
