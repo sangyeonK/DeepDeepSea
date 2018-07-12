@@ -9,8 +9,8 @@ public class BackgroundMove : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		transform.Translate(0, 0.05f, 0);
-		Debug.Log(transform.localPosition.y + "");
+		transform.Translate(0, GameManager.Instance.BackgroundSpeed, 0);
+
 		if( transform.localPosition.y > endPositionY)
 		{
 			transform.localPosition = new Vector3(positionX,startPositionY,0);
