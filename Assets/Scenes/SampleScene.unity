@@ -9965,6 +9965,16 @@ Prefab:
       propertyPath: m_TagString
       value: MINE
       objectReference: {fileID: 0}
+    - target: {fileID: 58451821753496966, guid: f2cda72eff146a24980663e6a96b522a,
+        type: 2}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 58854192925089288, guid: f2cda72eff146a24980663e6a96b522a,
+        type: 2}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f2cda72eff146a24980663e6a96b522a, type: 2}
   m_IsPrefabParent: 0
