@@ -2,8 +2,17 @@
 using UnityEngine;
 using UnityEngine.UI;
 
+public enum GAMESTAGETYPE
+{
+    GameStart,
+    GamePlay,
+    GameEnd
 
-public class MapManager : MonoBehaviour {
+
+}
+
+public class MapManager : MonoBehaviour
+{
 
 
     public GameObject[] mapList = null;
@@ -12,7 +21,8 @@ public class MapManager : MonoBehaviour {
     public int startingHealth = 100;                            // The amount of health the player starts the game with.
     public int currentHealth;                                   // The current health the player has.
     public Slider healthSlider;
-    private int damagespeed=1;
+    private int damagespeed = 1;
+    public GAMESTAGETYPE gamestageType;
 
     float interval = 0;
 
@@ -20,21 +30,34 @@ public class MapManager : MonoBehaviour {
     {
         currentHealth = startingHealth;
         healthSlider.value = currentHealth;
+        GAMESTAGETYPE gamestageType = GAMESTAGETYPE.GameStart;
     }
     void Start()
     {
-        StartCoroutine("healthdamage");
+        // StartCoroutine("healthdamage");
+        if (gamestageType == GAMESTAGETYPE.GameStart)
+        {
+
+            gamestageType = GAMESTAGETYPE.GamePlay;
+        }
     }
 
-    
+
     void Update()
     {
-        interval += Time.deltaTime;
-        if (interval > 6.6f)
+
+        if (gamestageType == GAMESTAGETYPE.GamePlay)
         {
-            GameObject obj = Instantiate(mapList[Random.Range(0, 2)]);
-            obj.transform.position = new Vector3(-0.3f, -8.45f, 0);
-            interval = 0;
+
+            interval += Time.deltaTime;
+            if (interval > 6.6f)
+            {
+                GameObject obj = Instantiate(mapList[Random.Range(0, 2)]);
+                obj.transform.position = new Vector3(-0.3f, -8.45f, 0);
+                GameObject mineOBJ = Instantiate(mine[Random.Range(0, 2)]);
+                mineOBJ.transform.position = new Vector3(-2.66f, 2.66f, 0);
+                interval = 0;
+            }
         }
 
 
@@ -44,7 +67,7 @@ public class MapManager : MonoBehaviour {
     public IEnumerator healthdamage()
     {
         yield return new WaitForSeconds(3.0f);
-        
+
 
 
     }
