@@ -54,6 +54,12 @@ public class MapManager : MonoBehaviour
             {
                 GameObject obj = Instantiate(mapList[Random.Range(0, 2)]);
                 obj.transform.position = new Vector3(-0.3f, -8.45f, 0);
+               
+                interval = 0;
+            }
+            if (interval > 3)
+            {
+         
                 GameObject mineOBJ = Instantiate(mine[Random.Range(0, 2)]);
                 mineOBJ.transform.position = new Vector3(-2.66f, 2.66f, 0);
                 interval = 0;
