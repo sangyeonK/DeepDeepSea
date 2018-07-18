@@ -6,23 +6,19 @@ public class MineController : MonoBehaviour {
 
 	public GameObject explosion;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "Player")
+        {
+
+            Destroy(gameObject);
+            Instantiate(explosion, gameObject.transform.position, gameObject.transform.rotation);
+        }
+
+
+    }
 
 
 
-	void OnTriggerEnter2D(Collider2D other){
-		if(other.tag == "Player"){	
-			
-			Destroy (gameObject);
-			Instantiate (explosion, gameObject.transform.position, gameObject.transform.rotation);
-		}	
-	}
+   
 }

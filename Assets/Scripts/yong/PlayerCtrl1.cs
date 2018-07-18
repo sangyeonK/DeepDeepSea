@@ -13,13 +13,16 @@ public class PlayerCtrl1 : MonoBehaviour {
             0f);
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    
+
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (other.gameObject.layer == LayerMask.NameToLayer("MINE"))
+        if (collision.tag == "MINE")
         {
-           
             Destroy(this.gameObject);
             Debug.Log("collider mine");
         }
+
+
     }
 }
