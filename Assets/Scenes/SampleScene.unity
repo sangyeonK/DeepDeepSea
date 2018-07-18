@@ -5011,7 +5011,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -435.28, y: 771.1}
+  m_AnchoredPosition: {x: -435.28, y: 849.62}
   m_SizeDelta: {x: 80, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &341234802
@@ -5299,12 +5299,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mapList:
   - {fileID: 1576151226276242, guid: 74300d03e46c7e44d8f84154ca7f90bf, type: 2}
-  - {fileID: 1376917020344500, guid: 43877d3f523b1954a9101c26e757d7ac, type: 2}
-  - {fileID: 1043000803601214, guid: b69308fba76c3ee45a167fbfbfecfb71, type: 2}
+  - {fileID: 1576151226276242, guid: 74300d03e46c7e44d8f84154ca7f90bf, type: 2}
+  - {fileID: 1576151226276242, guid: 74300d03e46c7e44d8f84154ca7f90bf, type: 2}
   mine:
-  - {fileID: 1243079264059846, guid: 3c90ee8e6b81b43d1b29519e9e725d59, type: 2}
-  - {fileID: 1304344704602514, guid: 3d5ddb7d08e7a4a2187a92f5a9bd05ab, type: 2}
-  - {fileID: 1715452762103450, guid: 962cfdd592b6e44938a214becadcb0cb, type: 2}
+  - {fileID: 1535039076297756, guid: 74300d03e46c7e44d8f84154ca7f90bf, type: 2}
+  - {fileID: 1481725530707790, guid: 74300d03e46c7e44d8f84154ca7f90bf, type: 2}
+  - {fileID: 1667928666035326, guid: 74300d03e46c7e44d8f84154ca7f90bf, type: 2}
   obstacle: []
   startingHealth: 100
   currentHealth: 0
@@ -10223,7 +10223,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4387655015396572, guid: 655031113311c3d47afe4ec72139e30e, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 3
+      value: 2.25
       objectReference: {fileID: 0}
     - target: {fileID: 4387655015396572, guid: 655031113311c3d47afe4ec72139e30e, type: 2}
       propertyPath: m_LocalPosition.z
