@@ -4,19 +4,19 @@ using UnityEngine;
 
 public class Character : MonoBehaviour {
 	public float moveSpeed;
-    float moveSpeedBoostTime = 0.0f;
+    // float moveSpeedBoostTime = 0.0f;
 
 	// Update is called once per frame
 	void Update () {
-        if (moveSpeedBoostTime > 0.0f)
-        {
-            GameManager.Instance.moveSpeedBoost = true;
-            moveSpeedBoostTime = Mathf.Max(moveSpeedBoostTime - Time.deltaTime, 0.0f);
-        }
-        else
-        {
-            GameManager.Instance.moveSpeedBoost = false;
-        }
+        // if (moveSpeedBoostTime > 0.0f)
+        // {
+        //     GameManager.Instance.moveSpeedBoost = true;
+        //     moveSpeedBoostTime = Mathf.Max(moveSpeedBoostTime - Time.deltaTime, 0.0f);
+        // }
+        // else
+        // {
+        //     GameManager.Instance.moveSpeedBoost = false;
+        // }
 
         transform.Translate(Vector3.right * moveSpeed * Time.deltaTime);
 
@@ -26,9 +26,21 @@ public class Character : MonoBehaviour {
     {
         switch (itemKind) {
             case Item.ItemKind.SPEED_BOOST:
-                moveSpeedBoostTime = 5.0f;
+                // moveSpeedBoostTime = 5.0f;
+                GameManager.Instance.SpeedPlus();
                 break;
         }
+
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "MINE")
+        {
+            Destroy(this.gameObject);
+            Debug.Log("collider mine");
+        }
+
 
     }
 }

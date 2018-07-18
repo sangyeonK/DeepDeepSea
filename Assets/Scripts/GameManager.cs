@@ -21,18 +21,28 @@ public class GameManager : MonoBehaviour {
     {
         get
         {
-            if (moveSpeedBoost)
-                return boostedBackgroundSpeed;
-            else
+            if (isSpeedMode){
+                Debug.Log ("SPEEDMODE *" + speedMode +  ">>>>" +(backgroundSpeed * speedMode));
+                return backgroundSpeed * speedMode;
+            }
+            else {
+                Debug.Log ("NONE" +backgroundSpeed );
                 return backgroundSpeed;
+            }
+                
         }
     }
     [SerializeField]
     private float backgroundSpeed = 0.05f;
-    [SerializeField]
-    private float boostedBackgroundSpeed = 0.075f;
+
+    private float speedMode = 2.0f;
+
+    private float boostedBackgroundSpeed = 0.001f;
     [HideInInspector]
-    public bool moveSpeedBoost = false;
+    public bool isSpeedMode = false;
+
+    // public bool moveSpeedBoost = false;
+    
 
     private void Awake()
     {
@@ -45,5 +55,10 @@ public class GameManager : MonoBehaviour {
 
         instance = this;
         DontDestroyOnLoad(gameObject);
+    }
+
+    public void SpeedPlus() {
+        backgroundSpeed += boostedBackgroundSpeed;
+        Debug.Log ("GET ITEM" +backgroundSpeed );
     }
 }
