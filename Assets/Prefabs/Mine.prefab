@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 212155148079445556}
   - component: {fileID: 58239280233729448}
   - component: {fileID: 114797790797894742}
+  - component: {fileID: 114891238873047312}
   m_Layer: 0
   m_Name: Mine
   m_TagString: MINE
@@ -69,6 +70,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosion: {fileID: 1339728279342788, guid: 4a852642d7a224693bdcb167cd0efc82, type: 2}
+--- !u!114 &114891238873047312
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1243079264059846}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 805146974090d094b8fb21fcad2f7791, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &212155148079445556
 SpriteRenderer:
   m_ObjectHideFlags: 1
