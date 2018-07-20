@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 // GameManager Class - Singleton Object
 public class GameManager : MonoBehaviour {
@@ -33,7 +34,7 @@ public class GameManager : MonoBehaviour {
         }
     }
     [SerializeField]
-    private float backgroundSpeed = 0.05f;
+    private float backgroundSpeed = 3f;
 
     private float speedMode = 2.0f;
 
@@ -42,7 +43,13 @@ public class GameManager : MonoBehaviour {
     public bool isSpeedMode = false;
 
     // public bool moveSpeedBoost = false;
-    
+
+    /// <summary>
+    /// Game Manager 단에서 제어하는 Pause UI Panel
+    /// </summary>
+    private GameObject pausePanel;
+    [HideInInspector]
+    public bool isPaused = false;
 
     private void Awake()
     {
@@ -55,10 +62,30 @@ public class GameManager : MonoBehaviour {
 
         instance = this;
         DontDestroyOnLoad(gameObject);
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        SetPause(false);
     }
 
     public void SpeedPlus() {
         backgroundSpeed += boostedBackgroundSpeed;
         Debug.Log ("GET ITEM" +backgroundSpeed );
+    }
+
+    public void SetPause(bool pause)
+    {
+        if (pause)
+        {
+            this.isPaused = true;
+            Time.timeScale = 0f;
+        }
+        else
+        {
+            this.isPaused = false;
+            Time.timeScale = 1f;
+        }
     }
 }

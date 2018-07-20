@@ -8,8 +8,7 @@ public class BackgroundMove : MonoBehaviour {
 	private const float endPositionY = 11.6f;
 	// Update is called once per frame
 	void Update () {
-
-		transform.Translate(0, GameManager.Instance.BackgroundSpeed, 0);
+		transform.Translate(0, Time.deltaTime * GameManager.Instance.BackgroundSpeed, 0);
 
 		if( transform.localPosition.y > endPositionY)
 		{
