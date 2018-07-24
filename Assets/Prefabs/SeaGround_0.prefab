@@ -164,8 +164,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4302314842117338}
   - component: {fileID: 212541461574468670}
-  - component: {fileID: 114645966194577652}
   - component: {fileID: 58140963049175118}
+  - component: {fileID: 114645966194577652}
   - component: {fileID: 114041977856624760}
   m_Layer: 0
   m_Name: MineBig
@@ -986,6 +986,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 805146974090d094b8fb21fcad2f7791, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moveSpeed: 2
 --- !u!114 &114110815275416078
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -997,6 +998,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 805146974090d094b8fb21fcad2f7791, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moveSpeed: 3
 --- !u!114 &114305848951059046
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1008,6 +1010,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 805146974090d094b8fb21fcad2f7791, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moveSpeed: 1
 --- !u!114 &114481168727770514
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1055,6 +1058,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 805146974090d094b8fb21fcad2f7791, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moveSpeed: 1.2
 --- !u!212 &212042175444205188
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class move_wall : MonoBehaviour {
 
-	
+    public float moveSpeed;
+    public int x;
 	// Update is called once per frame
 	void Update () {
-        transform.Translate(0, 1.2f * Time.deltaTime, 0);
+
+        transform.Translate(x, moveSpeed * Time.deltaTime, 0);
     }
 }
