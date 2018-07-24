@@ -10954,7 +10954,7 @@ Prefab:
     - target: {fileID: 58202123734564526, guid: 655031113311c3d47afe4ec72139e30e,
         type: 2}
       propertyPath: m_Radius
-      value: 0.55490386
+      value: 2.47
       objectReference: {fileID: 0}
     - target: {fileID: 4387655015396572, guid: 655031113311c3d47afe4ec72139e30e, type: 2}
       propertyPath: m_LocalScale.x
