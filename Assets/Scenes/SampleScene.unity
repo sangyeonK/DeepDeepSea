@@ -10970,6 +10970,21 @@ Prefab:
       value: 
       objectReference: {fileID: 21300000, guid: 2d957d4dbda9f48fea92c96baba5b80e,
         type: 3}
+    - target: {fileID: 114625089055375356, guid: 655031113311c3d47afe4ec72139e30e,
+        type: 2}
+      propertyPath: healthSlider
+      value: 
+      objectReference: {fileID: 770435939}
+    - target: {fileID: 114625089055375356, guid: 655031113311c3d47afe4ec72139e30e,
+        type: 2}
+      propertyPath: playerSlider
+      value: 
+      objectReference: {fileID: 770435939}
+    - target: {fileID: 114625089055375356, guid: 655031113311c3d47afe4ec72139e30e,
+        type: 2}
+      propertyPath: health
+      value: 100
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 655031113311c3d47afe4ec72139e30e, type: 2}
   m_IsPrefabParent: 0
