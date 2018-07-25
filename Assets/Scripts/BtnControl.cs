@@ -17,10 +17,16 @@ public class BtnControl : MonoBehaviour,  IPointerDownHandler, IPointerUpHandler
     public void OnPointerDown (PointerEventData eventData)
     {
         isBtnDown = true;
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        Animator ani = player.GetComponent<Animator>();
+        ani.SetBool("SpeedBoost", true);
     }
  
     public void OnPointerUp (PointerEventData eventData)
     {
         isBtnDown = false;
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        Animator ani = player.GetComponent<Animator>();
+        ani.SetBool("SpeedBoost", false);
     }
 }

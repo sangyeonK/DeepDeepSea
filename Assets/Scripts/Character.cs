@@ -85,7 +85,8 @@ public class Character : MonoBehaviour {
     {
         if (collision.tag == "MINE")
         {
-            Destroy(this.gameObject);
+            Animator ani = GetComponent<Animator>();
+            ani.SetTrigger("Damage");
             Debug.Log("collider mine");
         }
 
