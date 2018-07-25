@@ -43,34 +43,24 @@ public class MapManager : MonoBehaviour
         if (instance == null)
         {  
             instance = this;
-        }
-           
-    }
-   
+        }          
+    }   
     void Start()
     {
-
         EpilagicZone = true;
         gameover = false;
         seameter = 0;
-
         StartCoroutine("seameter_repeat");
         if (gamestageType == GAMESTAGETYPE.GameStart)
-        {
-           
-            gamestageType = GAMESTAGETYPE.GamePlay;
-           
+        {         
+            gamestageType = GAMESTAGETYPE.GamePlay;          
         }
     }
-
     public IEnumerator seameter_repeat()
-    {
-        
+    {       
         while (gameover == false)
-        {
-            
-            yield return new WaitForSeconds(1.0f);
-           
+        {         
+            yield return new WaitForSeconds(1.0f);         
             switch (seameter)
             {
                 case 0:
@@ -78,7 +68,6 @@ public class MapManager : MonoBehaviour
                     EpilagicZone = true;
                     seameterText.text = zoneName + " " + seameter + "M";
                     Debug.Log("표해수층");    
-
                     break;
                 case 200:
                     MesopelagicZone = true;
@@ -94,33 +83,23 @@ public class MapManager : MonoBehaviour
                     AbyssopelagicZone = true;
                     zoneName = "심해저대";
                     Debug.Log("심해저대");
-
                     break;
                 case 6000:
                     HadalpelagicZone = true;
                     zoneName = "초심해저대";
                     Debug.Log("초심해저대");
-
                     break;
-
             }
             seameter++;
             seameterText.text = zoneName + " " + seameter + "M";
            
-        }
-       
+        }    
     }
-
     void Update()
-    {
-
-       
+    {    
         if (gamestageType == GAMESTAGETYPE.GamePlay)
         {
-
         Debug.Log(gamestageType +" GAMESTAGETYPE.GamePlay");
-
-
 
             interval += Time.deltaTime;
             if (interval > 6.6f)
@@ -131,15 +110,8 @@ public class MapManager : MonoBehaviour
                 mineOBJ.transform.position = new Vector3(Random.Range(-2, 2), Random.Range(-4, 0), 0);
                 interval = 0;
             }
-
         }
-
-
-
     }
-
-    
-
 
 }
 
