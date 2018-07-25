@@ -18,7 +18,8 @@ public class MapManager : MonoBehaviour
     public GameObject[] mapList = null;
     public GameObject[] mine = null;
     public GameObject[] obstacle = null;
-    public int startingHealth = 100;                            // The amount of health the player starts the game with.
+    public int startingHea
+        lth = 100;                            // The amount of health the player starts the game with.
     public int currentHealth;                                   // The current health the player has.
     public Slider healthSlider;
     private int damagespeed = 1;
