@@ -7,13 +7,9 @@ public enum GAMESTAGETYPE
     GameStart,
     GamePlay,
     GameEnd
-
-
 }
-
 public class MapManager : MonoBehaviour
 {
-
 
     public GameObject[] mapList = null;
     public GameObject[] mine = null;
@@ -50,7 +46,7 @@ public class MapManager : MonoBehaviour
         }
            
     }
-    
+   
     void Start()
     {
 
@@ -66,10 +62,6 @@ public class MapManager : MonoBehaviour
            
         }
     }
-
-
-
-
 
     public IEnumerator seameter_repeat()
     {
@@ -111,7 +103,6 @@ public class MapManager : MonoBehaviour
 
                     break;
 
-
             }
             seameter++;
             seameterText.text = zoneName + " " + seameter + "M";
@@ -140,12 +131,6 @@ public class MapManager : MonoBehaviour
                 mineOBJ.transform.position = new Vector3(Random.Range(-2, 2), Random.Range(-4, 0), 0);
                 interval = 0;
             }
-
-            // zoneName = "표심해층";
-            //seameter = 0;
-
-            
-           
 
         }
 
