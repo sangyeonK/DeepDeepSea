@@ -707,7 +707,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1376917020344500}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.2, y: -16.32, z: 0}
+  m_LocalPosition: {x: -0.2, y: -32, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4752290015450432}
@@ -1047,7 +1047,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.8, y: 0.59}
+  m_Size: {x: 2.48, y: 0.59}
   m_EdgeRadius: 0
 --- !u!61 &61328421518701514
 BoxCollider2D:
@@ -1072,7 +1072,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.8, y: 0.59}
+  m_Size: {x: 2.09, y: 0.59}
   m_EdgeRadius: 0
 --- !u!61 &61344318000500008
 BoxCollider2D:
@@ -1122,7 +1122,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.8, y: 0.59}
+  m_Size: {x: 2.47, y: 0.59}
   m_EdgeRadius: 0
 --- !u!61 &61876676331561734
 BoxCollider2D:
@@ -1147,7 +1147,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.8, y: 0.59}
+  m_Size: {x: 0.88, y: 0.59}
   m_EdgeRadius: 0
 --- !u!61 &61912973162944772
 BoxCollider2D:
@@ -1172,7 +1172,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.8, y: 0.59}
+  m_Size: {x: 1.07, y: 0.74}
   m_EdgeRadius: 0
 --- !u!61 &61957534912139186
 BoxCollider2D:
@@ -1197,7 +1197,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.8, y: 0.59}
+  m_Size: {x: 1.83, y: 0.79}
   m_EdgeRadius: 0
 --- !u!114 &114363341860098180
 MonoBehaviour:
@@ -1211,6 +1211,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 1.2
+  x: 0
 --- !u!212 &212023543390505390
 SpriteRenderer:
   m_ObjectHideFlags: 1

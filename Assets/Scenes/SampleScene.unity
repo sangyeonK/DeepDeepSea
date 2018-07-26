@@ -5064,7 +5064,7 @@ GameObject:
   - component: {fileID: 341234803}
   - component: {fileID: 341234802}
   m_Layer: 5
-  m_Name: Heart
+  m_Name: nose
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5086,7 +5086,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -435.28, y: 778.17}
-  m_SizeDelta: {x: 80, y: 80}
+  m_SizeDelta: {x: 120, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &341234802
 MonoBehaviour:
@@ -5107,7 +5107,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 8ef6d68c54a594345b6fbb5fbc012db4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d1d84579fda784049b8e2d07640a77f7, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5528,7 +5528,10 @@ MonoBehaviour:
   - {fileID: 1715452762103450, guid: 962cfdd592b6e44938a214becadcb0cb, type: 2}
   - {fileID: 1243079264059846, guid: 3c90ee8e6b81b43d1b29519e9e725d59, type: 2}
   - {fileID: 1304344704602514, guid: 3d5ddb7d08e7a4a2187a92f5a9bd05ab, type: 2}
-  obstacle: []
+  ROBJ:
+  - {fileID: 1544780528187202, guid: bbd3fc9a68dcc477794cf6d8fdefd8b1, type: 2}
+  - {fileID: 1726113775426148, guid: 2e81502f1b8564cbb86db3a009c14a18, type: 2}
+  - {fileID: 1206912268644132, guid: 7ef168a817ecd4673a0d27b2221258a1, type: 2}
   startingHealth: 100
   currentHealth: 0
   healthSlider: {fileID: 770435939}
@@ -5588,7 +5591,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.9}
   m_AnchorMax: {x: 0.8, y: 1}
-  m_AnchoredPosition: {x: 49.299957, y: 0}
+  m_AnchoredPosition: {x: 49.299805, y: 0}
   m_SizeDelta: {x: -293.00006, y: -100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &770435939

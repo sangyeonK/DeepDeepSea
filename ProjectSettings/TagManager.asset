@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Boundary
   - MINE
+  - OXY
   layers:
   - Default
   - TransparentFX

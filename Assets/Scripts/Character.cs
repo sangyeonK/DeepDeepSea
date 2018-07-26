@@ -4,6 +4,34 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class Character : MonoBehaviour {
+
+
+    public sealed class Singleton
+    {
+        private static Singleton instance = null;
+        private static readonly object padlock = new object();
+
+        private Singleton()
+        {
+        }
+
+        public static Singleton Instance
+        {
+            get
+            {
+                lock (padlock)
+                {
+                    if (instance == null)
+                    {
+                        instance = new Singleton();
+                    }
+                    return instance;
+                }
+            }
+        }
+    }
+
+
 	public float moveSpeed;
     public float health = 100.0f;
     private const float coef = 0.2f;
@@ -35,6 +63,7 @@ public class Character : MonoBehaviour {
             float timeSlice = (slider.value /100   );
             while (slider.value >= 0)
             {
+                health = slider.value;
                 slider.value -= timeSlice;
                 yield return new WaitForSeconds(1);
                 if (slider.value <= 0)
@@ -81,7 +110,7 @@ public class Character : MonoBehaviour {
 
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    public void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "MINE")
         {
@@ -89,6 +118,16 @@ public class Character : MonoBehaviour {
             ani.SetTrigger("Damage");
             Debug.Log("collider mine");
         }
+
+
+        if (collision.tag == "OXY")
+        {
+            health += 5;
+
+                
+        }
+
+
 
 
     }
