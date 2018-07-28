@@ -30,9 +30,11 @@ public class Character : MonoBehaviour {
             }
         }
     }
-   
 
-	public float moveSpeed;
+
+
+
+    public float moveSpeed = 2.0f;
     public float health = 100.0f;
     private const float coef = 0.2f;
     public bool death;
@@ -79,7 +81,10 @@ public class Character : MonoBehaviour {
     void Update () {
 
 
-       
+        if (Input.GetKey(KeyCode.Space))
+        {
+            MoveRevers();
+        }
 
         // if (moveSpeedBoostTime > 0.0f)
         // {
@@ -96,7 +101,10 @@ public class Character : MonoBehaviour {
     }
 
 
-
+    private void MoveRevers()
+    {
+        transform.Translate(moveSpeed * -1 * Time.deltaTime, 0f, 0f);
+    }
 
 
     public void GetItem(Item.ItemKind itemKind)
@@ -127,7 +135,16 @@ public class Character : MonoBehaviour {
             health += 5;
  
         }
+        if (collision.tag == "fast")
+        {
+            moveSpeed += 1;
 
+        }
+        if (collision.tag == "slow")
+        {
+            moveSpeed -= 1;
+
+        }
 
     }
 }

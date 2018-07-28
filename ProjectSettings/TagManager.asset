@@ -7,6 +7,8 @@ TagManager:
   - Boundary
   - MINE
   - OXY
+  - fast
+  - slow
   layers:
   - Default
   - TransparentFX
