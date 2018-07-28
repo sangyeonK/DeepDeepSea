@@ -12,14 +12,5 @@ public class move_wall : MonoBehaviour {
         transform.Translate(x, moveSpeed * Time.deltaTime, 0);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.tag == "Player")
-        {
-
-
-        }
-
-
-    }
+   
 }

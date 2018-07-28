@@ -30,7 +30,7 @@ public class Character : MonoBehaviour {
             }
         }
     }
-
+   
 
 	public float moveSpeed;
     public float health = 100.0f;
@@ -92,7 +92,7 @@ public class Character : MonoBehaviour {
         // }
 
         transform.Translate(Vector3.right * moveSpeed * Time.deltaTime);
-
+     
     }
 
 
@@ -101,7 +101,8 @@ public class Character : MonoBehaviour {
 
     public void GetItem(Item.ItemKind itemKind)
     {
-        switch (itemKind) {
+        switch (itemKind) 
+        {
             case Item.ItemKind.SPEED_BOOST:
                 // moveSpeedBoostTime = 5.0f;
                 GameManager.Instance.SpeedPlus();
@@ -116,6 +117,7 @@ public class Character : MonoBehaviour {
         {
             Animator ani = GetComponent<Animator>();
             ani.SetTrigger("Damage");
+            health -= 5;
             Debug.Log("collider mine");
         }
 
@@ -125,8 +127,6 @@ public class Character : MonoBehaviour {
             health += 5;
  
         }
-
-
 
 
     }

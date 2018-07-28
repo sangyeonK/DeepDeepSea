@@ -19,5 +19,5 @@ public class PlayerCtrl : MonoBehaviour {
     private void MoveRevers() {
         transform.Translate(moveSpeed * -1 * Time.deltaTime, 0f, 0f);
     }
-
+   
 }

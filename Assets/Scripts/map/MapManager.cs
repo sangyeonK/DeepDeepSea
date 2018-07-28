@@ -2,6 +2,8 @@
 using UnityEngine;
 using UnityEngine.UI;
 
+
+
 public enum GAMESTAGETYPE
 {
     GameStart,
@@ -17,6 +19,8 @@ public class MapManager : MonoBehaviour
     public int startingHealth = 100;                            // The amount of health the player starts the game with.
     public int currentHealth;                                   // The current health the player has.
     public Slider healthSlider;
+
+
     private int damagespeed = 1;
     public GAMESTAGETYPE gamestageType;
     public bool EpilagicZone;//표해수층
@@ -27,11 +31,35 @@ public class MapManager : MonoBehaviour
     public int seameter;
     public Text seameterText;
     public string zoneName;
+
+
     private int waittime;
     float interval = 0;
     public bool gameover;
     public static MapManager instance = null;
     private Image moveIMG;
+   
+    float totalTime = 300f; //2 minutes
+
+    public Text timer;
+
+
+    public void UpdateLevelTimer(float totalSeconds)
+    {
+        int minutes = Mathf.FloorToInt(totalSeconds / 60f);
+        int seconds = Mathf.RoundToInt(totalSeconds % 60f);
+
+        string formatedSeconds = seconds.ToString();
+
+        if (seconds == 60)
+        {
+            seconds = 0;
+            minutes += 1;
+        }
+
+        timer.text = minutes.ToString("00") + ":" + seconds.ToString("00");
+    }
+
 
     void Awake()
     {
@@ -44,7 +72,14 @@ public class MapManager : MonoBehaviour
         {  
             instance = this;
         }          
-    }   
+
+
+    }
+
+
+
+
+
     void Start()
     {
         EpilagicZone = true;
@@ -56,50 +91,78 @@ public class MapManager : MonoBehaviour
             gamestageType = GAMESTAGETYPE.GamePlay;          
         }
     }
+
     public IEnumerator seameter_repeat()
-    {       
+    {
+      
+       
         while (gameover == false)
-        {         
-            yield return new WaitForSeconds(1.0f);         
+        {
+             
+            yield return new WaitForSeconds(1.0f);
+           
+        
             switch (seameter)
             {
-                case 0:
-                    zoneName = "표해수층";
+                case 0:zoneName = "표해수층";
                     EpilagicZone = true;
                     seameterText.text = zoneName + " " + seameter + "M";
-                    Debug.Log("표해수층");    
+                    Debug.Log("표해수층"); 
+
                     break;
                 case 200:
                     MesopelagicZone = true;
                     zoneName = "중심해층";
                     Debug.Log("중심해층");
+
                     break;
                 case 1000:
+                  
                     BathypelagicZone = true;
                     zoneName = "점심해수층";
                     Debug.Log("점심해수층");
+
                     break;
                 case 3000:
+                   
                     AbyssopelagicZone = true;
                     zoneName = "심해저대";
                     Debug.Log("심해저대");
                     break;
+
                 case 6000:
                     HadalpelagicZone = true;
                     zoneName = "초심해저대";
                     Debug.Log("초심해저대");
                     break;
+                    
+                   
+
+
+                
             }
+
+
+
             seameter++;
-            seameterText.text = zoneName + " " + seameter + "M";
            
+           
+            seameterText.text = zoneName + " "+   seameter   + "M";
+
         }    
+        if (gameover == true)
+        {
+
+            yield break;
+
+
+        }
     }
     void Update()
-    {    
+    {
         if (gamestageType == GAMESTAGETYPE.GamePlay)
         {
-        Debug.Log(gamestageType +" GAMESTAGETYPE.GamePlay");
+            Debug.Log(gamestageType + " GAMESTAGETYPE.GamePlay");
 
             interval += Time.deltaTime;
             if (interval > 6.6f)
@@ -116,6 +179,15 @@ public class MapManager : MonoBehaviour
 
             }
         }
+
+        totalTime -= Time.deltaTime;
+        UpdateLevelTimer(totalTime);
+
+
+       
+
+
+
     }
 
 }
