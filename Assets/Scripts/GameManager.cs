@@ -15,24 +15,6 @@ public class GameManager : MonoBehaviour {
     }
     private static GameManager instance = null;
 
-    /// <summary>
-    /// 배경 이동속도
-    /// </summary>
-    public float BackgroundSpeed
-    {
-        get
-        {
-            if (isSpeedMode){
-                Debug.Log ("SPEEDMODE *" + speedMode +  ">>>>" +(backgroundSpeed * speedMode));
-                return backgroundSpeed * speedMode;
-            }
-            else {
-                Debug.Log ("NONE" +backgroundSpeed );
-                return backgroundSpeed;
-            }
-                
-        }
-    }
     [SerializeField]
     private float backgroundSpeed = 3f;
 
@@ -42,14 +24,30 @@ public class GameManager : MonoBehaviour {
     [HideInInspector]
     public bool isSpeedMode = false;
 
-    // public bool moveSpeedBoost = false;
-
-    /// <summary>
-    /// Game Manager 단에서 제어하는 Pause UI Panel
-    /// </summary>
-    private GameObject pausePanel;
     [HideInInspector]
     public bool isPaused = false;
+    private GameObject screenObject;
+    
+    /// <summary>
+    /// 플레이어의 세로축 이동 속도
+    /// </summary>
+    public float PlayerVerticalSpeed
+    {
+        get
+        {
+            if (isSpeedMode)
+            {
+                return playerVerticalSpeed * speedMode;
+            }
+            else
+            {
+                return playerVerticalSpeed;
+            }
+        }
+    }
+    [SerializeField]
+    private float playerVerticalSpeed = 3.0f;   // 플레이어의 세로축 이동 속도 ( private )
+    public float playerHorizontalSpeed = 3.0f;  // 플레이어의 가로축 이동 속도
 
     private void Awake()
     {
@@ -68,10 +66,11 @@ public class GameManager : MonoBehaviour {
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         SetPause(false);
+        screenObject = GameObject.Find("ScreenObject");
     }
 
     public void SpeedPlus() {
-        backgroundSpeed += boostedBackgroundSpeed;
+        playerVerticalSpeed += boostedBackgroundSpeed;
         Debug.Log ("GET ITEM" +backgroundSpeed );
     }
 

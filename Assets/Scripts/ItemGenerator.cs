@@ -8,10 +8,8 @@ public class ItemGenerator : MonoBehaviour {
 
 	IEnumerator Generate()
     {
-        Instantiate(item,
-            transform.localPosition + new Vector3(Random.Range(-5.0f, 5.0f), 0.0f),
-            Quaternion.identity,
-            transform);
+        Vector3 location = transform.position + new Vector3(Random.Range(-5.0f, 5.0f), -6.0f);
+        Instantiate(item, location, Quaternion.identity);
 
         yield return new WaitForSeconds(Random.Range(1f, 3f));
 

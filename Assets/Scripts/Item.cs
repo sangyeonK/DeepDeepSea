@@ -21,11 +21,6 @@ public class Item : MonoBehaviour {
         }
     }
 
-    void Update()
-    {
-        transform.Translate(0, Time.deltaTime * GameManager.Instance.BackgroundSpeed, 0);
-    }
-
     private void OnBecameInvisible()
     {
         Destroy(gameObject);

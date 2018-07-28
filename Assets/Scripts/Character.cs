@@ -31,9 +31,6 @@ public class Character : MonoBehaviour {
         }
     }
 
-
-
-
     public float moveSpeed = 2.0f;
     public float health = 100.0f;
     private const float coef = 0.2f;
@@ -80,39 +77,22 @@ public class Character : MonoBehaviour {
     // Update is called once per frame
     void Update () {
 
-
+        float horizontalMove = GameManager.Instance.playerHorizontalSpeed * Time.deltaTime;
+        float verticalMove = GameManager.Instance.PlayerVerticalSpeed * Time.deltaTime * -1;
         if (Input.GetKey(KeyCode.Space))
         {
-            MoveRevers();
+            //reverse Move
+            horizontalMove = horizontalMove * -1;
         }
 
-        // if (moveSpeedBoostTime > 0.0f)
-        // {
-        //     GameManager.Instance.moveSpeedBoost = true;
-        //     moveSpeedBoostTime = Mathf.Max(moveSpeedBoostTime - Time.deltaTime, 0.0f);
-        // }
-        // else
-        // {
-        //     GameManager.Instance.moveSpeedBoost = false;
-        // }
-
-        transform.Translate(Vector3.right * moveSpeed * Time.deltaTime);
-     
+        transform.Translate(horizontalMove, verticalMove, 0.0f);     
     }
-
-
-    private void MoveRevers()
-    {
-        transform.Translate(moveSpeed * -1 * Time.deltaTime, 0f, 0f);
-    }
-
 
     public void GetItem(Item.ItemKind itemKind)
     {
         switch (itemKind) 
         {
             case Item.ItemKind.SPEED_BOOST:
-                // moveSpeedBoostTime = 5.0f;
                 GameManager.Instance.SpeedPlus();
                 break;
         }

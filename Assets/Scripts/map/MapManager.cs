@@ -12,8 +12,6 @@ public enum GAMESTAGETYPE
 }
 public class MapManager : MonoBehaviour
 {
-
-    public GameObject[] mapList = null;
     public GameObject[] mine = null;
     public GameObject[] ROBJ = null;
     public GameObject[] itemrandom = null;
@@ -37,13 +35,13 @@ public class MapManager : MonoBehaviour
     private int waittime;
     float interval = 0;
     public bool gameover;
-    public static MapManager instance = null;
     private Image moveIMG;
    
     float totalTime = 300f; //2 minutes
 
     public Text timer;
 
+    private GameObject screenObject;
 
     public void UpdateLevelTimer(float totalSeconds)
     {
@@ -69,12 +67,8 @@ public class MapManager : MonoBehaviour
 
         gamestageType = GAMESTAGETYPE.GameStart;
         Debug.Log(gamestageType);
-        if (instance == null)
-        {  
-            instance = this;
-        }          
 
-
+        screenObject = GameObject.FindGameObjectWithTag("ScreenObject");
     }
 
 
@@ -168,19 +162,18 @@ public class MapManager : MonoBehaviour
             interval += Time.deltaTime;
             if (interval > 5.6f)
             {
-                GameObject obj = Instantiate(mapList[Random.Range(0, 2)]);
-                obj.transform.position = new Vector3(-0.3f, -8.45f, 0);
+                Vector3 location;
+                
+                location = screenObject.transform.position + new Vector3(Random.Range(-5.0f, 5.0f), Random.Range(-10.0f, -4.0f));
+                Instantiate(mine[Random.Range(0, mine.Length)], location, Quaternion.identity);
+               
+                location = screenObject.transform.position + new Vector3(Random.Range(-2.0f, 2.0f), Random.Range(-10.0f, -4.0f));
+                Instantiate(ROBJ[Random.Range(0, ROBJ.Length)], location, Quaternion.identity);
 
-                GameObject mineOBJ = Instantiate(mine[Random.Range(0, 2)]);
-                mineOBJ.transform.position = new Vector3(Random.Range(-2, 2), Random.Range(-4, 0), 0);
+                location = screenObject.transform.position + new Vector3(Random.Range(-2.0f, 2.0f), Random.Range(-10.0f, -4.0f));
+                Instantiate(itemrandom[Random.Range(0, itemrandom.Length)], location, Quaternion.identity);
+
                 interval = 0;
-
-                GameObject robj = Instantiate(ROBJ[Random.Range(0, 4)]);
-                robj.transform.position = new Vector3(Random.Range(-2, 2), Random.Range(-4, 0), 0);
-
-
-                GameObject itemran = Instantiate(itemrandom[Random.Range(0, 1)]);
-                itemran.transform.position = new Vector3(Random.Range(-2, 2), Random.Range(-4, 0), 0);
             }
         }
 
