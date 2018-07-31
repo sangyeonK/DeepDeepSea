@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class Character : MonoBehaviour {
 
+    public GameObject gameOver;
 
     public sealed class Singleton
     {
@@ -44,7 +45,8 @@ public class Character : MonoBehaviour {
         if (death == false)
         {
             DecreseEnemySlider();
-           
+            gameOver.SetActive(false);
+
         }
     }
 
@@ -76,7 +78,10 @@ public class Character : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-
+        if (health == 0)
+        {
+            death = true;
+        }
         float horizontalMove = GameManager.Instance.playerHorizontalSpeed * Time.deltaTime;
         float verticalMove = GameManager.Instance.PlayerVerticalSpeed * Time.deltaTime * -1;
         if (Input.GetKey(KeyCode.Space))
@@ -85,7 +90,9 @@ public class Character : MonoBehaviour {
             horizontalMove = horizontalMove * -1;
         }
 
-        transform.Translate(horizontalMove, verticalMove, 0.0f);     
+        transform.Translate(horizontalMove, verticalMove, 0.0f);
+        GameOverMgr();
+
     }
 
     public void GetItem(Item.ItemKind itemKind)
@@ -126,5 +133,19 @@ public class Character : MonoBehaviour {
 
         }
 
+    }
+
+    public void GameOverMgr()
+    {
+        if (health <0)
+        {
+            Time.timeScale = 0;
+            gameOver.SetActive(true);
+
+        }
+        else
+        {
+            Time.timeScale = 1;
+        }
     }
 }
