@@ -78,10 +78,7 @@ public class Character : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-        if (health == 0)
-        {
-            death = true;
-        }
+        
         float horizontalMove = GameManager.Instance.playerHorizontalSpeed * Time.deltaTime;
         float verticalMove = GameManager.Instance.PlayerVerticalSpeed * Time.deltaTime * -1;
         if (Input.GetKey(KeyCode.Space))
@@ -139,9 +136,10 @@ public class Character : MonoBehaviour {
     {
         if (health <0)
         {
+            death = true;
             Time.timeScale = 0;
             gameOver.SetActive(true);
-
+            Debug.Log("gameOver");
         }
         else
         {
