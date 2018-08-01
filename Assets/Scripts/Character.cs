@@ -130,6 +130,12 @@ public class Character : MonoBehaviour {
 
         }
 
+        if (collision.tag == "floating")
+        {
+            health -= 5;
+
+        }
+
     }
 
     public void GameOverMgr()
@@ -137,13 +143,10 @@ public class Character : MonoBehaviour {
         if (health <0)
         {
             death = true;
-            Time.timeScale = 0;
+            GameManager.Instance.SetPause(true);
             gameOver.SetActive(true);
             Debug.Log("gameOver");
         }
-        else
-        {
-            Time.timeScale = 1;
-        }
+
     }
 }

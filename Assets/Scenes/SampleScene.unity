@@ -675,6 +675,9 @@ MonoBehaviour:
   - {fileID: 1544780528187202, guid: bbd3fc9a68dcc477794cf6d8fdefd8b1, type: 2}
   - {fileID: 1726113775426148, guid: 2e81502f1b8564cbb86db3a009c14a18, type: 2}
   - {fileID: 1206912268644132, guid: 7ef168a817ecd4673a0d27b2221258a1, type: 2}
+  - {fileID: 1108617022911260, guid: 74b833c3c7d5c4535a4f832258879baa, type: 2}
+  - {fileID: 1863820121946608, guid: 2903f4509c40f488086bc70d8cb4ea08, type: 2}
+  - {fileID: 1863820121946608, guid: 2903f4509c40f488086bc70d8cb4ea08, type: 2}
   itemrandom:
   - {fileID: 1410179119570180, guid: abcfd35dd98b645fd8c84bd9cea92f60, type: 2}
   - {fileID: 1967974722843826, guid: 348af59c6ad2e4e0f8478c5479c448d9, type: 2}
@@ -1824,6 +1827,10 @@ Prefab:
       propertyPath: gameOver
       value: 
       objectReference: {fileID: 2099391542}
+    - target: {fileID: 1369915557566906, guid: 655031113311c3d47afe4ec72139e30e, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 655031113311c3d47afe4ec72139e30e, type: 2}
   m_IsPrefabParent: 0
@@ -2545,7 +2552,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2099391543
 RectTransform:
   m_ObjectHideFlags: 0

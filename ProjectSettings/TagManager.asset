@@ -10,6 +10,7 @@ TagManager:
   - fast
   - slow
   - ScreenObject
+  - floating
   layers:
   - Default
   - TransparentFX
