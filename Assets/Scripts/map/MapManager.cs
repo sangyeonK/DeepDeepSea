@@ -66,7 +66,7 @@ public class MapManager : MonoBehaviour
         healthSlider.value = currentHealth;
 
         gamestageType = GAMESTAGETYPE.GameStart;
-        Debug.Log(gamestageType);
+        //Debug.Log(gamestageType);
 
         screenObject = GameObject.FindGameObjectWithTag("ScreenObject");
     }
@@ -157,8 +157,6 @@ public class MapManager : MonoBehaviour
     {
         if (gamestageType == GAMESTAGETYPE.GamePlay)
         {
-            Debug.Log(gamestageType + " GAMESTAGETYPE.GamePlay");
-
             interval += Time.deltaTime;
             if (interval > 5.6f)
             {
