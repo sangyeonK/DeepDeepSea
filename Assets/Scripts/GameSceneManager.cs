@@ -19,14 +19,12 @@ public class GameSceneManager : MonoBehaviour {
 
     public void OnRestartButton()
     {
-        
-        Scene loadedLevel = SceneManager.GetActiveScene();
-        SceneManager.LoadScene(loadedLevel.buildIndex);
-        GameManager.Instance.SetPause(false);
+        Debug.Log("SceneCount" + SceneManager.sceneCount);
+        SceneManager.LoadScene("SampleScene");
     }
 
     public void OnTitleButton()
     {
-        SceneManager.LoadScene("Title");
+        SceneManager.LoadScene("StartScene");
     }
 }
