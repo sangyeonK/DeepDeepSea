@@ -993,7 +993,6 @@ GameObject:
   - component: {fileID: 859433863}
   - component: {fileID: 859433865}
   - component: {fileID: 859433864}
-  - component: {fileID: 859433866}
   m_Layer: 5
   m_Name: MoveImg
   m_TagString: Untagged
@@ -1053,19 +1052,6 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 859433862}
   m_CullTransparentMesh: 0
---- !u!114 &859433866
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 859433862}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 805146974090d094b8fb21fcad2f7791, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: -0.01
-  x: 0
 --- !u!1 &875643694
 GameObject:
   m_ObjectHideFlags: 0
@@ -1863,6 +1849,11 @@ Prefab:
       objectReference: {fileID: 2099391542}
     - target: {fileID: 1369915557566906, guid: 655031113311c3d47afe4ec72139e30e, type: 2}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 212270068001232912, guid: 655031113311c3d47afe4ec72139e30e,
+        type: 2}
+      propertyPath: m_Color.a
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []

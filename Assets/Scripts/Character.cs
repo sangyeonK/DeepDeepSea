@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class Character : MonoBehaviour {
 
     public GameObject gameOver;
-
+   
     public sealed class Singleton
     {
         private static Singleton instance = null;
@@ -132,8 +132,9 @@ public class Character : MonoBehaviour {
 
         if (collision.tag == "floating")
         {
+            Animator ani = GetComponent<Animator>();
+            ani.SetTrigger("transparent");
             health -= 5;
-
         }
 
     }
