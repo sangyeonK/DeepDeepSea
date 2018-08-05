@@ -81,7 +81,7 @@ public class Character : MonoBehaviour {
         
         float horizontalMove = GameManager.Instance.playerHorizontalSpeed * Time.deltaTime;
         float verticalMove = GameManager.Instance.PlayerVerticalSpeed * Time.deltaTime * -1;
-        if (Input.GetKey(KeyCode.Space))
+        if (Input.touchCount>0 || Input.GetKey(KeyCode.Mouse0))
         {
             //reverse Move
             horizontalMove = horizontalMove * -1;
