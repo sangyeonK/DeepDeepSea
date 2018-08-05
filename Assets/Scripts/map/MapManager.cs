@@ -12,7 +12,9 @@ public enum GAMESTAGETYPE
 }
 public class MapManager : MonoBehaviour
 {
-    public GameObject[] wall = null;
+    public GameObject[] l_wall = null;
+
+    public GameObject[] r_wall = null;
     public GameObject[] mine = null;
     public GameObject[] ROBJ = null;
     public GameObject[] itemrandom = null;
@@ -161,6 +163,9 @@ public class MapManager : MonoBehaviour
             interval += Time.deltaTime;
             if (interval > 5.6f)
             {
+                Vector3 rightwall_pos;
+                Vector3 leftwall_pos;
+
                 Vector3 location;
                 
                 location = screenObject.transform.position + new Vector3(Random.Range(-5.0f, 5.0f), Random.Range(-10.0f, -4.0f));
@@ -172,6 +177,12 @@ public class MapManager : MonoBehaviour
                 location = screenObject.transform.position + new Vector3(Random.Range(-2.0f, 2.0f), Random.Range(-10.0f, -4.0f));
                 Instantiate(itemrandom[Random.Range(0, itemrandom.Length)], location, Quaternion.identity);
 
+
+                rightwall_pos=screenObject.transform.position + new Vector3(4, -26);
+                Instantiate(r_wall[Random.Range(0, r_wall.Length)], rightwall_pos, Quaternion.identity);
+
+                leftwall_pos = screenObject.transform.position + new Vector3(-5, -20);
+                Instantiate(l_wall[Random.Range(0, l_wall.Length)], leftwall_pos, Quaternion.identity);
                 interval = 0;
             }
         }
