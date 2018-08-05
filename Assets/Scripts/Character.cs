@@ -133,8 +133,10 @@ public class Character : MonoBehaviour {
         if (collision.tag == "floating")
         {
             Animator ani = GetComponent<Animator>();
-            ani.SetTrigger("transparent");
+            ani.SetTrigger("Damage");
             health -= 5;
+            ani.SetTrigger("transparent");
+
         }
 
     }
@@ -143,13 +145,25 @@ public class Character : MonoBehaviour {
     {
         if (health <0)
         {
-            Animator ani = GetComponent<Animator>();
-            ani.SetTrigger("Dead");
-            death = true;
-            GameManager.Instance.SetPause(true);
+            StartCoroutine("death_time");
             gameOver.SetActive(true);
+            GameManager.Instance.SetPause(true);
             Debug.Log("gameOver");
         }
+
+    }
+
+
+    public IEnumerator death_time(){
+
+
+        yield return new WaitForSeconds(1.0f);
+
+        Animator ani = GetComponent<Animator>();
+        ani.SetTrigger("Dead");
+        death = true;
+        yield break;
+
 
     }
 }

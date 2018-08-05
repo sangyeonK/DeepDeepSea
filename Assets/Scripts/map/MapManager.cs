@@ -1,8 +1,8 @@
 ﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
-
-
+using UnityEngine.SceneManagement;
+using System.Collections.Generic;
 
 public enum GAMESTAGETYPE
 {
@@ -18,6 +18,8 @@ public class MapManager : MonoBehaviour
     public GameObject[] mine = null;
     public GameObject[] ROBJ = null;
     public GameObject[] itemrandom = null;
+    public GameObject[] maptype = null;
+
     public int startingHealth = 100;                            // The amount of health the player starts the game with.
     public int currentHealth;                                   // The current health the player has.
     public Slider healthSlider;
@@ -166,8 +168,12 @@ public class MapManager : MonoBehaviour
                 Vector3 rightwall_pos;
                 Vector3 leftwall_pos;
 
+
                 Vector3 location;
-                
+
+                location = screenObject.transform.position + new Vector3(2.0f, -38.0f);
+                Instantiate(maptype[Random.Range(0, maptype.Length)], location, Quaternion.identity);
+
                 location = screenObject.transform.position + new Vector3(Random.Range(-5.0f, 5.0f), Random.Range(-10.0f, -4.0f));
                 Instantiate(mine[Random.Range(0, mine.Length)], location, Quaternion.identity);
                
