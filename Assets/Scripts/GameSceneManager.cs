@@ -25,6 +25,6 @@ public class GameSceneManager : MonoBehaviour {
 
     public void OnTitleButton()
     {
-        SceneManager.LoadScene("StartScene");
+		SceneManager.LoadScene("TitleScene");
     }
 }

@@ -18,6 +18,6 @@ public class RankSceneManager : MonoBehaviour {
 
 	public void OnClickBackButton()
     {
-		SceneManager.LoadScene("StartScene");
+		SceneManager.LoadScene("TitleScene");
     }
 }
