@@ -19,11 +19,12 @@ public class TitleSceneManager : MonoBehaviour {
 
     public void OnClickRankButton()
     {
-
+		SceneManager.LoadScene("RankScene");
     }
 
     public void OnClickBackButton()
     {
         mTeamView.SetActive(false);
     }
+
 }
