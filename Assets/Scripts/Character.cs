@@ -142,6 +142,8 @@ public class Character : MonoBehaviour {
     {
         if (health <0)
         {
+            Animator ani = GetComponent<Animator>();
+            ani.SetTrigger("Dead");
             death = true;
             GameManager.Instance.SetPause(true);
             gameOver.SetActive(true);

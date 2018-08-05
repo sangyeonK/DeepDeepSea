@@ -12,6 +12,7 @@ public enum GAMESTAGETYPE
 }
 public class MapManager : MonoBehaviour
 {
+    public GameObject[] wall = null;
     public GameObject[] mine = null;
     public GameObject[] ROBJ = null;
     public GameObject[] itemrandom = null;
