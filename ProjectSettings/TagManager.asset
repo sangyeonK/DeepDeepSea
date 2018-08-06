@@ -11,6 +11,8 @@ TagManager:
   - slow
   - ScreenObject
   - floating
+  - leftwall
+  - rightwall
   layers:
   - Default
   - TransparentFX

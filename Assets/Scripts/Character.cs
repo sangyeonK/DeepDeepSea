@@ -138,6 +138,22 @@ public class Character : MonoBehaviour {
             ani.SetTrigger("transparent");
 
         }
+        if (collision.tag == "leftwall")
+        {
+            Animator ani = GetComponent<Animator>();
+            ani.SetTrigger("playerleft");
+            health -= 5;
+           
+
+        }
+        if (collision.tag == "rightwall")
+        {
+            Animator ani = GetComponent<Animator>();
+            ani.SetTrigger("playerright");
+            health -= 5;
+
+
+        }
 
     }
 
