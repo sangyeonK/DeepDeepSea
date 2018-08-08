@@ -12,6 +12,10 @@ public class move_wall : MonoBehaviour {
         moveSpeed = Random.Range(0.0f, 3.0f);
         transform.Translate(x, moveSpeed * Time.deltaTime, 0);
     }
+    private void OnBecameInvisible()
+    {
+        Destroy(gameObject);
+    }
 
    
 }

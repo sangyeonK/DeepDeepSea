@@ -32,7 +32,7 @@ public class Character : MonoBehaviour {
         }
     }
 
-    public float moveSpeed = 2.0f;
+  
     public float health = 100.0f;
     private const float coef = 0.2f;
     public bool death;
@@ -121,13 +121,14 @@ public class Character : MonoBehaviour {
         }
         if (collision.tag == "fast")
         {
-            moveSpeed += 1;
+            GameManager.Instance.playerHorizontalSpeed += 1.0f;
+            GameManager.Instance.playerVerticalSpeed += 1.0f;
 
         }
         if (collision.tag == "slow")
         {
-            moveSpeed -= 1;
-
+            GameManager.Instance.playerHorizontalSpeed -= 1.0f;
+            GameManager.Instance.playerVerticalSpeed -= 1.0f;
         }
 
         if (collision.tag == "floating")
@@ -151,9 +152,18 @@ public class Character : MonoBehaviour {
             Animator ani = GetComponent<Animator>();
             ani.SetTrigger("playerright");
             health -= 5;
-
-
         }
+        if (collision.tag == "big")
+        {
+            transform.localScale += new Vector3(0.1F, 0.1F, 0);
+            health -= 5;
+        }
+        if (collision.tag == "small")
+        {
+            transform.localScale += new Vector3(-0.1F, -0.1F, 0);
+            health += 5;
+        }
+
 
     }
 

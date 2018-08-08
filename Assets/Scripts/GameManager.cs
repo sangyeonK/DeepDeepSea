@@ -46,7 +46,7 @@ public class GameManager : MonoBehaviour {
         }
     }
     [SerializeField]
-    private float playerVerticalSpeed = 3.0f;   // 플레이어의 세로축 이동 속도 ( private )
+    public float playerVerticalSpeed = 3.0f;   // 플레이어의 세로축 이동 속도 ( private )
     public float playerHorizontalSpeed = 3.0f;  // 플레이어의 가로축 이동 속도
 
     private void Awake()

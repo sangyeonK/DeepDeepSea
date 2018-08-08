@@ -13,6 +13,8 @@ TagManager:
   - floating
   - leftwall
   - rightwall
+  - big
+  - small
   layers:
   - Default
   - TransparentFX
