@@ -678,16 +678,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 959d359d9da0b384a9251bf11fe44a45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  l_wall:
-  - {fileID: 1641145718213078, guid: 4feacee6221e749d18669d7fced09ecc, type: 2}
-  - {fileID: 1983951260864008, guid: 031739005982f48a3b18f3ee65af47d8, type: 2}
-  - {fileID: 1354499528643618, guid: 5d7ab1af0f86243058bda9e7a6677940, type: 2}
-  - {fileID: 1535928891445396, guid: 12f4c85b8f50d412d9d19ea08c14e160, type: 2}
-  r_wall:
-  - {fileID: 1252884208382538, guid: 79aa6c2a9aba84db79ad17b7b50d4ce4, type: 2}
-  - {fileID: 1391699900173972, guid: 923c1cabfbd884a0b856bfb6db2b6e84, type: 2}
-  - {fileID: 1950406400748648, guid: bf3dee17ad81e4428a4f051b751ad89d, type: 2}
-  - {fileID: 1148633688267418, guid: 11cc472b11ed544ff86ef0b1778e0f37, type: 2}
+  l_wall: []
+  r_wall: []
   mine:
   - {fileID: 1715452762103450, guid: 962cfdd592b6e44938a214becadcb0cb, type: 2}
   - {fileID: 1243079264059846, guid: 3c90ee8e6b81b43d1b29519e9e725d59, type: 2}
