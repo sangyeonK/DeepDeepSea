@@ -121,14 +121,14 @@ public class Character : MonoBehaviour {
         }
         if (collision.tag == "fast")
         {
-            GameManager.Instance.playerHorizontalSpeed += 0.01f;
-            GameManager.Instance.playerVerticalSpeed += 0.01f;
+            GameManager.Instance.playerHorizontalSpeed += 1.0f;
+            GameManager.Instance.playerVerticalSpeed += 1.0f;
 
         }
         if (collision.tag == "slow")
         {
-            GameManager.Instance.playerHorizontalSpeed -= 0.01f;
-            GameManager.Instance.playerVerticalSpeed -= 0.01f;
+            GameManager.Instance.playerHorizontalSpeed -= 1.0f;
+            GameManager.Instance.playerVerticalSpeed -= 1.0f;
         }
 
         if (collision.tag == "floating")

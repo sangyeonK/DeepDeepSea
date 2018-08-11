@@ -184,16 +184,11 @@ public class MapManager : MonoBehaviour
                 Instantiate(itemrandom[Random.Range(0, itemrandom.Length)], location, Quaternion.identity);
 
 
-                if (r_wall.Length > 0)
-                {
-                    rightwall_pos = screenObject.transform.position + new Vector3(4, -26);
-                    Instantiate(r_wall[Random.Range(0, r_wall.Length)], rightwall_pos, Quaternion.identity);
-                }
-                if (l_wall.Length > 0)
-                {
-                    leftwall_pos = screenObject.transform.position + new Vector3(-5, -20);
-                    Instantiate(l_wall[Random.Range(0, l_wall.Length)], leftwall_pos, Quaternion.identity);
-                }
+                rightwall_pos=screenObject.transform.position + new Vector3(4, -26);
+                Instantiate(r_wall[Random.Range(0, r_wall.Length)], rightwall_pos, Quaternion.identity);
+
+                leftwall_pos = screenObject.transform.position + new Vector3(-5, -20);
+                Instantiate(l_wall[Random.Range(0, l_wall.Length)], leftwall_pos, Quaternion.identity);
                 interval = 0;
             }
         }
