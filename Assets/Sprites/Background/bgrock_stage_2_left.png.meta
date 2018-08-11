@@ -1,13 +1,8 @@
 fileFormatVersion: 2
-guid: fbba382b4069d7a49b8e12fe02d10693
+guid: 0d9f8a35ac883eb419929ab5a8e68918
 TextureImporter:
   fileIDToRecycleName:
-    21300000: background_stage_4
-    21300002: background_stage_4_to_5
-    21300004: background_1_0
-    21300006: background_stage_5
-    21300008: background_stage_5_to_6
-    21300010: background_stage_6
+    21300000: bgrock_stage_2_left
   externalObjects: {}
   serializedVersion: 5
   mipmaps:
@@ -64,7 +59,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 2
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 4096
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -75,7 +70,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
   - serializedVersion: 2
     buildTarget: Standalone
-    maxTextureSize: 4096
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -86,7 +81,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
   - serializedVersion: 2
     buildTarget: WebGL
-    maxTextureSize: 4096
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -99,101 +94,21 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: background_stage_4
+      name: bgrock_stage_2_left
       rect:
         serializedVersion: 2
         x: 0
-        y: 2176
-        width: 1080
+        y: 1979
+        width: 180
         height: 1920
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 732b2918793c8fd4c9352f93d62d3185
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: background_stage_4_to_5
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 1080
-        height: 1920
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5501fd32af8e3ba46b1d61693d526b6a
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: background_stage_5
-      rect:
-        serializedVersion: 2
-        x: 1223
-        y: 2176
-        width: 1080
-        height: 1920
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1cedf9623f2c76a459d2188f0e6b7cea
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: background_stage_5_to_6
-      rect:
-        serializedVersion: 2
-        x: 1246
-        y: 0
-        width: 1080
-        height: 1920
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5d98b28ac967f4640a4bf7194f86784d
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: background_stage_6
-      rect:
-        serializedVersion: 2
-        x: 2681
-        y: 2176
-        width: 1080
-        height: 1920
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1aa25004fe4d1fa40a6967044532b6fe
+      spriteID: 5222e036d8d2e8b41b593a5d6236c4e3
       vertices: []
       indices: 
       edges: []
@@ -201,7 +116,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 88ef9b7f6b9c8084b9cb9e8a25799735
+    spriteID: 090bdc432b50dfd4d9650878b0ce6f1c
     vertices: []
     indices: 
     edges: []
