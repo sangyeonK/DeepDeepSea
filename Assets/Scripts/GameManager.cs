@@ -61,8 +61,6 @@ public class GameManager : MonoBehaviour {
         instance = this;
         DontDestroyOnLoad(gameObject);
         SceneManager.sceneLoaded += OnSceneLoaded;
-
-
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)

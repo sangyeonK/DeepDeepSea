@@ -2,7 +2,12 @@ fileFormatVersion: 2
 guid: 333be09947384254f90a520f205a7d14
 TextureImporter:
   fileIDToRecycleName:
-    21300000: background_0_0
+    21300000: background_stage_1
+    21300002: background_stage_1_to_2
+    21300004: background_stage_2
+    21300006: background_stage_2_to_3
+    21300008: background_stage_3_to_4
+    21300010: background_stage_3
   externalObjects: {}
   serializedVersion: 5
   mipmaps:
@@ -94,7 +99,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: background_0_0
+      name: background_stage_1
       rect:
         serializedVersion: 2
         x: 0
@@ -102,13 +107,113 @@ TextureImporter:
         width: 1080
         height: 1920
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
       spriteID: 2e478d7aa4f991b48a89d060e51c05fa
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: background_stage_1_to_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 6
+        width: 1080
+        height: 1920
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e0c07b18d2e7d19489d1b0bc25c035bf
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: background_stage_2
+      rect:
+        serializedVersion: 2
+        x: 1232
+        y: 2176
+        width: 1080
+        height: 1920
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e3443d85d635ff0428da010d5c00aa1c
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: background_stage_2_to_3
+      rect:
+        serializedVersion: 2
+        x: 1238
+        y: 0
+        width: 1080
+        height: 1920
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e7e0953882736c84dac37f0768514475
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: background_stage_3_to_4
+      rect:
+        serializedVersion: 2
+        x: 2475
+        y: 2
+        width: 1080
+        height: 1920
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3066ff44699cc874c91c09d402bc0100
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: background_stage_3
+      rect:
+        serializedVersion: 2
+        x: 2481
+        y: 2176
+        width: 1080
+        height: 1920
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 37691d43e592ce04b9129f2a80093110
       vertices: []
       indices: 
       edges: []
