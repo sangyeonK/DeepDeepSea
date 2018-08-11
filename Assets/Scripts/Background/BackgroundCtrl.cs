@@ -1,14 +1,21 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 public class BackgroundCtrl : MonoBehaviour {
-    
-    public const int MAX_STAGE = 5;
-    public const float BACKGROUND_HEIGHT = 19.2f;
 
+    public int maxStage = 5;
+    public const float BACKGROUND_HEIGHT = 19.2f;
     public GameObject screenObject;
+
+    public enum StageNumber
+    {
+        Stage1,
+        Stage2,
+        Stage3,
+        Stage4,
+        Stage5
+    }
 
     [System.Serializable]
     public struct StagePrefab
@@ -34,130 +41,77 @@ public class BackgroundCtrl : MonoBehaviour {
 
     [SerializeField]
     private StageChangePrefab stageChangePrefabs;
+    public float stageChangeTime = 15.0f;
+    public float rockTranslateSpeed = 0.1f;
+    private StageNumber currStageNumber;
+    private GameObject currStageObject;
 
-    public GameObject[] stageAreas = new GameObject[4];
-
-    public float stageChangeTime = 5.0f;
-
-    private int currStage = 0;
-    private int currArea = 0;
-    private float posY_backgroundRewind;
-    private bool activateStageChange = false;
-   
+    private void Awake()
+    {
+        currStageNumber = StageNumber.Stage1;
+        currStageObject = InstantiateStagePrefab(stagePrefabs.stage_1, new Vector2(0.0f, 0.0f));
+    }
+    // Use this for initialization
     void Start () {
 
-        posY_backgroundRewind = stageAreas.Last().transform.position.y;
-        
-        // 초기 스테이지1 세팅
-        for (int i = 0; i < stageAreas.Length; i++)
-        {
-            GameObject bgStageClone = Instantiate(stagePrefabs.stage_1, gameObject.transform);
-            bgStageClone.transform.localPosition = stageAreas[i].transform.localPosition;
-            bgStageClone.GetComponent<BGStage>().AreaIndex = i;
-            Object.Destroy(stageAreas[i]);
-            stageAreas[i] = bgStageClone;
-            
-        }
-
-        ChangeStage(1);
-
         StartCoroutine(StageChange());
-
     }
-
-    private void OnValidate()
-    {
-        if(stageAreas.Length < 3)
-        {
-            Debug.LogWarning("`StageAreas` size should be more than 3");
-            System.Array.Resize(ref stageAreas, 3);
-        }
-        
-    }
-
-    void Update()
-    {
-        if(screenObject.transform.position.y <= posY_backgroundRewind)
-        {
-            RewindBackground();
-        }
-    }
+	
 
     IEnumerator StageChange()
     {
         yield return new WaitForSeconds(stageChangeTime);
 
-        ChangeStage(currStage+1);
+        ChangeStage(currStageNumber+1);
 
         StartCoroutine(StageChange());
     }
-    	
-    void OnStageAreaEnter(int areaIndex)
+
+    void ChangeStage(StageNumber stage)
     {
-        currArea = areaIndex;
-        
-        GameObject stagePrefab = GetCurrentStagePrefab();
-
-        if (stageAreas[areaIndex].GetComponent<BGStage>().stageNumber != stagePrefab.GetComponent<BGStage>().stageNumber)
-        {
-            GameObject stageClone = Instantiate(stagePrefab, gameObject.transform);
-            stageClone.transform.localPosition = stageAreas[areaIndex].transform.localPosition;
-            stageClone.GetComponent<BGStage>().AreaIndex = areaIndex;
-            Object.Destroy(stageAreas[areaIndex]);
-            stageAreas[areaIndex] = stageClone;
-        }
-
-        if (activateStageChange)
-        {
-
-            GameObject stageChangePrefab = GetStageChangePrefab(currStage);
-            GameObject newObject = Instantiate(stageChangePrefab,
-                new Vector2(stageAreas[areaIndex].transform.position.x, stageAreas[areaIndex].transform.position.y),
-                Quaternion.identity);
-
-
-            activateStageChange = false;
-        }
-
-
-    }
-
-    void ChangeStage(int stage)
-    {
-        if (stage >= MAX_STAGE)
+        if (stage > StageNumber.Stage5)
         {
             return;
         }
 
-        if (GetStageChangePrefab(stage))
+        float offsetY = BACKGROUND_HEIGHT * -1;
+        GameObject stageChangePrefab = GetStageChangePrefab(stage);
+        if (stageChangePrefab)
         {
-            activateStageChange = true;
+            InstantiateStagePrefab(stageChangePrefab,
+                new Vector2(0.0f, screenObject.transform.position.y + offsetY));
+            offsetY -= BACKGROUND_HEIGHT;
+        }
+        GameObject stagePrefab = GetStagePrefab(stage);
+        if (stagePrefab)
+        {
+            currStageObject.GetComponent<BGStage>().SetDisable();
+            currStageObject = InstantiateStagePrefab(stagePrefab,
+                new Vector2(0.0f, screenObject.transform.position.y + offsetY));
         }
 
-        currStage = stage;
-
+        currStageNumber = stage;
     }
 
-
-    GameObject GetCurrentStagePrefab()
+    GameObject GetStagePrefab(StageNumber stage)
     {
         GameObject stagePrefab = null;
 
-        switch (currStage)
+        switch (stage)
         {
-            case 1:
+            case StageNumber.Stage1:
                 stagePrefab = this.stagePrefabs.stage_1;
                 break;
-            case 2:
+            case StageNumber.Stage2:
                 stagePrefab = this.stagePrefabs.stage_2;
                 break;
-            case 3:
+            case StageNumber.Stage3:
                 stagePrefab = this.stagePrefabs.stage_3;
                 break;
-            case 4:
+            case StageNumber.Stage4:
                 stagePrefab = this.stagePrefabs.stage_4;
                 break;
-            case 5:
+            case StageNumber.Stage5:
                 stagePrefab = this.stagePrefabs.stage_5;
                 break;
             default:
@@ -167,22 +121,22 @@ public class BackgroundCtrl : MonoBehaviour {
         return stagePrefab;
     }
 
-    GameObject GetStageChangePrefab(int newStage)
+    GameObject GetStageChangePrefab(StageNumber newStage)
     {
         GameObject stageChangePrefab = null;
 
         switch (newStage)
         {
-            case 2:
+            case StageNumber.Stage2:
                 stageChangePrefab = this.stageChangePrefabs.stage_1_to_2;
                 break;
-            case 3:
+            case StageNumber.Stage3:
                 stageChangePrefab = this.stageChangePrefabs.stage_2_to_3;
                 break;
-            case 4:
+            case StageNumber.Stage4:
                 stageChangePrefab = this.stageChangePrefabs.stage_3_to_4;
                 break;
-            case 5:
+            case StageNumber.Stage5:
                 stageChangePrefab = this.stageChangePrefabs.stage_4_to_5;
                 break;
             default:
@@ -192,12 +146,14 @@ public class BackgroundCtrl : MonoBehaviour {
         return stageChangePrefab;
     }
 
-    void RewindBackground()
+    GameObject InstantiateStagePrefab(GameObject stagePrefab, Vector2 pos)
     {
-        float moveY = ( stageAreas.Length - 1 ) * BACKGROUND_HEIGHT * -1f;
-        gameObject.transform.Translate(new Vector2(0.0f, moveY));
-        posY_backgroundRewind = stageAreas.Last().transform.position.y;
-
-        OnStageAreaEnter(0);
+        GameObject newObject = Instantiate(stagePrefab, pos, Quaternion.identity, gameObject.transform);
+        BGStage BGStage = newObject.GetComponent<BGStage>();
+        if(BGStage)
+        {
+            BGStage.SetRockTranslateSpeed(rockTranslateSpeed);
+        }
+        return newObject;
     }
 }
