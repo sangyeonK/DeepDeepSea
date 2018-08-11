@@ -15,5 +15,27 @@ public class BGStage : MonoBehaviour {
 
     public StageNumber stageNumber;
 
+    private LayerMask screenBorder;
+    public int AreaIndex
+    {
+        get;
+        set;
+    }
+
+    private void Start()
+    {
+        screenBorder = LayerMask.NameToLayer("ScreenBorder");
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.layer == screenBorder.value)
+        {
+            SendMessageUpwards("OnStageAreaEnter", AreaIndex);
+        }
+    }
+
+
+
 
 }
