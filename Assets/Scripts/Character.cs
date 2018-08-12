@@ -5,8 +5,6 @@ using UnityEngine.UI;
 
 public class Character : MonoBehaviour {
 
-    public GameObject gameOver;
-   
     public sealed class Singleton
     {
         private static Singleton instance = null;
@@ -39,15 +37,16 @@ public class Character : MonoBehaviour {
 
     public Slider playerSlider;
 
+    private float playTime = 0.0f;
+    private int playDepth = 0;
 
-     void Start()
+    void Start()
     {
-        if (death == false)
-        {
-            DecreseEnemySlider();
-            gameOver.SetActive(false);
+        death = false;
+        playTime = 0.0f;
+        playDepth = 0;
 
-        }
+        DecreseEnemySlider();
     }
 
 
@@ -61,35 +60,36 @@ public class Character : MonoBehaviour {
     {
         if (slider != null)
         {
-            float timeSlice = (slider.value /100   );
-            while (slider.value >= 0)
-            {
-                health = slider.value;
-                slider.value -= timeSlice;
-                yield return new WaitForSeconds(1);
-                if (slider.value <= 0)
-                    break;
-            }
+            slider.value = health > 0 ? health : 0;
         }
-        yield return null;
+        yield return new WaitForSeconds(1);
+
+        if(!death)
+            StartCoroutine(DecreseSlider(playerSlider));
     }
 
     // float moveSpeedBoostTime = 0.0f;
 
     // Update is called once per frame
     void Update () {
-        
+
+        CheckHealth();
+
         float horizontalMove = GameManager.Instance.playerHorizontalSpeed * Time.deltaTime;
         float verticalMove = GameManager.Instance.PlayerVerticalSpeed * Time.deltaTime * -1;
-        if (Input.touchCount>0 || Input.GetKey(KeyCode.Mouse0))
+        if (!death)
         {
-            //reverse Move
-            horizontalMove = horizontalMove * -1;
+            
+            if (Input.touchCount > 0 || Input.GetKey(KeyCode.Mouse0))
+            {
+                //reverse Move
+                horizontalMove = horizontalMove * -1;
+            }
+
+            playTime += Time.deltaTime;
+            playDepth = Mathf.FloorToInt(gameObject.transform.position.y * -1);
         }
-
         transform.Translate(horizontalMove, verticalMove, 0.0f);
-        GameOverMgr();
-
     }
 
     public void GetItem(Item.ItemKind itemKind)
@@ -105,9 +105,14 @@ public class Character : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (death)
+            return;
+
+        Animator ani = GetComponentInChildren<Animator>();
+
         if (collision.tag == "MINE")
         {
-            Animator ani = GetComponent<Animator>();
+            
             ani.SetTrigger("Damage");
             health -= 5;
             Debug.Log("collider mine");
@@ -133,25 +138,21 @@ public class Character : MonoBehaviour {
 
         if (collision.tag == "floating")
         {
-            Animator ani = GetComponent<Animator>();
             ani.SetTrigger("Damage");
             health -= 5;
             ani.SetTrigger("transparent");
-
         }
         if (collision.tag == "leftwall")
         {
-            Animator ani = GetComponent<Animator>();
             ani.SetTrigger("playerleft");
             health -= 5;
-           
-
+            Debug.Log("playerleft");
         }
         if (collision.tag == "rightwall")
         {
-            Animator ani = GetComponent<Animator>();
             ani.SetTrigger("playerright");
             health -= 5;
+            Debug.Log("playerright");
         }
         if (collision.tag == "big")
         {
@@ -164,32 +165,30 @@ public class Character : MonoBehaviour {
             health += 5;
         }
 
-
     }
 
-    public void GameOverMgr()
+    public void CheckHealth()
     {
-        if (health <0)
-        {
-            StartCoroutine("death_time");
-            gameOver.SetActive(true);
-            GameManager.Instance.SetPause(true);
-            Debug.Log("gameOver");
-        }
+        if (!death) {
+            health -= Time.deltaTime;
 
+            if (health <= 0)
+            {
+                health = 0;
+                //player is died
+                StartCoroutine(DiePlayer());
+            }
+        }
     }
 
-
-    public IEnumerator death_time(){
-
-
-        yield return new WaitForSeconds(1.0f);
-
-        Animator ani = GetComponent<Animator>();
-        ani.SetTrigger("Dead");
+    IEnumerator DiePlayer()
+    {
         death = true;
-        yield break;
 
+        Animator ani = GetComponentInChildren<Animator>();
+        ani.SetBool("Dead", true);
+        yield return new WaitForSeconds(3f);
 
+        GameManager.Instance.GameOver(playTime, playDepth);
     }
 }
