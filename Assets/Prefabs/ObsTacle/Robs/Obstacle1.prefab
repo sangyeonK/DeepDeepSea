@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 70030002324748474}
   m_Layer: 0
   m_Name: Obstacle1
-  m_TagString: Untagged
+  m_TagString: floating
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -34,7 +34,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1863565170262240}
-  m_LocalRotation: {x: 0.7977287, y: -0.60003597, z: -0.047855787, w: 0.035996187}
+  m_LocalRotation: {x: -0.04234208, y: 0.071633086, z: -0.50708437, w: 0.8578703}
   m_LocalPosition: {x: 3.44, y: -6.12, z: 0}
   m_LocalScale: {x: 0.8, y: 0.8, z: 1}
   m_Children: []

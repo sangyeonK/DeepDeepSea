@@ -24,6 +24,10 @@ public class Character : MonoBehaviour {
     private float playTime = 0.0f;
     private int playDepth = 0;
 
+
+    public AudioClip swimSound;
+    public AudioSource Audio;
+
     void Start()
     {
         death = false;
@@ -31,6 +35,8 @@ public class Character : MonoBehaviour {
         playDepth = 0;
 
         DecreseEnemySlider();
+
+
     }
 
 
@@ -68,6 +74,8 @@ public class Character : MonoBehaviour {
             {
                 //reverse Move
                 horizontalMove = horizontalMove * -1;
+                AudioSource audio2 = GetComponent<AudioSource>();
+                audio2.Play();
             }
 
             playTime += Time.deltaTime;
@@ -86,6 +94,13 @@ public class Character : MonoBehaviour {
         }
 
     }
+
+
+
+   
+
+
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
