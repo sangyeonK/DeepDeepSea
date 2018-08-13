@@ -17,6 +17,7 @@ TagManager:
   - small
   - Background_LeftRock
   - Background_RightRock
+  - SceneManager
   layers:
   - Default
   - TransparentFX

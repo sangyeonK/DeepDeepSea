@@ -1,0 +1,72 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1892488231295998}
+  m_IsPrefabAsset: 1
+--- !u!1 &1892488231295998
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4471364108574936}
+  - component: {fileID: 114605137780327514}
+  m_Layer: 0
+  m_Name: BackgroundCtrl
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4471364108574936
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1892488231295998}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114605137780327514
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1892488231295998}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 506d695aed6dc3b4aaf7187777e6d860, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxStage: 5
+  screenObject: {fileID: 0}
+  stagePrefabs:
+    stage_1: {fileID: 1484876214187458, guid: 565ee9c1fec53404489a6ec30c5a4016, type: 2}
+    stage_2: {fileID: 1466383165895616, guid: f09d3d502aea67b4692a039b7bcbeabd, type: 2}
+    stage_3: {fileID: 1840869174710414, guid: 64f4ca820d96686419ba7eeae92d4ffb, type: 2}
+    stage_4: {fileID: 1988119776107408, guid: 924dc37af76fd2445ae6a9a108054c32, type: 2}
+    stage_5: {fileID: 1818627362545948, guid: 0425d7d3adcacdb4f8e1333212228b25, type: 2}
+  stageChangePrefabs:
+    stage_1_to_2: {fileID: 1484876214187458, guid: 0f77377d726ec0d42a3b226065742d27,
+      type: 2}
+    stage_2_to_3: {fileID: 1243643358806712, guid: 7bb86b9191716e543ace2eb5e45bbdbf,
+      type: 2}
+    stage_3_to_4: {fileID: 1319155125923246, guid: 4d9046f23c9802d4e9c629e79c5806db,
+      type: 2}
+    stage_4_to_5: {fileID: 1363413159328438, guid: d7e9b3efdc3bcd74282574dfe8ddb629,
+      type: 2}
+  stageChangeTime: 15
+  rockTranslateSpeed: 0.1

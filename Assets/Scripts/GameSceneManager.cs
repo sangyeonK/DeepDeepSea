@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class GameSceneManager : MonoBehaviour {
 
+    public GameObject gameOverPanel;
+
     public void OnPauseButton(GameObject pausePanel)
     {
         pausePanel.SetActive(true);
@@ -26,5 +28,12 @@ public class GameSceneManager : MonoBehaviour {
     public void OnTitleButton()
     {
 		SceneManager.LoadScene("TitleScene");
+    }
+
+    public void OnGameOver(float playTime, int playDepth)
+    {
+        GameManager.Instance.SetPause(true);
+        gameOverPanel.SetActive(true);
+        gameOverPanel.GetComponent<UIGameOverPanel>().SetData((int)playTime, playDepth);
     }
 }
