@@ -396,29 +396,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 959d359d9da0b384a9251bf11fe44a45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  l_wall: []
-  r_wall: []
-  mine:
-  - {fileID: 1715452762103450, guid: 962cfdd592b6e44938a214becadcb0cb, type: 2}
-  - {fileID: 1243079264059846, guid: 3c90ee8e6b81b43d1b29519e9e725d59, type: 2}
-  - {fileID: 1304344704602514, guid: 3d5ddb7d08e7a4a2187a92f5a9bd05ab, type: 2}
+  l_wall:
+  - {fileID: 1641145718213078, guid: 4feacee6221e749d18669d7fced09ecc, type: 2}
+  - {fileID: 1983951260864008, guid: 031739005982f48a3b18f3ee65af47d8, type: 2}
+  - {fileID: 1354499528643618, guid: 5d7ab1af0f86243058bda9e7a6677940, type: 2}
+  - {fileID: 1535928891445396, guid: 12f4c85b8f50d412d9d19ea08c14e160, type: 2}
+  r_wall:
+  - {fileID: 1252884208382538, guid: 79aa6c2a9aba84db79ad17b7b50d4ce4, type: 2}
+  - {fileID: 1391699900173972, guid: 923c1cabfbd884a0b856bfb6db2b6e84, type: 2}
+  - {fileID: 1950406400748648, guid: bf3dee17ad81e4428a4f051b751ad89d, type: 2}
+  - {fileID: 1148633688267418, guid: 11cc472b11ed544ff86ef0b1778e0f37, type: 2}
   ROBJ:
-  - {fileID: 1544780528187202, guid: bbd3fc9a68dcc477794cf6d8fdefd8b1, type: 2}
-  - {fileID: 1726113775426148, guid: 2e81502f1b8564cbb86db3a009c14a18, type: 2}
-  - {fileID: 1206912268644132, guid: 7ef168a817ecd4673a0d27b2221258a1, type: 2}
-  - {fileID: 1108617022911260, guid: 74b833c3c7d5c4535a4f832258879baa, type: 2}
-  - {fileID: 1993982117080750, guid: 1e1a4d0327b5e4400b722c74e6b53ba7, type: 2}
-  - {fileID: 1863820121946608, guid: 2903f4509c40f488086bc70d8cb4ea08, type: 2}
-  - {fileID: 1485309852942876, guid: f4674c16217e247eeb6be5ea65427375, type: 2}
-  - {fileID: 1453938416814386, guid: 76b464b7321784108bf531eafe916e1c, type: 2}
-  - {fileID: 1485309852942876, guid: f4674c16217e247eeb6be5ea65427375, type: 2}
-  - {fileID: 1453938416814386, guid: 76b464b7321784108bf531eafe916e1c, type: 2}
+  - {fileID: 1863565170262240, guid: a127af585e7d04ce584c5fd4feeb5bff, type: 2}
+  - {fileID: 1976351330930072, guid: 72d41db0c21f4441e99c682e8cec72a8, type: 2}
+  - {fileID: 1863565170262240, guid: a127af585e7d04ce584c5fd4feeb5bff, type: 2}
+  - {fileID: 1976351330930072, guid: 72d41db0c21f4441e99c682e8cec72a8, type: 2}
   itemrandom:
-  - {fileID: 1410179119570180, guid: abcfd35dd98b645fd8c84bd9cea92f60, type: 2}
-  - {fileID: 1967974722843826, guid: 348af59c6ad2e4e0f8478c5479c448d9, type: 2}
-  maptype:
-  - {fileID: 1399908855277562, guid: 953bb66a44f7d494c9218b0ed30089b5, type: 2}
-  - {fileID: 1639087631259902, guid: 33f4f2b7c2f70452ab64a30a43657c54, type: 2}
+  - {fileID: 1544780528187202, guid: bbd3fc9a68dcc477794cf6d8fdefd8b1, type: 2}
+  - {fileID: 1001308876687030, guid: b98cd8b4dbfb04e4cbf9914a34fdb5c7, type: 2}
+  - {fileID: 1243079264059846, guid: 3c90ee8e6b81b43d1b29519e9e725d59, type: 2}
+  - {fileID: 1670180091493778, guid: e09672b18140a417d8a043a688b1a595, type: 2}
+  - {fileID: 1453938416814386, guid: 76b464b7321784108bf531eafe916e1c, type: 2}
+  - {fileID: 1485309852942876, guid: f4674c16217e247eeb6be5ea65427375, type: 2}
   startingHealth: 100
   currentHealth: 0
   healthSlider: {fileID: 770435939}

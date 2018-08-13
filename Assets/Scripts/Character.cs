@@ -5,30 +5,14 @@ using UnityEngine.UI;
 
 public class Character : MonoBehaviour {
 
-    public sealed class Singleton
+    public static Character Instance
     {
-        private static Singleton instance = null;
-        private static readonly object padlock = new object();
-
-        private Singleton()
+        get
         {
-        }
-
-        public static Singleton Instance
-        {
-            get
-            {
-                lock (padlock)
-                {
-                    if (instance == null)
-                    {
-                        instance = new Singleton();
-                    }
-                    return instance;
-                }
-            }
+            return instance;
         }
     }
+    private static Character instance = null;
 
   
     public float health = 100.0f;
