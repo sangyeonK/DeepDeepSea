@@ -80,6 +80,7 @@ public class Character : MonoBehaviour {
 
             playTime += Time.deltaTime;
             playDepth = Mathf.FloorToInt(gameObject.transform.position.y * -1);
+            GameSceneManager.Instance.UpdateDepthText(playDepth);
         }
         transform.Translate(horizontalMove, verticalMove, 0.0f);
     }

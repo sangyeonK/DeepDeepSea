@@ -85,7 +85,7 @@ public class MapManager : MonoBehaviour
         EpilagicZone = true;
         gameover = false;
         seameter = 0;
-        StartCoroutine("seameter_repeat");
+        
         StartCoroutine("maprandom");
         if (gamestageType == GAMESTAGETYPE.GameStart)
         {         
@@ -93,72 +93,6 @@ public class MapManager : MonoBehaviour
         }
     }
 
-    public IEnumerator seameter_repeat()
-    {
-      
-       
-        while (gameover == false)
-        {
-             
-            yield return new WaitForSeconds(1.0f);
-           
-        
-            switch (seameter)
-            {
-                case 0:zoneName = "표해수층";
-                    EpilagicZone = true;
-                    seameterText.text = zoneName + " " + seameter + "M";
-                    Debug.Log("표해수층"); 
-
-                    break;
-                case 200:
-                    MesopelagicZone = true;
-                    zoneName = "중심해층";
-                    Debug.Log("중심해층");
-
-                    break;
-                case 1000:
-                  
-                    BathypelagicZone = true;
-                    zoneName = "점심해수층";
-                    Debug.Log("점심해수층");
-
-                    break;
-                case 3000:
-                   
-                    AbyssopelagicZone = true;
-                    zoneName = "심해저대";
-                    Debug.Log("심해저대");
-                    break;
-
-                case 6000:
-                    HadalpelagicZone = true;
-                    zoneName = "초심해저대";
-                    Debug.Log("초심해저대");
-                    break;
-                    
-                   
-
-
-                
-            }
-
-
-
-            seameter++;
-           
-           
-            seameterText.text = zoneName + " "+   seameter   + "M";
-
-        }    
-        if (gameover == true)
-        {
-
-            yield break;
-
-
-        }
-    }
     public void Update()
     {
         if (gamestageType == GAMESTAGETYPE.GamePlay)
