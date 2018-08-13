@@ -49,6 +49,11 @@ public class GameManager : MonoBehaviour {
     public float playerVerticalSpeed = 3.0f;   // 플레이어의 세로축 이동 속도 ( private )
     public float playerHorizontalSpeed = 3.0f;  // 플레이어의 가로축 이동 속도
 
+    public float BackgroundRockTranslated
+    {
+        get;
+        set;
+    }
     private void Awake()
     {
         // 이미 해당 인스턴스 가 존재한다면 현재 오브젝트는 삭제
@@ -65,7 +70,9 @@ public class GameManager : MonoBehaviour {
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        // GameScene 로딩되었을 때 처리
         SetPause(false);
+        BackgroundRockTranslated = 0.0f;
         screenObject = GameObject.Find("ScreenObject");
     }
 
