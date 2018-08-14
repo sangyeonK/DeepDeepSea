@@ -18,6 +18,7 @@ public class Character : MonoBehaviour {
     public float health = 100.0f;
     private const float coef = 0.2f;
     public bool death;
+    public bool reverse;
 
     public Slider playerSlider;
 
@@ -31,6 +32,7 @@ public class Character : MonoBehaviour {
     void Start()
     {
         death = false;
+        reverse = false;
         playTime = 0.0f;
         playDepth = 0;
 
@@ -70,7 +72,8 @@ public class Character : MonoBehaviour {
         if (!death)
         {
             
-            if (Input.touchCount > 0 || Input.GetKey(KeyCode.Mouse0))
+            // if (Input.touchCount > 0 || Input.GetKey(KeyCode.Mouse0))
+            if(reverse)
             {
                 //reverse Move
                 horizontalMove = horizontalMove * -1;
@@ -94,6 +97,14 @@ public class Character : MonoBehaviour {
                 break;
         }
 
+    }
+
+    public void MoveReverseOn() {
+        reverse = true;
+    }
+
+    public void MoveReverseOff() {
+        reverse = false;
     }
 
 
