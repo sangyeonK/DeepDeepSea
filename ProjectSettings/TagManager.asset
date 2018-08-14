@@ -19,6 +19,8 @@ TagManager:
   - Background_RightRock
   - SceneManager
   - UI
+  - SpeedBtn
+  - MoveBtn
   layers:
   - Default
   - TransparentFX

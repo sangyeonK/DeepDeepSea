@@ -99,13 +99,7 @@ public class Character : MonoBehaviour {
 
     }
 
-    public void MoveReverseOn() {
-        reverse = true;
-    }
-
-    public void MoveReverseOff() {
-        reverse = false;
-    }
+    
 
 
 
@@ -201,5 +195,35 @@ public class Character : MonoBehaviour {
         yield return new WaitForSeconds(3f);
 
         GameManager.Instance.GameOver(playTime, playDepth);
+    }
+
+
+    //Right Button
+    public void MoveReverseOn() {
+        reverse = true;
+    }
+
+    public void MoveReverseOff() {
+        reverse = false;
+    }
+
+    //Left Button
+    public void SpeedModeOn() {
+        if (!death)
+        {   
+            Debug.Log("SpeedModeOn");
+            GameManager.Instance.isSpeedMode = true;
+            Animator ani = GetComponentInChildren<Animator>();
+            ani.SetBool("SpeedBoost", true);
+        }
+    }
+    public void SpeedModeOff() {
+        if (!death)
+        {   
+            Debug.Log("SpeedModeOff");
+            GameManager.Instance.isSpeedMode = false;
+            Animator ani = GetComponentInChildren<Animator>();
+            ani.SetBool("SpeedBoost", false);
+        }
     }
 }

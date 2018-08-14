@@ -107,25 +107,4 @@ public class GameManager : MonoBehaviour {
         sceneManager.OnGameOver(playTime, playDepth);
     }
 
-    public void SpeedModeOn() {
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
-        if (!player.GetComponent<Character>().death)
-        {   
-            isSpeedMode = true;
-            Debug.Log("SpeedModeOn");
-            Animator ani = player.GetComponentInChildren<Animator>();
-            ani.SetBool("SpeedBoost", isSpeedMode);
-        }
-    }
-
-    public void SpeedModeOff() {
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
-        if (!player.GetComponent<Character>().death)
-        {   
-            isSpeedMode = false;
-            Debug.Log("SpeedModeOff");
-            Animator ani = player.GetComponentInChildren<Animator>();
-            ani.SetBool("SpeedBoost", isSpeedMode);
-        }
-    }
 }
