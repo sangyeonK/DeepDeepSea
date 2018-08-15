@@ -84,7 +84,6 @@ public class GameManager : MonoBehaviour {
 
     public void SpeedPlus() {
         playerVerticalSpeed += boostedBackgroundSpeed;
-        Debug.Log ("GET ITEM" +backgroundSpeed );
     }
 
     public void SetPause(bool pause)

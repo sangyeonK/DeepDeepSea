@@ -115,10 +115,10 @@ public class Character : MonoBehaviour {
         switch (itemKind) 
         {
             case Item.ItemKind.SPEED_BOOST:
+                Debug.Log("@###@#@");
                 GameManager.Instance.SpeedPlus();
                 break;
         }
-
     }
 
 
