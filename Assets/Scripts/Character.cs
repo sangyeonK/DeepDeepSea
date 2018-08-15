@@ -14,11 +14,19 @@ public class Character : MonoBehaviour {
     }
     private static Character instance = null;
 
-  
+    
     public float health = 100.0f;
     private const float coef = 0.2f;
     public bool death;
     public bool reverse;
+
+    private const float SHOCK_TIME = 1.2f;
+    private const float SHOCK_POWER = 2.0f;
+    private const float SHOCK_LEFT = 3.0f * -1;
+    private const float SHOCK_RIGHT = 3.0f;
+    float shockedTime;
+    float verticalImpact;
+    float horizontalImpact;
 
     public Slider playerSlider;
 
@@ -33,6 +41,9 @@ public class Character : MonoBehaviour {
     {
         death = false;
         reverse = false;
+        shockedTime = 0.0f;
+        verticalImpact = SHOCK_POWER  * Time.deltaTime ;
+        horizontalImpact = 0.0f  * Time.deltaTime ;
         playTime = 0.0f;
         playDepth = 0;
 
@@ -69,23 +80,31 @@ public class Character : MonoBehaviour {
 
         float horizontalMove = GameManager.Instance.playerHorizontalSpeed * Time.deltaTime;
         float verticalMove = GameManager.Instance.PlayerVerticalSpeed * Time.deltaTime * -1;
-        if (!death)
-        {
+
+        if(shockedTime > 0.0f) {
+            transform.Translate(horizontalImpact, verticalImpact, 0.0f);
+            shockedTime = Mathf.Max(shockedTime - Time.deltaTime, 0.0f);
+            Debug.Log ("SHOCK!!!" );
+        }
+        else {
+            if (!death) {
             
             // if (Input.touchCount > 0 || Input.GetKey(KeyCode.Mouse0))
-            if(reverse)
-            {
-                //reverse Move
-                horizontalMove = horizontalMove * -1;
-                AudioSource audio2 = GetComponent<AudioSource>();
-                audio2.Play();
-            }
+                if(reverse && shockedTime < 0.3f)
+                {
+                    //reverse Move
+                    horizontalMove = horizontalMove * -1;
+                    AudioSource audio2 = GetComponent<AudioSource>();
+                    audio2.Play();
+                }
 
-            playTime += Time.deltaTime;
-            playDepth = Mathf.FloorToInt(gameObject.transform.position.y * -1);
-            GameSceneManager.Instance.UpdateDepthText(playDepth);
+                playTime += Time.deltaTime;
+                playDepth = Mathf.FloorToInt(gameObject.transform.position.y * -1);
+                GameSceneManager.Instance.UpdateDepthText(playDepth);
+            }
+            transform.Translate(horizontalMove, verticalMove, 0.0f);
+            verticalImpact = SHOCK_POWER  * Time.deltaTime ;
         }
-        transform.Translate(horizontalMove, verticalMove, 0.0f);
     }
 
     public void GetItem(Item.ItemKind itemKind)
@@ -98,6 +117,17 @@ public class Character : MonoBehaviour {
         }
 
     }
+
+
+    // private void ShockPlayer(float horizontalImpact, float verticalImpact) {
+    //     if ( shockedTime > 0.0f ) {
+    //         transform.Translate(horizontalImpact, verticalImpact, 0.0f);
+    //         shockedTime = Mathf.Max(shockedTime - Time.deltaTime, 0.0f);
+    //     } else {
+    //         shockedTime
+    //     }
+        
+    // }
 
     
 
@@ -115,15 +145,7 @@ public class Character : MonoBehaviour {
 
         Animator ani = GetComponentInChildren<Animator>();
 
-        if (collision.tag == "MINE")
-        {
-            
-            ani.SetTrigger("Damage");
-            health -= 5;
-            Debug.Log("collider mine");
-        }
-
-
+        //item
         if (collision.tag == "OXY")
         {
             health += 5;
@@ -140,25 +162,6 @@ public class Character : MonoBehaviour {
             GameManager.Instance.playerHorizontalSpeed -= 0.01f;
             GameManager.Instance.playerVerticalSpeed -= 0.01f;
         }
-
-        if (collision.tag == "floating")
-        {
-            ani.SetTrigger("Damage");
-            health -= 5;
-            ani.SetTrigger("transparent");
-        }
-        if (collision.tag == "leftwall")
-        {
-            ani.SetTrigger("playerleft");
-            health -= 5;
-            Debug.Log("playerleft");
-        }
-        if (collision.tag == "rightwall")
-        {
-            ani.SetTrigger("playerright");
-            health -= 5;
-            Debug.Log("playerright");
-        }
         if (collision.tag == "big")
         {
             transform.localScale += new Vector3(0.1F, 0.1F, 0);
@@ -170,6 +173,40 @@ public class Character : MonoBehaviour {
             health += 5;
         }
 
+
+        //obstacle
+        if( shockedTime <= 0.0f ) {
+            if (collision.tag == "MINE")
+            {
+                ani.SetTrigger("Damage");
+                health -= 5;
+                shockedTime = SHOCK_TIME;
+                Debug.Log("collider mine");
+            }
+            if (collision.tag == "floating")
+            {
+                ani.SetTrigger("Damage");
+                health -= 5;
+                shockedTime = SHOCK_TIME;
+                ani.SetTrigger("transparent");
+            }
+            if (collision.tag == "leftwall")
+            {
+                ani.SetTrigger("playerleft");
+                health -= 5;
+                horizontalImpact = SHOCK_RIGHT * Time.deltaTime ;
+                shockedTime = SHOCK_TIME;
+                Debug.Log("playerleft");
+            }
+            if (collision.tag == "rightwall")
+            {
+                ani.SetTrigger("playerright");
+                health -= 5;
+                horizontalImpact = SHOCK_LEFT * Time.deltaTime ;
+                shockedTime = SHOCK_TIME;
+                Debug.Log("playerright");
+            }
+        }
     }
 
     public void CheckHealth()
@@ -200,10 +237,12 @@ public class Character : MonoBehaviour {
 
     //Right Button
     public void MoveReverseOn() {
+        horizontalImpact = SHOCK_RIGHT * Time.deltaTime ;
         reverse = true;
     }
 
     public void MoveReverseOff() {
+        horizontalImpact = SHOCK_LEFT * Time.deltaTime ;
         reverse = false;
     }
 
@@ -212,6 +251,7 @@ public class Character : MonoBehaviour {
         if (!death)
         {   
             Debug.Log("SpeedModeOn");
+            verticalImpact *= 2.0f; 
             GameManager.Instance.isSpeedMode = true;
             Animator ani = GetComponentInChildren<Animator>();
             ani.SetBool("SpeedBoost", true);
@@ -220,6 +260,7 @@ public class Character : MonoBehaviour {
     public void SpeedModeOff() {
         if (!death)
         {   
+            verticalImpact = SHOCK_POWER  * Time.deltaTime ;
             Debug.Log("SpeedModeOff");
             GameManager.Instance.isSpeedMode = false;
             Animator ani = GetComponentInChildren<Animator>();
