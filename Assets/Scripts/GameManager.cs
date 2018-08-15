@@ -15,9 +15,6 @@ public class GameManager : MonoBehaviour {
     }
     private static GameManager instance = null;
 
-    [SerializeField]
-    private float backgroundSpeed = 3f;
-
     private float speedMode = 2.0f;
 
     private float boostedBackgroundSpeed = 0.001f;
@@ -26,7 +23,6 @@ public class GameManager : MonoBehaviour {
 
     [HideInInspector]
     public bool isPaused = false;
-    private GameObject screenObject;
     
     /// <summary>
     /// 플레이어의 세로축 이동 속도
@@ -74,7 +70,6 @@ public class GameManager : MonoBehaviour {
         // GameScene 로딩되었을 때 처리
         InitGameData();
         SetPause(false);
-        screenObject = GameObject.Find("ScreenObject");
     }
     
     void InitGameData()

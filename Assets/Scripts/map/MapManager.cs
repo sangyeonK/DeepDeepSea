@@ -27,8 +27,6 @@ public class MapManager : MonoBehaviour
     public int currentHealth;                                   // The current health the player has.
     public Slider healthSlider;
 
-
-    private int damagespeed = 1;
     public GAMESTAGETYPE gamestageType;
     public bool EpilagicZone;//표해수층
     public bool MesopelagicZone;//중심해층
@@ -55,8 +53,6 @@ public class MapManager : MonoBehaviour
     {
         int minutes = Mathf.FloorToInt(totalSeconds / 60f);
         int seconds = Mathf.RoundToInt(totalSeconds % 60f);
-
-        string formatedSeconds = seconds.ToString();
 
         if (seconds == 60)
         {

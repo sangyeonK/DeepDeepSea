@@ -22,7 +22,6 @@ public class BGStage : MonoBehaviour {
         rockTranslatedPosition = GameManager.Instance.BackgroundRockTranslated;
         screenBorder = LayerMask.NameToLayer("ScreenBorder");
         var transformsInChild = GetComponentsInChildren<Transform>();
-        int bb = transformsInChild.Count();
 
         leftRocksInChild = transformsInChild
             .Where(trans =>

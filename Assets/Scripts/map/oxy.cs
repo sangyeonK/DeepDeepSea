@@ -8,8 +8,6 @@ public class oxy : MonoBehaviour {
     {
         if (collision.tag == "Player")
         {
-            Character character = collision.GetComponent<Character>();
-
             Destroy(gameObject);
         }
     }
