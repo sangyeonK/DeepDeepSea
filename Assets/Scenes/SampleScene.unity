@@ -371,8 +371,8 @@ MonoBehaviour:
   backgroundSpeed: 3
   isSpeedMode: 0
   isPaused: 0
-  playerVerticalSpeed: 3
-  playerHorizontalSpeed: 3
+  playerVerticalSpeed: 6
+  playerHorizontalSpeed: 6
 --- !u!4 &619382096
 Transform:
   m_ObjectHideFlags: 0
@@ -435,6 +435,8 @@ MonoBehaviour:
   - {fileID: 1670180091493778, guid: e09672b18140a417d8a043a688b1a595, type: 2}
   - {fileID: 1453938416814386, guid: 76b464b7321784108bf531eafe916e1c, type: 2}
   - {fileID: 1485309852942876, guid: f4674c16217e247eeb6be5ea65427375, type: 2}
+  rightObs: {fileID: 1413642681969994, guid: 865d419d7b1494d5b819c48505adda7f, type: 2}
+  leftObs: {fileID: 1219797392156202, guid: 57bd196c7e19145919a8492e8e3c3c75, type: 2}
   startingHealth: 100
   currentHealth: 0
   healthSlider: {fileID: 770435939}
@@ -1387,6 +1389,14 @@ Prefab:
         type: 2}
       propertyPath: m_Radius
       value: 0.67222273
+      objectReference: {fileID: 0}
+    - target: {fileID: 4387655015396572, guid: 655031113311c3d47afe4ec72139e30e, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4387655015396572, guid: 655031113311c3d47afe4ec72139e30e, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 655031113311c3d47afe4ec72139e30e, type: 2}

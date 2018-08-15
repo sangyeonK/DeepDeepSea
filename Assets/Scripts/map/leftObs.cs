@@ -1,0 +1,1 @@
+﻿using System.Collections; using System.Collections.Generic; using UnityEngine;  public class leftObs : MonoBehaviour {       public float moveSpeed;     public int x;     public int y;      void Update()     {          if (this.transform.position.x < -5)         {             this.transform.Translate(moveSpeed * Time.deltaTime, y, 0);          }      }   }  
