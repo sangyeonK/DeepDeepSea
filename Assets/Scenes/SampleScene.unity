@@ -1362,29 +1362,6 @@ Prefab:
       propertyPath: playerSlider
       value: 
       objectReference: {fileID: 770435939}
-    - target: {fileID: 58202123734564526, guid: 655031113311c3d47afe4ec72139e30e,
-        type: 2}
-      propertyPath: m_Offset.x
-      value: 0.016903197
-      objectReference: {fileID: 0}
-    - target: {fileID: 58202123734564526, guid: 655031113311c3d47afe4ec72139e30e,
-        type: 2}
-      propertyPath: m_Offset.y
-      value: -0.0107714115
-      objectReference: {fileID: 0}
-    - target: {fileID: 58202123734564526, guid: 655031113311c3d47afe4ec72139e30e,
-        type: 2}
-      propertyPath: m_Radius
-      value: 0.67222273
-      objectReference: {fileID: 0}
-    - target: {fileID: 4387655015396572, guid: 655031113311c3d47afe4ec72139e30e, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4387655015396572, guid: 655031113311c3d47afe4ec72139e30e, type: 2}
-      propertyPath: m_LocalScale.y
-      value: 0.5
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 655031113311c3d47afe4ec72139e30e, type: 2}
   m_IsPrefabAsset: 0
