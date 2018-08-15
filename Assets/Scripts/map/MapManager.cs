@@ -12,13 +12,13 @@ public enum GAMESTAGETYPE
 }
 public class MapManager : MonoBehaviour
 {
-    public GameObject[] l_wall = null;
+    public GameObject[] l_wall;
 
-    public GameObject[] r_wall = null;
-    public GameObject[] mine = null;
-    public GameObject[] ROBJ = null;
-    public GameObject[] itemrandom = null;
-    public GameObject[] maptype = null;
+    public GameObject[] r_wall;
+    
+    public GameObject[] ROBJ;
+    public GameObject[] itemrandom;
+
 
     public int startingHealth = 100;                            // The amount of health the player starts the game with.
     public int currentHealth;                                   // The current health the player has.
@@ -85,80 +85,15 @@ public class MapManager : MonoBehaviour
         EpilagicZone = true;
         gameover = false;
         seameter = 0;
-        StartCoroutine("seameter_repeat");
+        
+        StartCoroutine("maprandom");
         if (gamestageType == GAMESTAGETYPE.GameStart)
         {         
             gamestageType = GAMESTAGETYPE.GamePlay;          
         }
     }
 
-    public IEnumerator seameter_repeat()
-    {
-      
-       
-        while (gameover == false)
-        {
-             
-            yield return new WaitForSeconds(1.0f);
-           
-        
-            switch (seameter)
-            {
-                case 0:zoneName = "표해수층";
-                    EpilagicZone = true;
-                    seameterText.text = zoneName + " " + seameter + "M";
-                    Debug.Log("표해수층"); 
-
-                    break;
-                case 200:
-                    MesopelagicZone = true;
-                    zoneName = "중심해층";
-                    Debug.Log("중심해층");
-
-                    break;
-                case 1000:
-                  
-                    BathypelagicZone = true;
-                    zoneName = "점심해수층";
-                    Debug.Log("점심해수층");
-
-                    break;
-                case 3000:
-                   
-                    AbyssopelagicZone = true;
-                    zoneName = "심해저대";
-                    Debug.Log("심해저대");
-                    break;
-
-                case 6000:
-                    HadalpelagicZone = true;
-                    zoneName = "초심해저대";
-                    Debug.Log("초심해저대");
-                    break;
-                    
-                   
-
-
-                
-            }
-
-
-
-            seameter++;
-           
-           
-            seameterText.text = zoneName + " "+   seameter   + "M";
-
-        }    
-        if (gameover == true)
-        {
-
-            yield break;
-
-
-        }
-    }
-    void Update()
+    public void Update()
     {
         if (gamestageType == GAMESTAGETYPE.GamePlay)
         {
@@ -167,23 +102,6 @@ public class MapManager : MonoBehaviour
             {
                 Vector3 rightwall_pos;
                 Vector3 leftwall_pos;
-
-
-                Vector3 location;
-
-                location = screenObject.transform.position + new Vector3(2.0f, -38.0f);
-                Instantiate(maptype[Random.Range(0, maptype.Length)], location, Quaternion.identity);
-
-                location = screenObject.transform.position + new Vector3(Random.Range(-5.0f, 5.0f), Random.Range(-10.0f, -4.0f));
-                Instantiate(mine[Random.Range(0, mine.Length)], location, Quaternion.identity);
-               
-                location = screenObject.transform.position + new Vector3(Random.Range(-2.0f, 2.0f), Random.Range(-10.0f, -4.0f));
-                Instantiate(ROBJ[Random.Range(0, ROBJ.Length)], location, Quaternion.identity);
-
-                location = screenObject.transform.position + new Vector3(Random.Range(-2.0f, 2.0f), Random.Range(-10.0f, -4.0f));
-                Instantiate(itemrandom[Random.Range(0, itemrandom.Length)], location, Quaternion.identity);
-
-
                 if (r_wall.Length > 0)
                 {
                     rightwall_pos = screenObject.transform.position + new Vector3(4, -26);
@@ -194,18 +112,92 @@ public class MapManager : MonoBehaviour
                     leftwall_pos = screenObject.transform.position + new Vector3(-5, -20);
                     Instantiate(l_wall[Random.Range(0, l_wall.Length)], leftwall_pos, Quaternion.identity);
                 }
-                interval = 0;
+                interval = 0;        
             }
+
         }
 
         totalTime -= Time.deltaTime;
         UpdateLevelTimer(totalTime);
 
+    }
 
+    public IEnumerator maprandom(){
+
+        Debug.Log(gameover);
+        while(gameover==false){
+            yield return new WaitForSeconds(3.0f);
+            Vector3 location;
+            Vector3 location1;
+            Vector3 location2;
+            Vector3 location3;
+
+             Vector3 euler = transform.eulerAngles;             euler.z = Random.Range(-180.0f, 180.0f);
+            euler.y= Random.Range(-180.0f, 180.0f);             ROBJ[Random.Range(0, ROBJ.Length)].transform.eulerAngles = euler;            //ㄴ ROBJ[Random.Range(0, ROBJ.Length)].transform.rotation = Random.rotation;
+           
+            float MyAngle = Random.Range(-180f, 180f);
+
+            Quaternion quart = Quaternion.AngleAxis(MyAngle, Vector3.forward);
+
+
+
+
+
+          //  Instantiate(게임오브젝트, 포지션, quart);
+
+
+
+            location = screenObject.transform.position + new Vector3(Random.Range(1.4f, 2.4f),  -7.07f);
+            Instantiate(itemrandom[Random.Range(0, itemrandom.Length)], location, quart);
+            location1 =screenObject.transform.position + new Vector3(Random.Range(-4.0f, -2.0f), -7.07f);
+            Instantiate(itemrandom[Random.Range(0, itemrandom.Length)], location1, quart);
+
+            Debug.Log("distance");
+
+            location2 = screenObject.transform.position + new Vector3(Random.Range(-6.0f, -4.0f),Random.Range(-10.0f, -7.0f) );
+            Instantiate(ROBJ[Random.Range(0, ROBJ.Length)], location2, quart);
+
+            location3 = screenObject.transform.position + new Vector3(Random.Range(3.0f, 5.0f), Random.Range(-10.0f, -7.0f));
+            Instantiate(ROBJ[Random.Range(0, ROBJ.Length)], location3,quart);
+
+
+           
+
+
+            if(gameover==true){
+                yield break;
+            }
+
+
+        }
+       
        
 
 
+        /*
 
+                Vector3 location;
+                Vector3 location1;
+                Vector3 location2;
+                Vector3 location3;
+
+
+
+                location = screenObject.transform.position + new Vector3(2.0f, -38.0f);
+                Instantiate(maptype[Random.Range(0, maptype.Length)], location, Quaternion.identity);
+
+                location1 = screenObject.transform.position + new Vector3(Random.Range(-5.0f, 5.0f), Random.Range(-10.0f, -4.0f));
+                Instantiate(mine[Random.Range(0, mine.Length)], location1, Quaternion.identity);
+               
+                location2 = screenObject.transform.position + new Vector3(Random.Range(-2.0f, 2.0f), Random.Range(-10.0f, -4.0f));
+                Instantiate(ROBJ[Random.Range(0, ROBJ.Length)], location2, Quaternion.identity);
+
+                location3 = screenObject.transform.position + new Vector3(Random.Range(-2.0f, 2.0f), Random.Range(-10.0f, -4.0f));
+                Instantiate(itemrandom[Random.Range(0, itemrandom.Length)], location3, Quaternion.identity);
+
+
+
+        */
     }
 
 }

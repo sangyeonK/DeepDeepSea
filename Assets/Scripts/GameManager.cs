@@ -54,6 +54,7 @@ public class GameManager : MonoBehaviour {
         get;
         set;
     }
+
     private void Awake()
     {
         // 이미 해당 인스턴스 가 존재한다면 현재 오브젝트는 삭제
@@ -71,9 +72,14 @@ public class GameManager : MonoBehaviour {
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         // GameScene 로딩되었을 때 처리
+        InitGameData();
         SetPause(false);
-        BackgroundRockTranslated = 0.0f;
         screenObject = GameObject.Find("ScreenObject");
+    }
+    
+    void InitGameData()
+    {
+        BackgroundRockTranslated = 0.0f;
     }
 
     public void SpeedPlus() {
@@ -94,4 +100,11 @@ public class GameManager : MonoBehaviour {
             Time.timeScale = 1f;
         }
     }
+
+    public void GameOver(float playTime, int playDepth)
+    {
+        GameSceneManager sceneManager = GameObject.FindGameObjectWithTag("SceneManager").GetComponent<GameSceneManager>();
+        sceneManager.OnGameOver(playTime, playDepth);
+    }
+
 }
