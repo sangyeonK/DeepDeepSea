@@ -20,10 +20,13 @@ public class Character : MonoBehaviour {
     public bool death;
     public bool reverse;
 
-    private const float SHOCK_TIME = 1.2f;
+    private const float SHOCK_TIME = 2.0f;
     private const float SHOCK_POWER = 2.0f;
     private const float SHOCK_LEFT = 3.0f * -1;
     private const float SHOCK_RIGHT = 3.0f;
+
+    bool saveMode;
+    bool shockMode;
     float shockedTime;
     float verticalImpact;
     float horizontalImpact;
@@ -41,6 +44,8 @@ public class Character : MonoBehaviour {
     {
         death = false;
         reverse = false;
+        saveMode = false;
+        shockMode = false;
         shockedTime = 0.0f;
         verticalImpact = SHOCK_POWER  * Time.deltaTime ;
         horizontalImpact = 0.0f  * Time.deltaTime ;
@@ -81,16 +86,13 @@ public class Character : MonoBehaviour {
         float horizontalMove = GameManager.Instance.playerHorizontalSpeed * Time.deltaTime;
         float verticalMove = GameManager.Instance.PlayerVerticalSpeed * Time.deltaTime * -1;
 
-        if(shockedTime > 0.0f) {
-            transform.Translate(horizontalImpact, verticalImpact, 0.0f);
-            shockedTime = Mathf.Max(shockedTime - Time.deltaTime, 0.0f);
-            Debug.Log ("SHOCK!!!" );
-        }
-        else {
+      
+        ShockPlayer();
+        if(!shockMode) {
             if (!death) {
-            
-            // if (Input.touchCount > 0 || Input.GetKey(KeyCode.Mouse0))
-                if(reverse && shockedTime < 0.3f)
+        
+        // if (Input.touchCount > 0 || Input.GetKey(KeyCode.Mouse0))
+                if(reverse)
                 {
                     //reverse Move
                     horizontalMove = horizontalMove * -1;
@@ -103,8 +105,9 @@ public class Character : MonoBehaviour {
                 GameSceneManager.Instance.UpdateDepthText(playDepth);
             }
             transform.Translate(horizontalMove, verticalMove, 0.0f);
-            verticalImpact = SHOCK_POWER  * Time.deltaTime ;
         }
+        
+    
     }
 
     public void GetItem(Item.ItemKind itemKind)
@@ -119,15 +122,22 @@ public class Character : MonoBehaviour {
     }
 
 
-    // private void ShockPlayer(float horizontalImpact, float verticalImpact) {
-    //     if ( shockedTime > 0.0f ) {
-    //         transform.Translate(horizontalImpact, verticalImpact, 0.0f);
-    //         shockedTime = Mathf.Max(shockedTime - Time.deltaTime, 0.0f);
-    //     } else {
-    //         shockedTime
-    //     }
-        
-    // }
+    private void ShockPlayer() {
+        if(shockedTime > 0.0f) {
+            saveMode = true;
+            if(shockedTime > 1.2f){
+                shockMode = true;
+                transform.Translate(horizontalImpact, verticalImpact, 0.0f);
+            } else {
+                shockMode = false;
+            }
+            
+            shockedTime = Mathf.Max(shockedTime - Time.deltaTime, 0.0f);
+        } else  {
+            saveMode = false;
+            verticalImpact = SHOCK_POWER  * Time.deltaTime ;
+        }
+    }
 
     
 
@@ -175,7 +185,7 @@ public class Character : MonoBehaviour {
 
 
         //obstacle
-        if( shockedTime <= 0.0f ) {
+        if( !saveMode ) {
             if (collision.tag == "MINE")
             {
                 ani.SetTrigger("Damage");
