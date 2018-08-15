@@ -99,12 +99,16 @@ public class Character : MonoBehaviour {
                     AudioSource audio2 = GetComponent<AudioSource>();
                     audio2.Play();
                 }
-
-                playTime += Time.deltaTime;
                 playDepth = Mathf.FloorToInt(gameObject.transform.position.y * -1);
                 GameSceneManager.Instance.UpdateDepthText(playDepth);
             }
             transform.Translate(horizontalMove, verticalMove, 0.0f);
+        }
+
+        if(!death)
+        {
+            // 플레이어 사망상태가 아니면 플레이시간은 계속 증가
+            playTime += Time.deltaTime;
         }
         
     
