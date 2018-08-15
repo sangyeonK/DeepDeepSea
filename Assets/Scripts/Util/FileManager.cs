@@ -6,7 +6,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
  
 
-public class FileManager : MonoBehaviour {
+public class FileManager {
 
 	public static String FILE_PATH;
 
@@ -14,18 +14,15 @@ public class FileManager : MonoBehaviour {
     {
         get
         {
+            if (_instance == null)
+            {
+                _instance = new FileManager();
+                FILE_PATH = Application.persistentDataPath + "/gameInfo.dat";
+            }
             return _instance;
         }
     }
 	private static FileManager _instance;
-    
-
-	private void Awake()
-    {
-        _instance = this;
-        
-		FILE_PATH = Application.persistentDataPath + "/gameInfo.dat";
-    }
 
 	public void Remove()
 	{
@@ -72,6 +69,7 @@ public class FileManager : MonoBehaviour {
 			var file = File.Open(FILE_PATH, FileMode.Open);
 
 			gameDatas = (List<GameData>)binaryFormatter.Deserialize(file);
+            Debug.Log(gameDatas.Count);
 			file.Close();
 		}
 

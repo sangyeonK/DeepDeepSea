@@ -13,11 +13,3 @@ public class GameData
 		depth = dp;
 	}
 }
-
-[Serializable]
-public class GameDatas
-{
-	
-	List<GameData> datas = new List<GameData>();
-}
-
