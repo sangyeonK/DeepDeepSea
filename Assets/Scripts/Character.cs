@@ -137,6 +137,10 @@ public class Character : MonoBehaviour {
             saveMode = false;
             verticalImpact = SHOCK_POWER  * Time.deltaTime ;
         }
+        if (saveMode) {
+            Animator ani = GetComponentInChildren<Animator>();
+            ani.SetTrigger("transparent");
+        }
     }
 
     
