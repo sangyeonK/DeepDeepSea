@@ -7,6 +7,9 @@ public class TitleSceneManager : MonoBehaviour {
 
     public GameObject mTeamView;
 
+    [Header("Canvas UI")]
+    public GameObject quitPanel;
+
 	static int i = 0;
 
     public void OnStartButton()
@@ -31,6 +34,24 @@ public class TitleSceneManager : MonoBehaviour {
     public void OnClickBackButton()
     {
         mTeamView.SetActive(false);
+    }
+
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            if(quitPanel.activeSelf == false)
+            {
+                quitPanel.SetActive(true);
+            }
+
+        }
+    }
+
+    public void OnQuitButton()
+    {
+        Application.Quit();
+        Debug.Log("Quit");
     }
 
 }
