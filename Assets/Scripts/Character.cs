@@ -37,8 +37,15 @@ public class Character : MonoBehaviour {
     private int playDepth = 0;
 
 
-    public AudioClip swimSound;
     public AudioSource Audio;
+    public AudioClip bgm;
+    public AudioClip firstwater;
+    public AudioClip gamefinal;
+    public AudioClip hurt;
+    public AudioClip item;
+    public AudioClip stop;
+    public AudioClip swim;
+
 
     void Start()
     {
@@ -57,6 +64,22 @@ public class Character : MonoBehaviour {
 
     }
 
+
+    public void SoundManager()
+    {
+        if(!death){
+            this.Audio = this.gameObject.AddComponent<AudioSource>();
+            Audio.clip = bgm;
+            this.Audio.PlayOneShot(bgm);
+
+        }
+        else{
+            this.Audio.Stop();
+        }
+
+
+
+    } 
 
 
     public void DecreseEnemySlider()
