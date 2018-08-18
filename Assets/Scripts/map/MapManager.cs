@@ -153,6 +153,10 @@ public class MapManager : MonoBehaviour
 
 
 
+            rightObs.transform.localScale = new Vector3(Random.Range(0.3f, 0.6f),Random.Range(0.3f, 0.6f), 0);
+            leftObs.transform.localScale =new Vector3(Random.Range(0.4f, 0.7f), Random.Range(0.5f, 0.6f), 0);
+
+
           //  Instantiate(게임오브젝트, 포지션, quart);
 
 
@@ -193,30 +197,7 @@ public class MapManager : MonoBehaviour
        
 
 
-        /*
-
-                Vector3 location;
-                Vector3 location1;
-                Vector3 location2;
-                Vector3 location3;
-
-
-
-                location = screenObject.transform.position + new Vector3(2.0f, -38.0f);
-                Instantiate(maptype[Random.Range(0, maptype.Length)], location, Quaternion.identity);
-
-                location1 = screenObject.transform.position + new Vector3(Random.Range(-5.0f, 5.0f), Random.Range(-10.0f, -4.0f));
-                Instantiate(mine[Random.Range(0, mine.Length)], location1, Quaternion.identity);
-               
-                location2 = screenObject.transform.position + new Vector3(Random.Range(-2.0f, 2.0f), Random.Range(-10.0f, -4.0f));
-                Instantiate(ROBJ[Random.Range(0, ROBJ.Length)], location2, Quaternion.identity);
-
-                location3 = screenObject.transform.position + new Vector3(Random.Range(-2.0f, 2.0f), Random.Range(-10.0f, -4.0f));
-                Instantiate(itemrandom[Random.Range(0, itemrandom.Length)], location3, Quaternion.identity);
-
-
-
-        */
+      
     }
 
 }
