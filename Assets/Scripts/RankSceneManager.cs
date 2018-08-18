@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using System;
+using Assets.Scripts.Util;
 
 public class RankSceneManager : MonoBehaviour {
 
@@ -79,9 +80,12 @@ public class RankSceneManager : MonoBehaviour {
 		playTime.text = timeText;
 		depth.text = totalDepth.ToString() + "M";
 
+		int average_depth = totalDepth / totalPlayCount;
 		bestDepthText.text = bestDepth.ToString() + " M";
-		averageDepth.text = (totalDepth / totalPlayCount).ToString() + "M";
+		averageDepth.text = average_depth.ToString() + "M";
 
+		bestStage.text = Define.DepthToName(bestDepth);
+		averageStage.text = Define.DepthToName(average_depth);
        
     }
 
