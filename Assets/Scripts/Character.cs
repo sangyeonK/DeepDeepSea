@@ -55,7 +55,7 @@ public class Character : MonoBehaviour {
         shockMode = false;
         shockedTime = 0.0f;
         verticalImpact = SHOCK_POWER  * Time.deltaTime ;
-        horizontalImpact = 0.0f  * Time.deltaTime ;
+        horizontalImpact = 0.0f;
         playTime = 0.0f;
         playDepth = 0;
 
@@ -154,7 +154,7 @@ public class Character : MonoBehaviour {
             saveMode = true;
             if(shockedTime > 1.2f){
                 shockMode = true;
-                transform.Translate(horizontalImpact, verticalImpact, 0.0f);
+                transform.Translate(horizontalImpact * Time.deltaTime, verticalImpact * Time.deltaTime, 0.0f);
             } else {
                 shockMode = false;
             }
@@ -235,7 +235,7 @@ public class Character : MonoBehaviour {
             {
                 ani.SetTrigger("playerleft");
                 health -= 5;
-                horizontalImpact = SHOCK_RIGHT * Time.deltaTime ;
+                horizontalImpact = SHOCK_RIGHT;
                 shockedTime = SHOCK_TIME;
                 Debug.Log("playerleft");
             }
@@ -243,7 +243,7 @@ public class Character : MonoBehaviour {
             {
                 ani.SetTrigger("playerright");
                 health -= 5;
-                horizontalImpact = SHOCK_LEFT * Time.deltaTime ;
+                horizontalImpact = SHOCK_LEFT;
                 shockedTime = SHOCK_TIME;
                 Debug.Log("playerright");
             }
@@ -278,12 +278,12 @@ public class Character : MonoBehaviour {
 
     //Right Button
     public void MoveReverseOn() {
-        horizontalImpact = SHOCK_RIGHT * Time.deltaTime ;
+        horizontalImpact = SHOCK_RIGHT;
         reverse = true;
     }
 
     public void MoveReverseOff() {
-        horizontalImpact = SHOCK_LEFT * Time.deltaTime ;
+        horizontalImpact = SHOCK_LEFT;
         reverse = false;
     }
 
