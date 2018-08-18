@@ -71,7 +71,6 @@ public class RankSceneManager : MonoBehaviour {
             }
         }
 
-		totalPlayTime = 3721;
 		TimeSpan timeSpan = TimeSpan.FromSeconds(totalPlayTime);
 		string timeText = string.Format("{0:D2}:{1:D2}:{2:D2}", timeSpan.Hours, timeSpan.Minutes, timeSpan.Seconds);
 
