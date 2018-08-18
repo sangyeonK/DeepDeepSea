@@ -10,13 +10,10 @@ public class TitleSceneManager : MonoBehaviour {
     [Header("Canvas UI")]
     public GameObject quitPanel;
 
-	static int i = 0;
 
     public void OnStartButton()
     {
         SceneManager.LoadScene("SampleScene");
-		FileManager.Instance.Save(i, i);
-		i++;
     }
 
     public void OnClickTeamButton()

@@ -35,19 +35,9 @@ public class FileManager {
 		var binaryFormatter = new BinaryFormatter();
 		FileStream file;
 		List<GameData> gameDatas = LoadGameData();
-
-
-		//if (!File.Exists(FILE_PATH)) {
-		//	file = File.Create(FILE_PATH);
-		//	gameDatas = new List<GameData>();
-
-		//} else {
-		//	file = File.Open(FILE_PATH, FileMode.Create);
-
-		//}
+       
 		file = File.Open(FILE_PATH, FileMode.Create);
-
-
+       
 		Debug.Log("before filelength: " + file.Length);
              
 		gameDatas.Add(new GameData(playTime, depth));
