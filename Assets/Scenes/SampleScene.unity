@@ -1114,11 +1114,6 @@ Prefab:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1102027762}
-    - target: {fileID: 114117194946473730, guid: 3f96a1d471a032f4c9cee46e1d5c6adf,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
-      value: 
-      objectReference: {fileID: 1565891692}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3f96a1d471a032f4c9cee46e1d5c6adf, type: 2}
   m_IsPrefabAsset: 0
@@ -1229,6 +1224,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e29e4cfce3e6a7342952a854c612b228, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pausePanel: {fileID: 1565891692}
   gameOverPanel: {fileID: 1333975365}
 --- !u!4 &1102027763
 Transform:
