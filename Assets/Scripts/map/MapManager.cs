@@ -38,6 +38,16 @@ public class MapManager : MonoBehaviour
     public string zoneName;
 
 
+    public AudioSource Audio;
+    public AudioClip bgm;
+    public AudioClip firstwater;
+    public AudioClip gamefinal;
+    public AudioClip hurt;
+    public AudioClip item;
+    public AudioClip stop;
+    public AudioClip swim;
+
+
     private int waittime;
     float interval = 0;
     public bool gameover;
