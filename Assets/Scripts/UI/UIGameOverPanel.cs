@@ -3,11 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Assets.Scripts.Util;
 
 public class UIGameOverPanel : MonoBehaviour {
 
     Text playTime;
-    Text depth;
+    Text stage;
 
     private void Awake()
     {
@@ -17,9 +18,9 @@ public class UIGameOverPanel : MonoBehaviour {
             {
                 playTime = textComponent;
             }
-            if (textComponent.name == "Depth")
+            if (textComponent.name == "Stage")
             {
-                depth = textComponent;
+                stage = textComponent;
             }
 
         }
@@ -28,9 +29,9 @@ public class UIGameOverPanel : MonoBehaviour {
     public void SetData(int playTime, int playDepth)
     {
         TimeSpan ts = new TimeSpan(0, 0, playTime);
-
+        
         this.playTime.text = ts.ToString();
-        this.depth.text = playDepth.ToString() + "M";
+		this.stage.text = Define.DepthToName(playDepth);
 
 		FileManager.Instance.Save(playTime, playDepth);
     }
