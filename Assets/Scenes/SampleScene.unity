@@ -424,10 +424,10 @@ MonoBehaviour:
   - {fileID: 1950406400748648, guid: bf3dee17ad81e4428a4f051b751ad89d, type: 2}
   - {fileID: 1148633688267418, guid: 11cc472b11ed544ff86ef0b1778e0f37, type: 2}
   ROBJ:
-  - {fileID: 1863565170262240, guid: a127af585e7d04ce584c5fd4feeb5bff, type: 2}
-  - {fileID: 1976351330930072, guid: 72d41db0c21f4441e99c682e8cec72a8, type: 2}
-  - {fileID: 1863565170262240, guid: a127af585e7d04ce584c5fd4feeb5bff, type: 2}
-  - {fileID: 1976351330930072, guid: 72d41db0c21f4441e99c682e8cec72a8, type: 2}
+  - {fileID: 1485309852942876, guid: f4674c16217e247eeb6be5ea65427375, type: 2}
+  - {fileID: 1208139843453526, guid: 2bec00f4e2836e3488e22318f16408ec, type: 2}
+  - {fileID: 1243079264059846, guid: 3c90ee8e6b81b43d1b29519e9e725d59, type: 2}
+  - {fileID: 1544780528187202, guid: bbd3fc9a68dcc477794cf6d8fdefd8b1, type: 2}
   itemrandom:
   - {fileID: 1544780528187202, guid: bbd3fc9a68dcc477794cf6d8fdefd8b1, type: 2}
   - {fileID: 1001308876687030, guid: b98cd8b4dbfb04e4cbf9914a34fdb5c7, type: 2}
@@ -435,8 +435,20 @@ MonoBehaviour:
   - {fileID: 1670180091493778, guid: e09672b18140a417d8a043a688b1a595, type: 2}
   - {fileID: 1453938416814386, guid: 76b464b7321784108bf531eafe916e1c, type: 2}
   - {fileID: 1485309852942876, guid: f4674c16217e247eeb6be5ea65427375, type: 2}
-  rightObs: {fileID: 1413642681969994, guid: 865d419d7b1494d5b819c48505adda7f, type: 2}
-  leftObs: {fileID: 1219797392156202, guid: 57bd196c7e19145919a8492e8e3c3c75, type: 2}
+  rightObs:
+  - {fileID: 1413642681969994, guid: 865d419d7b1494d5b819c48505adda7f, type: 2}
+  - {fileID: 1698579719594758, guid: 591339277fc4e4efea88d319106ae791, type: 2}
+  leftObs:
+  - {fileID: 1219797392156202, guid: 57bd196c7e19145919a8492e8e3c3c75, type: 2}
+  - {fileID: 1768255405725806, guid: e89a17927c6864df0a6ecab53d623514, type: 2}
+  Maptype:
+  - {fileID: 1586753867083834, guid: ea6afd157218445c1bc6f85b10c24687, type: 2}
+  - {fileID: 1943314555261512, guid: 0a267909017e146e3ba429c7f2c53a57, type: 2}
+  - {fileID: 1393599403026188, guid: 751d50378bf23407f8781c4da608c595, type: 2}
+  - {fileID: 1042343246870002, guid: 0df4324a3df52439b8d2aea1813163fb, type: 2}
+  - {fileID: 1422375399783750, guid: f801e11f89a564826abc8567713fb8cf, type: 2}
+  - {fileID: 1124924567437608, guid: befd2a8529a8d4c67b385ac2dcdb06d0, type: 2}
+  - {fileID: 1688453537403160, guid: 2fbee830ad1c54af0932dd9bc1a73051, type: 2}
   startingHealth: 100
   currentHealth: 0
   healthSlider: {fileID: 770435939}
@@ -449,8 +461,6 @@ MonoBehaviour:
   seameter: 0
   seameterText: {fileID: 89373019}
   zoneName: 
-  audio: {fileID: 0}
-  bgm: {fileID: 0}
   gameover: 0
   timer: {fileID: 1001571625}
 --- !u!4 &728100551

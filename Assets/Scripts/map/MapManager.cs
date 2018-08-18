@@ -19,9 +19,9 @@ public class MapManager : MonoBehaviour
     public GameObject[] ROBJ;
     public GameObject[] itemrandom;
 
-    public GameObject rightObs;
-    public GameObject leftObs;
-
+    public GameObject[] rightObs;
+    public GameObject[] leftObs;
+    public GameObject[] Maptype;
 
     public int startingHealth = 100;                            // The amount of health the player starts the game with.
     public int currentHealth;                                   // The current health the player has.
@@ -38,15 +38,7 @@ public class MapManager : MonoBehaviour
     public string zoneName;
 
 
-    public AudioSource Audio;
-    public AudioClip bgm;
-    public AudioClip firstwater;
-    public AudioClip gamefinal;
-    public AudioClip hurt;
-    public AudioClip item;
-    public AudioClip stop;
-    public AudioClip swim;
-
+   
 
     private int waittime;
     float interval = 0;
@@ -142,7 +134,7 @@ public class MapManager : MonoBehaviour
             Vector3 location3;
             Vector3 location4;
             Vector3 location5;
-
+            Vector3 location6;
 
             Vector3 euler = transform.eulerAngles;
             euler.z = Random.Range(-180.0f, 180.0f);
@@ -163,8 +155,8 @@ public class MapManager : MonoBehaviour
 
 
 
-            rightObs.transform.localScale = new Vector3(Random.Range(0.3f, 0.6f),Random.Range(0.3f, 0.6f), 0);
-            leftObs.transform.localScale =new Vector3(Random.Range(0.4f, 0.7f), Random.Range(0.5f, 0.6f), 0);
+            rightObs[Random.Range(0,rightObs.Length)].transform.localScale = new Vector3(Random.Range(0.3f, 0.6f),Random.Range(0.3f, 0.6f), 0);
+            leftObs[Random.Range(0, leftObs.Length)].transform.localScale =new Vector3(Random.Range(0.4f, 0.7f), Random.Range(0.5f, 0.6f), 0);
 
 
           //  Instantiate(게임오브젝트, 포지션, quart);
@@ -185,16 +177,16 @@ public class MapManager : MonoBehaviour
             Instantiate(ROBJ[Random.Range(0, ROBJ.Length)], location3,quart);
 
             location4 = screenObject.transform.position + new Vector3(Random.Range(4.5f, 6.0f), Random.Range(-14.0f, -2.0f));
-            Instantiate(rightObs, location4, rightangle);
+            Instantiate(leftObs[Random.Range(0, leftObs.Length)], location4, rightangle);
            
             location5= screenObject.transform.position + new Vector3(Random.Range(-8.0f, -6.5f), Random.Range(-14.0f, -2.0f));
-            Instantiate(leftObs, location5, leftangle);
+            Instantiate(rightObs[Random.Range(0, rightObs.Length)], location5, leftangle);
 
-            /* location5 = screenObject.transform.position + new Vector3(Random.Range(3.0f, 5.0f), Random.Range(-10.0f, -7.0f));
-            Instantiate(ROBJ[Random.Range(0, ROBJ.Length)], location5, quart);
-*/
-           
+            location6 = screenObject.transform.position + new Vector3(-3, -25);
+            Instantiate(Maptype[Random.Range(0, Maptype.Length)], location6, Quaternion.identity);
 
+
+         
 
 
             if(gameover==true){
