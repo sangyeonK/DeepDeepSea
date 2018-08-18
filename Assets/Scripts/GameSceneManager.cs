@@ -16,8 +16,10 @@ public class GameSceneManager : MonoBehaviour {
         }
     }
     private static GameSceneManager _instance;
-    
 
+
+    [Header("Canvas UI")]
+    public GameObject pausePanel;
     public GameObject gameOverPanel;
 
     private GameObject depthText;
@@ -37,14 +39,18 @@ public class GameSceneManager : MonoBehaviour {
         }
     }
 
+    private void OnApplicationFocus(bool focus)
+    {
+        OnPauseButton();
+    }
 
-    public void OnPauseButton(GameObject pausePanel)
+    public void OnPauseButton()
     {
         pausePanel.SetActive(true);
         GameManager.Instance.SetPause(true);
     }
 
-    public void OnResumeButton(GameObject pausePanel)
+    public void OnResumeButton()
     {
         pausePanel.SetActive(false);
         GameManager.Instance.SetPause(false);
