@@ -296,6 +296,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e67976f0a44c2f64eab8c187fce88624, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playTime: {fileID: 114000845523015362}
+  playDepth: {fileID: 114861037249244648}
 --- !u!114 &114392564746126460
 MonoBehaviour:
   m_ObjectHideFlags: 1
