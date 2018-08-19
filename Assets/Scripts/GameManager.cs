@@ -75,6 +75,7 @@ public class GameManager : MonoBehaviour {
     void InitGameData()
     {
         BackgroundRockTranslated = 0.0f;
+        isSpeedMode = false;
     }
 
     public void SpeedPlus() {

@@ -46,6 +46,10 @@ public class Character : MonoBehaviour {
     public AudioClip stop;
     public AudioClip swim;
 
+    [SerializeField]
+    private float minX = -4.5f;
+    [SerializeField]
+    private float maxX = 4.5f;
 
     void Start()
     {
@@ -133,8 +137,15 @@ public class Character : MonoBehaviour {
             // 플레이어 사망상태가 아니면 플레이시간은 계속 증가
             playTime += Time.deltaTime;
         }
-        
-    
+
+        // 캐릭터 제한위치 벗어나지 않게 보정
+        Vector3 currPosition = transform.localPosition;
+        float clampedX = Mathf.Clamp(currPosition.x, minX, maxX);
+        if (!Mathf.Approximately(clampedX, currPosition.x))
+        {
+            currPosition.x = clampedX;
+            transform.localPosition = currPosition;
+        }        
     }
 
     public void GetItem(Item.ItemKind itemKind)
@@ -266,6 +277,9 @@ public class Character : MonoBehaviour {
 
     IEnumerator DiePlayer()
     {
+        if(GameManager.Instance.isSpeedMode)
+            SpeedModeOff();
+
         death = true;
 
         Animator ani = GetComponentInChildren<Animator>();
