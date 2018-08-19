@@ -5,7 +5,6 @@ using UnityEngine;
 public class BackgroundCtrl : MonoBehaviour {
 
     public int maxStage = 5;
-    public const float BACKGROUND_HEIGHT = 19.2f;
     public GameObject screenObject;
 
     public enum StageNumber
@@ -74,13 +73,13 @@ public class BackgroundCtrl : MonoBehaviour {
             return;
         }
 
-        float offsetY = BACKGROUND_HEIGHT * -1;
+        float offsetY = Define.SCREEN_HEIGHT * -1;
         GameObject stageChangePrefab = GetStageChangePrefab(stage);
         if (stageChangePrefab)
         {
             InstantiateStagePrefab(stageChangePrefab,
                 new Vector2(0.0f, screenObject.transform.position.y + offsetY));
-            offsetY -= BACKGROUND_HEIGHT;
+            offsetY -= Define.SCREEN_HEIGHT;
         }
         GameObject stagePrefab = GetStagePrefab(stage);
         if (stagePrefab)

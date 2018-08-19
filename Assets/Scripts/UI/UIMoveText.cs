@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using Assets.Scripts.Util;
 
 public class UIMoveText : MonoBehaviour {
 

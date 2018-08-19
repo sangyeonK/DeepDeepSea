@@ -65,7 +65,7 @@ public class BGStage : MonoBehaviour {
 
     void RewindBackground()
     {
-        float moveY = (stageareaCount - 1) * BackgroundCtrl.BACKGROUND_HEIGHT * -1f;
+        float moveY = (stageareaCount - 1) * Define.SCREEN_HEIGHT * -1f;
         gameObject.transform.Translate(new Vector2(0.0f, moveY));
     }
 
