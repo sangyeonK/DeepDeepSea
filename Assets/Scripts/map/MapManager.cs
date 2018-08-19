@@ -23,10 +23,6 @@ public class MapManager : MonoBehaviour
     public GameObject[] leftObs;
     public GameObject[] Maptype;
 
-    public int startingHealth = 100;                            // The amount of health the player starts the game with.
-    public int currentHealth;                                   // The current health the player has.
-    public Slider healthSlider;
-
     public GAMESTAGETYPE gamestageType;
     public bool EpilagicZone;//표해수층
     public bool MesopelagicZone;//중심해층
@@ -68,9 +64,6 @@ public class MapManager : MonoBehaviour
 
     void Awake()
     {
-        currentHealth = startingHealth;
-        healthSlider.value = currentHealth;
-
         gamestageType = GAMESTAGETYPE.GameStart;
         //Debug.Log(gamestageType);
 
@@ -87,11 +80,13 @@ public class MapManager : MonoBehaviour
         gameover = false;
         seameter = 0;
         
-        StartCoroutine("maprandom");
+        // StartCoroutine("maprandom");
         if (gamestageType == GAMESTAGETYPE.GameStart)
         {         
             gamestageType = GAMESTAGETYPE.GamePlay;          
         }
+
+        InstantiateMapType(Define.SCREEN_HEIGHT * -3);
     }
 
     public void Update()
@@ -124,6 +119,8 @@ public class MapManager : MonoBehaviour
     }
 
     public IEnumerator maprandom(){
+
+        // FIX ME : refactoring please...
 
         Debug.Log(gameover);
         while(gameover==false){
@@ -185,21 +182,19 @@ public class MapManager : MonoBehaviour
             location6 = screenObject.transform.position + new Vector3(-3, -25);
             Instantiate(Maptype[Random.Range(0, Maptype.Length)], location6, Quaternion.identity);
 
-
-         
-
-
             if(gameover==true){
                 yield break;
             }
 
 
         }
-       
-       
+    }
 
-
-      
+    public void InstantiateMapType(float posY)
+    {
+        Vector2 location = new Vector2(0.0f, posY);
+        GameObject mapTypeObj = Instantiate(Maptype[Random.Range(0, Maptype.Length)], location, Quaternion.identity);
+        mapTypeObj.GetComponent<MapPreset>().SetMapManager(gameObject);
     }
 
 }

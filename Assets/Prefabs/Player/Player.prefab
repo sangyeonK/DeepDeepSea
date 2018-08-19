@@ -67,8 +67,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1369915557566906}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_LocalPosition: {x: 0.02, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4131753229199856}
   m_Father: {fileID: 0}
@@ -85,7 +85,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 1
-  m_Mass: 0.3549084
+  m_Mass: 1.4196336
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -237,8 +237,16 @@ MonoBehaviour:
   death: 0
   reverse: 0
   playerSlider: {fileID: 0}
-  swimSound: {fileID: 0}
   Audio: {fileID: 0}
+  bgm: {fileID: 0}
+  firstwater: {fileID: 0}
+  gamefinal: {fileID: 0}
+  hurt: {fileID: 0}
+  item: {fileID: 0}
+  stop: {fileID: 0}
+  swim: {fileID: 0}
+  minX: -4.5
+  maxX: 4.5
 --- !u!212 &212943063590510788
 SpriteRenderer:
   m_ObjectHideFlags: 1
