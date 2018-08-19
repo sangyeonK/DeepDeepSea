@@ -39,10 +39,12 @@ public class GameSceneManager : MonoBehaviour {
         }
     }
 
+#if (UNITY_IPHONE || UNITY_ANDROID)
     private void OnApplicationFocus(bool focus)
     {
         OnPauseButton();
     }
+#endif
 
     public void OnPauseButton()
     {
