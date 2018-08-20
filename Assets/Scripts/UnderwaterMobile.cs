@@ -14,6 +14,9 @@ public class UnderwaterMobile : MonoBehaviour {
     void Start () {
         rotationAngle = Vector3.forward * Random.Range(60f, 120f);
         transform.localPosition = new Vector2(0.0f, minY);
+
+        sprite.GetComponent<SpriteRenderer>().enabled = false;
+        GameManager.Instance.AddStartPlayHandler(OnStartPlay);
     }
 	
 	// Update is called once per frame
@@ -37,5 +40,15 @@ public class UnderwaterMobile : MonoBehaviour {
             currPosition.y = clampedY;
             transform.localPosition = currPosition;
         }
+    }
+
+    void OnStartPlay()
+    {
+        sprite.GetComponent<SpriteRenderer>().enabled = true;
+    }
+
+    private void OnDestroy()
+    {
+        GameManager.Instance.RemoveStartPlayHandler(OnStartPlay);
     }
 }

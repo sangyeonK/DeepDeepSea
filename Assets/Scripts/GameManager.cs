@@ -23,7 +23,9 @@ public class GameManager : MonoBehaviour {
 
     [HideInInspector]
     public bool isPaused = false;
-    
+
+    public delegate void StartPlayHandler();
+    event StartPlayHandler onStartPlay;
     /// <summary>
     /// 플레이어의 세로축 이동 속도
     /// </summary>
@@ -94,6 +96,21 @@ public class GameManager : MonoBehaviour {
             this.isPaused = false;
             Time.timeScale = 1f;
         }
+    }
+
+    public void StartPlay()
+    {
+        onStartPlay();
+    }
+
+    public void AddStartPlayHandler(StartPlayHandler startPlayHandler)
+    {
+        onStartPlay += startPlayHandler;
+    }
+
+    public void RemoveStartPlayHandler(StartPlayHandler startPlayHandler)
+    {
+        onStartPlay -= startPlayHandler;
     }
 
     public void GameOver(float playTime, int playDepth)

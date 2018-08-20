@@ -14,7 +14,7 @@ public class Character : MonoBehaviour {
     }
     private static Character instance = null;
 
-    
+
     public float health = 100.0f;
     private const float coef = 0.2f;
     public bool death;
@@ -65,9 +65,18 @@ public class Character : MonoBehaviour {
 
         DecreseEnemySlider();
 
+        // OnStartPlay 가 호출되기 전까지는 script 및 sprite renderer 비활성화
+        this.enabled = false;
+        GetComponentInChildren<SpriteRenderer>().enabled = false;
 
+        GameManager.Instance.AddStartPlayHandler(OnStartPlay);
     }
 
+    void OnStartPlay()
+    {
+        this.enabled = true;
+        GetComponentInChildren<SpriteRenderer>().enabled = true;
+    }
 
     public void SoundManager()
     {
@@ -322,4 +331,11 @@ public class Character : MonoBehaviour {
             ani.SetBool("SpeedBoost", false);
         }
     }
+
+    private void OnDestroy()
+    {
+        GameManager.Instance.RemoveStartPlayHandler(OnStartPlay);
+    }
+
+
 }
