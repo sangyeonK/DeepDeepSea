@@ -58,7 +58,7 @@ public class Character : MonoBehaviour {
         saveMode = false;
         shockMode = false;
         shockedTime = 0.0f;
-        verticalImpact = SHOCK_POWER  * Time.deltaTime ;
+        verticalImpact = SHOCK_POWER;
         horizontalImpact = 0.0f;
         playTime = 0.0f;
         playDepth = 0;
@@ -173,7 +173,7 @@ public class Character : MonoBehaviour {
             shockedTime = Mathf.Max(shockedTime - Time.deltaTime, 0.0f);
         } else  {
             saveMode = false;
-            verticalImpact = SHOCK_POWER  * Time.deltaTime ;
+            verticalImpact = SHOCK_POWER;
         }
         if (saveMode) {
             Animator ani = GetComponentInChildren<Animator>();
@@ -315,7 +315,7 @@ public class Character : MonoBehaviour {
     public void SpeedModeOff() {
         if (!death)
         {   
-            verticalImpact = SHOCK_POWER  * Time.deltaTime ;
+            verticalImpact = SHOCK_POWER;
             Debug.Log("SpeedModeOff");
             GameManager.Instance.isSpeedMode = false;
             Animator ani = GetComponentInChildren<Animator>();
