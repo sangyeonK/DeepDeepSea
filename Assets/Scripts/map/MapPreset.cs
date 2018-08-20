@@ -18,11 +18,11 @@ public class MapPreset : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("Collision!!");
         if (collision.gameObject.layer == screenBorder.value)
         {
-            Debug.Log("Collision!!");
             mapManager.InstantiateMapType(collision.transform.position.y - Define.SCREEN_HEIGHT);
+            // 다음 maptype 이 생성되면 trigger line 제거
+            GetComponent<EdgeCollider2D>().enabled = false;
         }
     }
 }
