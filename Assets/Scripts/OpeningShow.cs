@@ -12,7 +12,7 @@ public class OpeningShow : MonoBehaviour {
     {
         if (skipOpening)
         {
-            Stop();
+            StartCoroutine(Stop());
             return;
         }
 
@@ -31,8 +31,10 @@ public class OpeningShow : MonoBehaviour {
         player.GetComponent<Animator>().speed = 0.75f;
     }
 
-    void Stop()
+    IEnumerator Stop()
     {
+        yield return null;
+
         GameManager.Instance.StartPlay();
         GameObject.Destroy(gameObject);
     }
