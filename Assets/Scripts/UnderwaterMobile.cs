@@ -16,7 +16,7 @@ public class UnderwaterMobile : MonoBehaviour {
         transform.localPosition = new Vector2(0.0f, minY);
 
         sprite.GetComponent<SpriteRenderer>().enabled = false;
-        GameManager.Instance.AddStartPlayHandler(OnStartPlay);
+        GameManager.Instance.AddStartPlayListener(OnStartPlay);
     }
 	
 	// Update is called once per frame
@@ -49,6 +49,6 @@ public class UnderwaterMobile : MonoBehaviour {
 
     private void OnDestroy()
     {
-        GameManager.Instance.RemoveStartPlayHandler(OnStartPlay);
+        GameManager.Instance.RemoveStartPlayListener(OnStartPlay);
     }
 }

@@ -31,6 +31,11 @@ public class OpeningShow : MonoBehaviour {
         player.GetComponent<Animator>().speed = 0.75f;
     }
 
+    void PlayDivingSound()
+    {
+        GetComponent<AudioSource>().Play();
+    }
+
     IEnumerator Stop()
     {
         yield return null;

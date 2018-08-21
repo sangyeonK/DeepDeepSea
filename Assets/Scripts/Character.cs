@@ -37,14 +37,20 @@ public class Character : MonoBehaviour {
     private int playDepth = 0;
 
 
-    public AudioSource Audio;
-    public AudioClip bgm;
-    public AudioClip firstwater;
-    public AudioClip gamefinal;
-    public AudioClip hurt;
-    public AudioClip item;
-    public AudioClip stop;
-    public AudioClip swim;
+    enum SOUND_EFFECT
+    {
+        ITEM,
+        HURT,
+        GAME_OVER,
+        SWIM,
+    }
+
+    public AudioSource itemSound;
+    public AudioSource hurtSound;
+    public AudioSource gameOverSound;
+    public AudioSource swimSound;
+
+    private bool swimSoundRunning;
 
     [SerializeField]
     private float minX = -4.5f;
@@ -62,14 +68,14 @@ public class Character : MonoBehaviour {
         horizontalImpact = 0.0f;
         playTime = 0.0f;
         playDepth = 0;
-
+        swimSoundRunning = false;
         DecreseEnemySlider();
 
         // OnStartPlay 가 호출되기 전까지는 script 및 sprite renderer 비활성화
         this.enabled = false;
         GetComponentInChildren<SpriteRenderer>().enabled = false;
 
-        GameManager.Instance.AddStartPlayHandler(OnStartPlay);
+        GameManager.Instance.AddStartPlayListener(OnStartPlay);
     }
 
     void OnStartPlay()
@@ -78,22 +84,35 @@ public class Character : MonoBehaviour {
         GetComponentInChildren<SpriteRenderer>().enabled = true;
     }
 
-    public void SoundManager()
+    void PlaySound(SOUND_EFFECT sound)
     {
-        if(!death){
-            this.Audio = this.gameObject.AddComponent<AudioSource>();
-            Audio.clip = bgm;
-            this.Audio.PlayOneShot(bgm);
-
+        switch(sound)
+        {
+            case SOUND_EFFECT.ITEM:
+                itemSound.Play();
+                break;
+            case SOUND_EFFECT.HURT:
+                hurtSound.Play();
+                break;
+            case SOUND_EFFECT.GAME_OVER:
+                gameOverSound.Play();
+                break;
+            case SOUND_EFFECT.SWIM:
+                swimSound.Play();
+                break;
         }
-        else{
-            this.Audio.Stop();
+    }
+
+    IEnumerator PlaySwimSound()
+    {
+        swimSoundRunning = true;
+        while (GameManager.Instance.isSpeedMode)
+        {
+            PlaySound(SOUND_EFFECT.SWIM);
+            yield return new WaitForSeconds(0.5f);
         }
-
-
-
-    } 
-
+        swimSoundRunning = false;
+    }
 
     public void DecreseEnemySlider()
     {
@@ -166,6 +185,8 @@ public class Character : MonoBehaviour {
                 GameManager.Instance.SpeedPlus();
                 break;
         }
+
+        PlaySound(SOUND_EFFECT.ITEM);
     }
 
 
@@ -243,6 +264,7 @@ public class Character : MonoBehaviour {
                 health -= 5;
                 shockedTime = SHOCK_TIME;
                 Debug.Log("collider mine");
+                PlaySound(SOUND_EFFECT.HURT);
             }
             if (collision.tag == "floating")
             {
@@ -250,6 +272,7 @@ public class Character : MonoBehaviour {
                 health -= 5;
                 shockedTime = SHOCK_TIME;
                 ani.SetTrigger("transparent");
+                PlaySound(SOUND_EFFECT.HURT);
             }
             if (collision.tag == "leftwall")
             {
@@ -258,6 +281,7 @@ public class Character : MonoBehaviour {
                 horizontalImpact = SHOCK_RIGHT;
                 shockedTime = SHOCK_TIME;
                 Debug.Log("playerleft");
+                PlaySound(SOUND_EFFECT.HURT);
             }
             if (collision.tag == "rightwall")
             {
@@ -266,6 +290,7 @@ public class Character : MonoBehaviour {
                 horizontalImpact = SHOCK_LEFT;
                 shockedTime = SHOCK_TIME;
                 Debug.Log("playerright");
+                PlaySound(SOUND_EFFECT.HURT);
             }
         }
     }
@@ -293,6 +318,7 @@ public class Character : MonoBehaviour {
 
         Animator ani = GetComponentInChildren<Animator>();
         ani.SetBool("Dead", true);
+        PlaySound(SOUND_EFFECT.GAME_OVER);
         yield return new WaitForSeconds(3f);
 
         GameManager.Instance.GameOver(playTime, playDepth);
@@ -319,6 +345,10 @@ public class Character : MonoBehaviour {
             GameManager.Instance.isSpeedMode = true;
             Animator ani = GetComponentInChildren<Animator>();
             ani.SetBool("SpeedBoost", true);
+            if (!swimSoundRunning)
+            {
+                StartCoroutine(PlaySwimSound());
+            }
         }
     }
     public void SpeedModeOff() {
@@ -334,7 +364,7 @@ public class Character : MonoBehaviour {
 
     private void OnDestroy()
     {
-        GameManager.Instance.RemoveStartPlayHandler(OnStartPlay);
+        GameManager.Instance.RemoveStartPlayListener(OnStartPlay);
     }
 
 

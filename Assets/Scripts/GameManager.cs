@@ -103,14 +103,14 @@ public class GameManager : MonoBehaviour {
         onStartPlay();
     }
 
-    public void AddStartPlayHandler(StartPlayHandler startPlayHandler)
+    public void AddStartPlayListener(StartPlayHandler listener)
     {
-        onStartPlay += startPlayHandler;
+        onStartPlay += listener;
     }
 
-    public void RemoveStartPlayHandler(StartPlayHandler startPlayHandler)
+    public void RemoveStartPlayListener(StartPlayHandler listener)
     {
-        onStartPlay -= startPlayHandler;
+        onStartPlay -= listener;
     }
 
     public void GameOver(float playTime, int playDepth)
