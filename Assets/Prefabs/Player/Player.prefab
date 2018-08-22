@@ -667,8 +667,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
-  death: 0
-  reverse: 0
   playerSlider: {fileID: 0}
   itemSound: {fileID: 82809482943872528}
   hurtSound: {fileID: 82233836568038086}
@@ -676,6 +674,7 @@ MonoBehaviour:
   swimSound: {fileID: 82086191594335768}
   minX: -4.5
   maxX: 4.5
+  healthLossRate: 2
 --- !u!212 &212943063590510788
 SpriteRenderer:
   m_ObjectHideFlags: 1

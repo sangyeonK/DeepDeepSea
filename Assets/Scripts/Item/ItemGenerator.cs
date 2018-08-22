@@ -8,7 +8,7 @@ public class ItemGenerator : MonoBehaviour {
 
 	IEnumerator Generate()
     {
-        Vector3 location = transform.position + new Vector3(Random.Range(-5.0f, 5.0f), -6.0f);
+        Vector3 location = transform.position + new Vector3(Random.Range(-5.0f, 5.0f), Define.SCREEN_HEIGHT / 2 * -1);
         Instantiate(item, location, Quaternion.identity);
 
         yield return new WaitForSeconds(Random.Range(1f, 3f));
@@ -18,7 +18,17 @@ public class ItemGenerator : MonoBehaviour {
 
     private void Start()
     {
+        GameManager.Instance.AddStartPlayListener(OnStartPlay);
+    }
+
+    void OnStartPlay()
+    {
         StartCoroutine(Generate());
+    }
+
+    private void OnDestroy()
+    {
+        GameManager.Instance.RemoveStartPlayListener(OnStartPlay);
     }
 
 

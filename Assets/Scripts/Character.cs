@@ -56,6 +56,8 @@ public class Character : MonoBehaviour {
     private float minX = -4.5f;
     [SerializeField]
     private float maxX = 4.5f;
+    [SerializeField]
+    private float healthLossRate = 2f;
 
     void Start()
     {
@@ -174,16 +176,41 @@ public class Character : MonoBehaviour {
         }        
     }
 
-    public void GetItem(Item.ItemKind itemKind)
+    public void GetItem(Item.ItemKind itemKind, float value)
     {
+        // 아이템 처리는 이 함수에서 수행한다.
         switch (itemKind) 
         {
             case Item.ItemKind.SPEED_BOOST:
-                Debug.Log("@###@#@");
                 GameManager.Instance.SpeedPlus();
+                break;
+            case Item.ItemKind.OXYGEN:
+                health += value;
                 break;
         }
 
+        // 기존에 남아있던 아이템 처리 코드
+        //if (collision.tag == "fast")
+        //{
+        //    GameManager.Instance.playerHorizontalSpeed += 0.01f;
+        //    GameManager.Instance.playerVerticalSpeed += 0.01f;
+
+        //}
+        //if (collision.tag == "slow")
+        //{
+        //    GameManager.Instance.playerHorizontalSpeed -= 0.01f;
+        //    GameManager.Instance.playerVerticalSpeed -= 0.01f;
+        //}
+        //if (collision.tag == "big")
+        //{
+        //    transform.localScale += new Vector3(0.1F, 0.1F, 0);
+        //    health -= 5;
+        //}
+        //if (collision.tag == "small")
+        //{
+        //    transform.localScale += new Vector3(-0.1F, -0.1F, 0);
+        //    health += 5;
+        //}
         PlaySound(SOUND_EFFECT.ITEM);
     }
 
@@ -224,35 +251,6 @@ public class Character : MonoBehaviour {
             return;
 
         Animator ani = GetComponentInChildren<Animator>();
-
-        //item
-        if (collision.tag == "OXY")
-        {
-            health += 5;
- 
-        }
-        if (collision.tag == "fast")
-        {
-            GameManager.Instance.playerHorizontalSpeed += 0.01f;
-            GameManager.Instance.playerVerticalSpeed += 0.01f;
-
-        }
-        if (collision.tag == "slow")
-        {
-            GameManager.Instance.playerHorizontalSpeed -= 0.01f;
-            GameManager.Instance.playerVerticalSpeed -= 0.01f;
-        }
-        if (collision.tag == "big")
-        {
-            transform.localScale += new Vector3(0.1F, 0.1F, 0);
-            health -= 5;
-        }
-        if (collision.tag == "small")
-        {
-            transform.localScale += new Vector3(-0.1F, -0.1F, 0);
-            health += 5;
-        }
-
 
         //obstacle
         if( !saveMode ) {
@@ -296,7 +294,7 @@ public class Character : MonoBehaviour {
     public void CheckHealth()
     {
         if (!death) {
-            health -= Time.deltaTime;
+            health -= Time.deltaTime * healthLossRate;
 
             if (health <= 0)
             {
