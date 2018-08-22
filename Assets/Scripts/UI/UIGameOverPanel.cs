@@ -15,8 +15,6 @@ public class UIGameOverPanel : MonoBehaviour {
         
         this.playTime.text = ts.ToString();
         this.playDepth.text = playDepth.ToString();
-
-        FileManager.Instance.Save(playTime, playDepth);
     }
 
     
