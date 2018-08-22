@@ -20,13 +20,13 @@ GameObject:
   m_Component:
   - component: {fileID: 4908608809192932}
   - component: {fileID: 212841239896277580}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: bgrock_stage_1_right
   m_TagString: Background_RightRock
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1191124558323430
 GameObject:
   m_ObjectHideFlags: 1
@@ -36,13 +36,13 @@ GameObject:
   m_Component:
   - component: {fileID: 4226255044447340}
   - component: {fileID: 212603437451515870}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: bgrock_stage_1_left
   m_TagString: Background_LeftRock
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1235179228419666
 GameObject:
   m_ObjectHideFlags: 1
@@ -52,13 +52,13 @@ GameObject:
   m_Component:
   - component: {fileID: 4261863647567880}
   - component: {fileID: 212347241838308442}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: bgrock_stage_1_left
   m_TagString: Background_LeftRock
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1300100031104342
 GameObject:
   m_ObjectHideFlags: 0
@@ -68,7 +68,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4944809507639266}
   - component: {fileID: 212477673854601576}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: background_stage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -84,7 +84,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4189639074077676}
   - component: {fileID: 212449996805305636}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: background_stage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -117,13 +117,13 @@ GameObject:
   m_Component:
   - component: {fileID: 4618073165536208}
   - component: {fileID: 212177115112391966}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: bgrock_stage_1_left
   m_TagString: Background_LeftRock
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1627963124790052
 GameObject:
   m_ObjectHideFlags: 1
@@ -133,13 +133,13 @@ GameObject:
   m_Component:
   - component: {fileID: 4979850337503432}
   - component: {fileID: 212461226991352468}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: bgrock_stage_1_right
   m_TagString: Background_RightRock
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1674822746571422
 GameObject:
   m_ObjectHideFlags: 0
@@ -149,7 +149,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4084229549928316}
   - component: {fileID: 212719378609472736}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: background_stage_prev
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -165,13 +165,13 @@ GameObject:
   m_Component:
   - component: {fileID: 4769715533923898}
   - component: {fileID: 212726765705830814}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: bgrock_stage_1_right
   m_TagString: Background_RightRock
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1725568391607766
 GameObject:
   m_ObjectHideFlags: 1
@@ -181,13 +181,13 @@ GameObject:
   m_Component:
   - component: {fileID: 4461791582022802}
   - component: {fileID: 212990363053808988}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: bgrock_stage_1_left
   m_TagString: Background_LeftRock
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1741329215261900
 GameObject:
   m_ObjectHideFlags: 0
@@ -197,7 +197,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4304069380557890}
   - component: {fileID: 212108536005175596}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: background_stage_next
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -213,13 +213,13 @@ GameObject:
   m_Component:
   - component: {fileID: 4874690943530446}
   - component: {fileID: 212843907551809338}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: bgrock_stage_1_right
   m_TagString: Background_RightRock
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4084229549928316
 Transform:
   m_ObjectHideFlags: 1
