@@ -17,8 +17,8 @@ public class Character : MonoBehaviour {
 
     public float health = 100.0f;
     private const float coef = 0.2f;
-    public bool death;
-    public bool reverse;
+    private bool death;
+    private bool reverse;
 
     private const float SHOCK_TIME = 2.0f;
     private const float SHOCK_POWER = 2.0f;
@@ -151,8 +151,6 @@ public class Character : MonoBehaviour {
                 {
                     //reverse Move
                     horizontalMove = horizontalMove * -1;
-                    AudioSource audio2 = GetComponent<AudioSource>();
-                    audio2.Play();
                 }
                 playDepth = Mathf.FloorToInt(gameObject.transform.position.y * -1);
                 GameSceneManager.Instance.UpdateDepthText(playDepth);
@@ -338,7 +336,7 @@ public class Character : MonoBehaviour {
 
     //Left Button
     public void SpeedModeOn() {
-        if (!death)
+        if (this.enabled && !death)
         {   
             Debug.Log("SpeedModeOn");
             verticalImpact *= 2.0f; 
@@ -352,7 +350,7 @@ public class Character : MonoBehaviour {
         }
     }
     public void SpeedModeOff() {
-        if (!death)
+        if (this.enabled && !death)
         {   
             verticalImpact = SHOCK_POWER;
             Debug.Log("SpeedModeOff");
