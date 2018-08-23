@@ -459,38 +459,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 959d359d9da0b384a9251bf11fe44a45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  l_wall: []
-  r_wall: []
-  ROBJ:
-  - {fileID: 1485309852942876, guid: f4674c16217e247eeb6be5ea65427375, type: 2}
-  - {fileID: 1208139843453526, guid: 2bec00f4e2836e3488e22318f16408ec, type: 2}
-  - {fileID: 1243079264059846, guid: 3c90ee8e6b81b43d1b29519e9e725d59, type: 2}
-  - {fileID: 1544780528187202, guid: bbd3fc9a68dcc477794cf6d8fdefd8b1, type: 2}
-  itemrandom:
-  - {fileID: 1544780528187202, guid: bbd3fc9a68dcc477794cf6d8fdefd8b1, type: 2}
-  - {fileID: 1001308876687030, guid: b98cd8b4dbfb04e4cbf9914a34fdb5c7, type: 2}
-  - {fileID: 1243079264059846, guid: 3c90ee8e6b81b43d1b29519e9e725d59, type: 2}
-  - {fileID: 1670180091493778, guid: e09672b18140a417d8a043a688b1a595, type: 2}
-  - {fileID: 1453938416814386, guid: 76b464b7321784108bf531eafe916e1c, type: 2}
-  - {fileID: 1485309852942876, guid: f4674c16217e247eeb6be5ea65427375, type: 2}
-  rightObs:
-  - {fileID: 1413642681969994, guid: 865d419d7b1494d5b819c48505adda7f, type: 2}
-  - {fileID: 1698579719594758, guid: 591339277fc4e4efea88d319106ae791, type: 2}
-  leftObs:
-  - {fileID: 1219797392156202, guid: 57bd196c7e19145919a8492e8e3c3c75, type: 2}
-  - {fileID: 1768255405725806, guid: e89a17927c6864df0a6ecab53d623514, type: 2}
   Maptype:
-  - {fileID: 1124241672183776, guid: 291130f2285714547abed52a24950fce, type: 2}
-  - {fileID: 1804070668615034, guid: 3ee3fa9de2fff9049be3e7bc6f8e0267, type: 2}
-  - {fileID: 1087683992516580, guid: 091577581da363747bcf28b69d97a14f, type: 2}
-  - {fileID: 1511716998303010, guid: c4ce4f4e8bc2f4e4e9827c15578242bd, type: 2}
-  - {fileID: 1677558853621948, guid: cae1c1a4a74b090419e6ea2e754475bc, type: 2}
-  - {fileID: 1588941753233082, guid: 9f5f1df9e9cafbe4baa4ac41d76db61b, type: 2}
-  - {fileID: 1426641738115068, guid: 2f3c2fb3432696c49966783b0acaa2fc, type: 2}
-  - {fileID: 1844623412366820, guid: 7c7386826d0ad459aa8af510fec1c4ec, type: 2}
-  - {fileID: 1214780527555620, guid: bdad5acb752b94358bf2f183042886e1, type: 2}
-  - {fileID: 1447527555639698, guid: 838ffa2d222c84c808aaf6b40fa52a43, type: 2}
-  screenObject: {fileID: 1261839421}
+  - {fileID: 1700818852858322, guid: 0cd874164dd6e46a99859cc92530e1f7, type: 2}
+  - {fileID: 1940142269476512, guid: e3b6b04e155594fd0a0ad7dd0c6d612a, type: 2}
+  - {fileID: 1809485826871418, guid: 932383831fe3d4b40bf1c115914dfea6, type: 2}
   gamestageType: 0
   EpilagicZone: 0
   MesopelagicZone: 0
