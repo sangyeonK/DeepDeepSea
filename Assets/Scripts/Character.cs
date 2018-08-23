@@ -143,27 +143,29 @@ public class Character : MonoBehaviour {
         float horizontalMove = GameManager.Instance.playerHorizontalSpeed * Time.deltaTime;
         float verticalMove = GameManager.Instance.PlayerVerticalSpeed * Time.deltaTime * -1;
 
-      
-        ShockPlayer();
-        if(!shockMode) {
-            if (!death) {
-        
-        // if (Input.touchCount > 0 || Input.GetKey(KeyCode.Mouse0))
-                if(reverse)
+        if (!death)
+        {
+            ShockPlayer();
+            if (!shockMode)
+            {
+                // if (Input.touchCount > 0 || Input.GetKey(KeyCode.Mouse0))
+                if (reverse)
                 {
                     //reverse Move
                     horizontalMove = horizontalMove * -1;
                 }
                 playDepth = Mathf.FloorToInt(gameObject.transform.position.y * -1);
                 GameSceneManager.Instance.UpdateDepthText(playDepth);
+                transform.Translate(horizontalMove, verticalMove, 0.0f);
             }
-            transform.Translate(horizontalMove, verticalMove, 0.0f);
-        }
 
-        if(!death)
-        {
             // 플레이어 사망상태가 아니면 플레이시간은 계속 증가
             playTime += Time.deltaTime;
+        }
+        else
+        {
+            //죽었을 경우, 해류에 따라 좌우로만 캐릭터 이동
+            transform.Translate(horizontalMove, 0.0f, 0.0f);
         }
 
         // 캐릭터 제한위치 벗어나지 않게 보정
