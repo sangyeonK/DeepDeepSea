@@ -22,7 +22,7 @@ public class MapManager : MonoBehaviour
     public GameObject[] rightObs;
     public GameObject[] leftObs;
     public GameObject[] Maptype;
-
+    public GameObject screenObject;
     public GAMESTAGETYPE gamestageType;
     public bool EpilagicZone;//표해수층
     public bool MesopelagicZone;//중심해층
@@ -45,7 +45,7 @@ public class MapManager : MonoBehaviour
 
     public Text timer;
 
-    private GameObject screenObject;
+   
 
     public void UpdateLevelTimer(float totalSeconds)
     {
@@ -86,7 +86,7 @@ public class MapManager : MonoBehaviour
             gamestageType = GAMESTAGETYPE.GamePlay;          
         }
 
-        InstantiateMapType(Define.SCREEN_HEIGHT * -3);
+    InstantiateMapType(Define.SCREEN_HEIGHT * -3);
     }
 
     public void Update()
@@ -137,7 +137,7 @@ public class MapManager : MonoBehaviour
             euler.z = Random.Range(-180.0f, 180.0f);
             euler.y= Random.Range(-180.0f, 180.0f);
             ROBJ[Random.Range(0, ROBJ.Length)].transform.eulerAngles = euler;
-           //ㄴ ROBJ[Random.Range(0, ROBJ.Length)].transform.rotation = Random.rotation;
+            ROBJ[Random.Range(0, ROBJ.Length)].transform.rotation = Random.rotation;
            
             float MyAngle = Random.Range(-180f, 180f);
 
@@ -162,21 +162,23 @@ public class MapManager : MonoBehaviour
 
             location = screenObject.transform.position + new Vector3(Random.Range(1.4f, 2.4f),  -7.07f);
             Instantiate(itemrandom[Random.Range(0, itemrandom.Length)], location, quart);
+
+
             location1 =screenObject.transform.position + new Vector3(Random.Range(-4.0f, -2.0f), -7.07f);
             Instantiate(itemrandom[Random.Range(0, itemrandom.Length)], location1, quart);
 
             Debug.Log("distance");
 
-            location2 = screenObject.transform.position + new Vector3(Random.Range(-6.0f, -4.0f),Random.Range(-14.0f, -2.0f) );
+            location2 = screenObject.transform.position + new Vector3(Random.Range(-6.0f, -4.0f),Random.Range(-8.0f, -2.0f) );
             Instantiate(ROBJ[Random.Range(0, ROBJ.Length)], location2, quart);
 
-            location3 = screenObject.transform.position + new Vector3(Random.Range(3.0f, 5.0f), Random.Range(-14.0f, -2.0f));
+            location3 = screenObject.transform.position + new Vector3(Random.Range(3.0f, 5.0f), Random.Range(-14.0f, -7.9f));
             Instantiate(ROBJ[Random.Range(0, ROBJ.Length)], location3,quart);
 
-            location4 = screenObject.transform.position + new Vector3(Random.Range(4.5f, 6.0f), Random.Range(-14.0f, -2.0f));
+            location4 = screenObject.transform.position + new Vector3(Random.Range(5.0f, 6.0f), Random.Range(-14.0f, -2.0f));
             Instantiate(leftObs[Random.Range(0, leftObs.Length)], location4, rightangle);
            
-            location5= screenObject.transform.position + new Vector3(Random.Range(-8.0f, -6.5f), Random.Range(-14.0f, -2.0f));
+            location5= screenObject.transform.position + new Vector3(Random.Range(-8.0f, -7.0f), Random.Range(-14.0f, -2.0f));
             Instantiate(rightObs[Random.Range(0, rightObs.Length)], location5, leftangle);
 
             location6 = screenObject.transform.position + new Vector3(-3, -25);
@@ -190,13 +192,16 @@ public class MapManager : MonoBehaviour
         }
     }
 
-    public void InstantiateMapType(float posY)
+ public void InstantiateMapType(float posY)
     {
-        Vector2 location = new Vector2(0.0f, posY);
+        Vector2 location =   new Vector2(0.0f, posY);
         GameObject mapTypeObj = Instantiate(Maptype[Random.Range(0, Maptype.Length)], location, Quaternion.identity);
         mapTypeObj.GetComponent<MapPreset>().SetMapManager(gameObject);
     }
 
+
+
+   
 }
 
 
