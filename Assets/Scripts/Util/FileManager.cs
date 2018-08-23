@@ -28,44 +28,42 @@ public class FileManager {
 	{
 		File.Delete(FILE_PATH);
 	}
+		
 
-    public void SaveGameData(GameData gameData)
-    {
-        var binaryFormatter = new BinaryFormatter();
-        FileStream file;
-
-        file = File.Open(FILE_PATH, FileMode.Create);
-
-        Debug.Log("before filelength: " + file.Length);
-
-        binaryFormatter.Serialize(file, gameData);
-
-        Debug.Log("after filelength: " + file.Length);
-
-        file.Close();
-
-    }
-
-    public GameData LoadGameData()
+	public void Save(int playTime, int depth) 
 	{
-		GameData gameData = new GameData();
+		var binaryFormatter = new BinaryFormatter();
+		FileStream file;
+		List<GameData> gameDatas = LoadGameData();
+       
+		file = File.Open(FILE_PATH, FileMode.Create);
+       
+		Debug.Log("before filelength: " + file.Length);
+             
+		gameDatas.Add(new GameData(playTime, depth));
+
+		binaryFormatter.Serialize(file, gameDatas);
+
+		Debug.Log("after filelength: " + file.Length);
+
+		file.Close();
+        
+	}
+    
+	public List<GameData> LoadGameData()
+	{
+		List<GameData> gameDatas = new List<GameData>();
 
 		if (File.Exists(FILE_PATH)){
-            try
-            {
-                var binaryFormatter = new BinaryFormatter();
-                using (var file = File.Open(FILE_PATH, FileMode.Open))
-                {
-                    gameData = (GameData)binaryFormatter.Deserialize(file);
-                }
-            }
-            catch(Exception e)
-            {
-                Debug.LogError(e);
-            }
+			var binaryFormatter = new BinaryFormatter();
+			var file = File.Open(FILE_PATH, FileMode.Open);
+
+			gameDatas = (List<GameData>)binaryFormatter.Deserialize(file);
+            Debug.Log(gameDatas.Count);
+			file.Close();
 		}
 
-		return gameData;
+		return gameDatas;
 	}
     
 }

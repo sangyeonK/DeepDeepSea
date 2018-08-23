@@ -21,7 +21,6 @@ public class GameSceneManager : MonoBehaviour {
     [Header("Canvas UI")]
     public GameObject pausePanel;
     public GameObject gameOverPanel;
-    public GameObject playguidePanel;
 
     private GameObject depthText;
 
@@ -80,12 +79,6 @@ public class GameSceneManager : MonoBehaviour {
     public void UpdateDepthText(int playDepth)
     {
         depthText.GetComponent<UIMoveText>().UpdateDepth(playDepth);
-    }
-
-    public void StartPlayGuide()
-    {
-        GameManager.Instance.SetPause(true);
-        playguidePanel.SetActive(true);
     }
 
     

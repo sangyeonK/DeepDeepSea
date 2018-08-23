@@ -22,15 +22,16 @@ public class RankSceneManager : MonoBehaviour {
     public Text averageDepth;
 
    
-	GameData gameData;
+	List<GameData> gameDatas;
 
 
 	// Use this for initialization
 	void Start () {
 
-		gameData = FileManager.Instance.LoadGameData();
+		gameDatas = FileManager.Instance.LoadGameData();
 
-		foreach(GameData.Record data in gameData.history) {
+		Debug.Log(gameDatas.Count);
+		foreach(GameData data in gameDatas) {
 			Debug.Log(data.playTime + "/" + data.depth);
 		}
 
@@ -51,16 +52,16 @@ public class RankSceneManager : MonoBehaviour {
 
 	private void SetDatas()
     {
-		totalPlay.text = gameData.history.Count.ToString();
+		totalPlay.text = gameDatas.Count.ToString();
 
-		int totalPlayCount = gameData.history.Count;
+		int totalPlayCount = gameDatas.Count;
 
         int totalPlayTime = 0;
         int totalDepth = 0;
 
         int bestDepth = 0;
         
-        foreach (GameData.Record data in gameData.history)
+        foreach (GameData data in gameDatas)
         {
             totalPlayTime += data.playTime;
             totalDepth += data.depth;
@@ -78,7 +79,7 @@ public class RankSceneManager : MonoBehaviour {
 		playTime.text = timeText;
 		depth.text = totalDepth.ToString() + "M";
 
-        int average_depth = totalPlayCount > 0 ? totalDepth / totalPlayCount : 0;
+		int average_depth = totalDepth / totalPlayCount;
 		bestDepthText.text = bestDepth.ToString() + " M";
 		averageDepth.text = average_depth.ToString() + "M";
 

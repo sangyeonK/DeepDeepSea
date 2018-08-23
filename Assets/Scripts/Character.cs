@@ -17,8 +17,8 @@ public class Character : MonoBehaviour {
 
     public float health = 100.0f;
     private const float coef = 0.2f;
-    private bool death;
-    private bool reverse;
+    public bool death;
+    public bool reverse;
 
     private const float SHOCK_TIME = 2.0f;
     private const float SHOCK_POWER = 2.0f;
@@ -56,8 +56,6 @@ public class Character : MonoBehaviour {
     private float minX = -4.5f;
     [SerializeField]
     private float maxX = 4.5f;
-    [SerializeField]
-    private float healthLossRate = 2f;
 
     void Start()
     {
@@ -153,6 +151,8 @@ public class Character : MonoBehaviour {
                 {
                     //reverse Move
                     horizontalMove = horizontalMove * -1;
+                    AudioSource audio2 = GetComponent<AudioSource>();
+                    audio2.Play();
                 }
                 playDepth = Mathf.FloorToInt(gameObject.transform.position.y * -1);
                 GameSceneManager.Instance.UpdateDepthText(playDepth);
@@ -176,41 +176,16 @@ public class Character : MonoBehaviour {
         }        
     }
 
-    public void GetItem(Item.ItemKind itemKind, float value)
+    public void GetItem(Item.ItemKind itemKind)
     {
-        // 아이템 처리는 이 함수에서 수행한다.
         switch (itemKind) 
         {
             case Item.ItemKind.SPEED_BOOST:
+                Debug.Log("@###@#@");
                 GameManager.Instance.SpeedPlus();
-                break;
-            case Item.ItemKind.OXYGEN:
-                health += value;
                 break;
         }
 
-        // 기존에 남아있던 아이템 처리 코드
-        //if (collision.tag == "fast")
-        //{
-        //    GameManager.Instance.playerHorizontalSpeed += 0.01f;
-        //    GameManager.Instance.playerVerticalSpeed += 0.01f;
-
-        //}
-        //if (collision.tag == "slow")
-        //{
-        //    GameManager.Instance.playerHorizontalSpeed -= 0.01f;
-        //    GameManager.Instance.playerVerticalSpeed -= 0.01f;
-        //}
-        //if (collision.tag == "big")
-        //{
-        //    transform.localScale += new Vector3(0.1F, 0.1F, 0);
-        //    health -= 5;
-        //}
-        //if (collision.tag == "small")
-        //{
-        //    transform.localScale += new Vector3(-0.1F, -0.1F, 0);
-        //    health += 5;
-        //}
         PlaySound(SOUND_EFFECT.ITEM);
     }
 
@@ -251,6 +226,35 @@ public class Character : MonoBehaviour {
             return;
 
         Animator ani = GetComponentInChildren<Animator>();
+
+        //item
+        if (collision.tag == "OXY")
+        {
+            health += 5;
+ 
+        }
+        if (collision.tag == "fast")
+        {
+            GameManager.Instance.playerHorizontalSpeed += 0.01f;
+            GameManager.Instance.playerVerticalSpeed += 0.01f;
+
+        }
+        if (collision.tag == "slow")
+        {
+            GameManager.Instance.playerHorizontalSpeed -= 0.01f;
+            GameManager.Instance.playerVerticalSpeed -= 0.01f;
+        }
+        if (collision.tag == "big")
+        {
+            transform.localScale += new Vector3(0.1F, 0.1F, 0);
+            health -= 5;
+        }
+        if (collision.tag == "small")
+        {
+            transform.localScale += new Vector3(-0.1F, -0.1F, 0);
+            health += 5;
+        }
+
 
         //obstacle
         if( !saveMode ) {
@@ -294,7 +298,7 @@ public class Character : MonoBehaviour {
     public void CheckHealth()
     {
         if (!death) {
-            health -= Time.deltaTime * healthLossRate;
+            health -= Time.deltaTime;
 
             if (health <= 0)
             {
@@ -334,7 +338,7 @@ public class Character : MonoBehaviour {
 
     //Left Button
     public void SpeedModeOn() {
-        if (this.enabled && !death)
+        if (!death)
         {   
             Debug.Log("SpeedModeOn");
             verticalImpact *= 2.0f; 
@@ -348,7 +352,7 @@ public class Character : MonoBehaviour {
         }
     }
     public void SpeedModeOff() {
-        if (this.enabled && !death)
+        if (!death)
         {   
             verticalImpact = SHOCK_POWER;
             Debug.Log("SpeedModeOff");

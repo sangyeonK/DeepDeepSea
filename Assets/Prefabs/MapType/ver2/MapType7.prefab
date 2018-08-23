@@ -72,7 +72,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4961903031511178}
   - component: {fileID: 68618327416357744}
-  - component: {fileID: 114853920865407074}
+  - component: {fileID: 114784617227796874}
   m_Layer: 8
   m_Name: MapType7
   m_TagString: Untagged
@@ -452,7 +452,7 @@ MonoBehaviour:
   moveSpeed: 3
   x: 0
   y: 0
---- !u!114 &114853920865407074
+--- !u!114 &114784617227796874
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}

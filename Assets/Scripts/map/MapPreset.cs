@@ -15,14 +15,14 @@ public class MapPreset : MonoBehaviour {
     {
         this.mapManager = mapManager.GetComponent<MapManager>();
     }
-     private void OnTriggerEnter2D(Collider2D collision)
+
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.layer == screenBorder.value)
         {
-//            mapManager.InstantiateMapType(collision.transform.position.y - Define.SCREEN_HEIGHT);
+            mapManager.InstantiateMapType(collision.transform.position.y - Define.SCREEN_HEIGHT);
             // 다음 maptype 이 생성되면 trigger line 제거
             GetComponent<EdgeCollider2D>().enabled = false;
         }
     }
-   
 }

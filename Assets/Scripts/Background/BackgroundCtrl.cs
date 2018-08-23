@@ -41,6 +41,7 @@ public class BackgroundCtrl : MonoBehaviour {
     [SerializeField]
     private StageChangePrefab stageChangePrefabs;
     public float stageChangeTime = 15.0f;
+    public float rockTranslateSpeed = 0.1f;
     private StageNumber currStageNumber;
     private GameObject currStageObject;
 
@@ -147,6 +148,11 @@ public class BackgroundCtrl : MonoBehaviour {
     GameObject InstantiateStagePrefab(GameObject stagePrefab, Vector2 pos)
     {
         GameObject newObject = Instantiate(stagePrefab, pos, Quaternion.identity, gameObject.transform);
+        BGStage BGStage = newObject.GetComponent<BGStage>();
+        if(BGStage)
+        {
+            BGStage.SetRockTranslateSpeed(rockTranslateSpeed);
+        }
         return newObject;
     }
 }

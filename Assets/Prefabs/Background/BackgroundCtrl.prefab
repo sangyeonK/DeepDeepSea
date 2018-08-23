@@ -69,3 +69,4 @@ MonoBehaviour:
     stage_4_to_5: {fileID: 1363413159328438, guid: d7e9b3efdc3bcd74282574dfe8ddb629,
       type: 2}
   stageChangeTime: 30
+  rockTranslateSpeed: 0.1

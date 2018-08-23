@@ -46,9 +46,6 @@ public class GameManager : MonoBehaviour {
     [SerializeField]
     public float playerVerticalSpeed = 3.0f;   // 플레이어의 세로축 이동 속도 ( private )
     public float playerHorizontalSpeed = 3.0f;  // 플레이어의 가로축 이동 속도
-    public bool AlwaysSeePlayGuide = false;
-
-    private GameData gameData;
 
     public float BackgroundRockTranslated
     {
@@ -68,7 +65,6 @@ public class GameManager : MonoBehaviour {
         instance = this;
         DontDestroyOnLoad(gameObject);
         SceneManager.sceneLoaded += OnSceneLoaded;
-        gameData = FileManager.Instance.LoadGameData();
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
@@ -105,10 +101,6 @@ public class GameManager : MonoBehaviour {
     public void StartPlay()
     {
         onStartPlay();
-        if(!gameData.seePlayGuide || AlwaysSeePlayGuide)
-        {
-            GameSceneManager.Instance.StartPlayGuide();
-        }
     }
 
     public void AddStartPlayListener(StartPlayHandler listener)
@@ -125,21 +117,6 @@ public class GameManager : MonoBehaviour {
     {
         GameSceneManager sceneManager = GameObject.FindGameObjectWithTag("SceneManager").GetComponent<GameSceneManager>();
         sceneManager.OnGameOver(playTime, playDepth);
-        AddPlayRecord(playTime, playDepth);
-
     }
-
-    public void MarkSeePlayGuide()
-    {
-        gameData.seePlayGuide = true;
-        FileManager.Instance.SaveGameData(gameData);
-    }
-
-    private void AddPlayRecord(float playTime, int playDepth)
-    {
-        gameData.history.Add(new GameData.Record(Mathf.FloorToInt(playTime), playDepth));
-        FileManager.Instance.SaveGameData(gameData);
-    }
-
 
 }
