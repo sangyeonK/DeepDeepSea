@@ -386,7 +386,7 @@ Prefab:
 Camera:
   m_CorrespondingSourceObject: {fileID: 20216202427436244, guid: 759fb396acc051944aa3277d2ed694f4,
     type: 2}
-  m_PrefabInternal: {fileID: 1345618150}
+  m_PrefabInternal: {fileID: 1489515465}
 --- !u!1 &619382094
 GameObject:
   m_ObjectHideFlags: 0
@@ -1550,7 +1550,7 @@ Prefab:
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1031105306886628, guid: 759fb396acc051944aa3277d2ed694f4,
     type: 2}
-  m_PrefabInternal: {fileID: 1345618150}
+  m_PrefabInternal: {fileID: 1489515465}
 --- !u!1 &1320560762 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1772049380785146, guid: 8097b256e9505904dbbb33449afeacc2,
@@ -1571,7 +1571,7 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 224486168327737290, guid: b1478531e27310b41a326a114e5507b4,
     type: 2}
   m_PrefabInternal: {fileID: 760380431}
---- !u!1001 &1345618150
+--- !u!1001 &1489515465
 Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2

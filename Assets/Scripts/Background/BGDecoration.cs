@@ -10,14 +10,14 @@ public class BGDecoration : MonoBehaviour {
     {
         if (reverse)
         {
-            this.transform.position = stopPosition;
+            this.transform.localPosition = stopPosition;
             SpriteRenderer sr = GetComponent<SpriteRenderer>();
             sr.flipX = true;
             this.movementDirection = (startPosition - stopPosition) * velocity;
         }
         else
         {
-            this.transform.position = startPosition;
+            this.transform.localPosition = startPosition;
             this.movementDirection = (stopPosition - startPosition) * velocity;
         }
     }

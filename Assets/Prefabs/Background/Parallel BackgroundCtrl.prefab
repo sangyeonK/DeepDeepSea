@@ -11,6 +11,22 @@ Prefab:
   m_SourcePrefab: {fileID: 0}
   m_RootGameObject: {fileID: 1409459508488368}
   m_IsPrefabAsset: 1
+--- !u!1 &1018840049319920
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4390485682893480}
+  - component: {fileID: 114903673367181216}
+  m_Layer: 0
+  m_Name: BGDecoGenerator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1154879374925928
 GameObject:
   m_ObjectHideFlags: 1
@@ -130,7 +146,7 @@ GameObject:
   - component: {fileID: 4148905712459404}
   - component: {fileID: 20416177366542774}
   m_Layer: 0
-  m_Name: Camera
+  m_Name: InternalCamera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -148,6 +164,21 @@ GameObject:
   m_Layer: 9
   m_Name: left
   m_TagString: Background_LeftRock
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1995962659788452
+GameObject:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4824463685488022}
+  m_Layer: 0
+  m_Name: BGDecoratorZone
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -187,9 +218,10 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 4824463685488022}
   m_Father: {fileID: 4970827829191326}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4234468706378604
 Transform:
@@ -204,7 +236,20 @@ Transform:
   - {fileID: 4962760154140190}
   - {fileID: 4847217603659036}
   m_Father: {fileID: 4970827829191326}
-  m_RootOrder: 1
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4390485682893480
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1018840049319920}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4970827829191326}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4489712662788796
 Transform:
@@ -230,6 +275,19 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4847217603659036}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4824463685488022
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1995962659788452}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4148905712459404}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4847217603659036
@@ -272,6 +330,7 @@ Transform:
   m_LocalPosition: {x: 20, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 4390485682893480}
   - {fileID: 4148905712459404}
   - {fileID: 4234468706378604}
   m_Father: {fileID: 0}
@@ -331,6 +390,29 @@ MonoBehaviour:
   internalCamera: {fileID: 20416177366542774}
   parallexRatio: 8
   rockTranslateSpeed: 0.1
+--- !u!114 &114903673367181216
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1018840049319920}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07fe992f6ab9c8346b03c29ae92e5232, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  generateZone: {fileID: 1995962659788452}
+  BGDecorations:
+  - {fileID: 1931868448201928, guid: d3df6431ca1a0904798252e9a416a506, type: 2}
+  - {fileID: 1710740555446504, guid: a3a81a8e504e3b74ab275680f4bd2e2e, type: 2}
+  - {fileID: 1710740555446504, guid: a3a81a8e504e3b74ab275680f4bd2e2e, type: 2}
+  - {fileID: 1710740555446504, guid: a3a81a8e504e3b74ab275680f4bd2e2e, type: 2}
+  minStartPositionY: -9.6
+  maxStartPositionY: 9.6
+  minDiffOfMovementY: 5
+  maxDiffOfMovementY: 15
+  minMovementVelocity: 0.05
+  maxMovementVelocity: 0.25
 --- !u!212 &212337498218892836
 SpriteRenderer:
   m_ObjectHideFlags: 1
