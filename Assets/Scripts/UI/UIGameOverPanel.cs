@@ -14,7 +14,7 @@ public class UIGameOverPanel : MonoBehaviour {
         TimeSpan ts = new TimeSpan(0, 0, playTime);
         
         this.playTime.text = ts.ToString();
-        this.playDepth.text = playDepth.ToString();
+        this.playDepth.text = Define.PELAGIC.GetName(playDepth);
     }
 
     
