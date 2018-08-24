@@ -2,16 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class rotate : MonoBehaviour {
+public class rotate : MonoBehaviour
+{
 
-    public GameObject go;
-    float angle = 360.0f; // Degree per time unit
-    float time = 1.0f; // Time unit in sec
-  //  Vector3 axis = Vector3.up; // Rotation axis, here it the yaw axis
-    Vector3 axis2 = Vector3.forward;
-    private void Update()
+      public float rotFl;
+      // Use this for initialization
+      void Start()
+      {
+
+      }
+      
+      void Update()
     {
-        go.GetComponent<Transform>().RotateAround(Vector3.zero, axis2, angle * Time.deltaTime / time);
+        transform.localEulerAngles = new Vector3(0, 0, Mathf.PingPong(Time.time * 50, rotFl));
+                 /*if( check something so that switch occurs){
+          transform.localEulerAngles = new Vector3(0, 0, Mathf.PingPong(Time.time * 50, -rotFl));    
+           }*/
     }
 
 }
