@@ -9,7 +9,19 @@ public class TitleSceneManager : MonoBehaviour {
 
     [Header("Canvas UI")]
     public GameObject quitPanel;
+    public GameObject startButton;
 
+    private void Start()
+    {
+        StartCoroutine(ActiveStartButton());
+    }
+
+    IEnumerator ActiveStartButton()
+    {
+        yield return new WaitForSeconds(3f);
+
+        startButton.SetActive(true);
+    }
 
     public void OnStartButton()
     {

@@ -1,11 +1,34 @@
-﻿using System.Collections; using System.Collections.Generic; using UnityEngine;  public class rightObs : MonoBehaviour {
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
-    public float moveSpeed;     public int x;     public int y;      private void Start()
+public class rightObs : MonoBehaviour
+{
+
+    public float moveSpeed;
+    public int x;
+    public int y;
+
+    private void Start()
     {
         x = Random.Range(-1, -3);
-    }       void Update()     {                  transform.position =            new Vector3(x * Mathf.PingPong(Time.time, 3), transform.position.y, transform.position.z);       }
+    }
+
+
+    void Update()
+    {
+       
+
+        transform.position =
+           new Vector3(x * Mathf.PingPong(Time.time, 3), transform.position.y, transform.position.z);
+
+
+    }
 
 
 
 
-}    
+}
+
+
+

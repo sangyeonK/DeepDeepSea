@@ -12,5 +12,18 @@ public class pingpong : MonoBehaviour {
         x = Random.Range(1, 2);
 	}
 
-           void Update()     {                  transform.position =            new Vector3(x * Mathf.PingPong(Time.time, 2), transform.position.y, transform.position.z);       } 
+   
+
+
+
+    void Update()
+    {
+       
+
+        transform.position =
+           new Vector3(x * Mathf.PingPong(Time.time, 2), transform.position.y, transform.position.z);
+
+
+    }
+
 }
