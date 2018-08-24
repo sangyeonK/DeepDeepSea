@@ -1482,7 +1482,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &800735729
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2076,6 +2076,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mTeamView: {fileID: 1498512370}
   quitPanel: {fileID: 1356834886}
+  startButton: {fileID: 800735728}
 --- !u!1 &1193549411
 GameObject:
   m_ObjectHideFlags: 0
