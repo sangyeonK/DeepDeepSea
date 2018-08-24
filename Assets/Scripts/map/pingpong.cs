@@ -8,7 +8,7 @@ public class pingpong : MonoBehaviour {
   
 
     void Start () {
-        transform.position=new Vector3( Random.Range(-5,5),this.transform.position.y,this.transform.position.z);
+        transform.position=new Vector3( Random.Range(-5,5),Random.Range(-15,5),this.transform.position.z);
 
         x = Random.Range(1, 2);
 	}
