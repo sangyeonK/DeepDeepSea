@@ -5,12 +5,15 @@ using UnityEngine;
 public class rightObs : MonoBehaviour
 {
 
-    public float moveSpeed;
-    public int x;
-    public int y;
-
+    private float moveSpeed;
+    private int x;
+    private int y;
+    private int z;
+    
     private void Start()
     {
+        transform.position=new Vector3( Random.Range(-5,5),Random.Range(-15,-5),z);
+
         x = Random.Range(-1, -3);
     }
 

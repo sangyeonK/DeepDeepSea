@@ -75,7 +75,7 @@ public class MapManager : MonoBehaviour
         EpilagicZone = true;
         gameover = false;
         seameter = 0;
-        InvokeRepeating("SpawnMapType", 10, 10);
+        InvokeRepeating("SpawnMapType", 7, 8.5f);
 
         if (gamestageType == GAMESTAGETYPE.GameStart)
         {
@@ -102,11 +102,11 @@ public class MapManager : MonoBehaviour
     void SpawnMapType()
     {
 
-        if (gameover == false && totalTime > 240)
+        if (gameover == false && totalTime > 260)
         {
             GameObject maptype = (GameObject)Instantiate(Maptype[Random.Range(0, 3)], screenObject.transform.position + new Vector3(0, -25), Quaternion.identity);
         }
-        else if (gameover == false && totalTime < 240)
+        else if (gameover == false && totalTime < 260)
         {
             GameObject maptype = (GameObject)Instantiate(Maptype[Random.Range(4, Maptype.Length)], screenObject.transform.position + new Vector3(0, -35), Quaternion.identity);
         }
