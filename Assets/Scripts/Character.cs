@@ -42,7 +42,7 @@ public class Character : MonoBehaviour {
 
     private float playTime = 0.0f;
     private int playDepth = 0;
-
+    private int nextStageDepth = 0;
 
     enum SOUND_EFFECT
     {
@@ -77,6 +77,7 @@ public class Character : MonoBehaviour {
         horizontalImpact = 0.0f;
         playTime = 0.0f;
         playDepth = 0;
+        nextStageDepth = Define.PELAGIC.GetMaxMeter(playDepth);
         swimSoundRunning = false;
         DecreseEnemySlider();
 
@@ -177,6 +178,11 @@ public class Character : MonoBehaviour {
                     horizontalMove = horizontalMove * -1;
                 }
                 playDepth = Mathf.FloorToInt(gameObject.transform.position.y * -1);
+                if(playDepth > nextStageDepth)
+                {
+                    GameManager.Instance.AdvanceStage();
+                    nextStageDepth = Define.PELAGIC.GetMaxMeter(playDepth);
+                }
                 GameSceneManager.Instance.UpdateDepthText(playDepth);
                 transform.Translate(horizontalMove, verticalMove, 0.0f);
             }

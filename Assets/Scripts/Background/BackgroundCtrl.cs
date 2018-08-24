@@ -40,7 +40,6 @@ public class BackgroundCtrl : MonoBehaviour {
 
     [SerializeField]
     private StageChangePrefab stageChangePrefabs;
-    public float stageChangeTime = 15.0f;
     private StageNumber currStageNumber;
     private GameObject currStageObject;
 
@@ -49,20 +48,10 @@ public class BackgroundCtrl : MonoBehaviour {
         currStageNumber = StageNumber.Stage1;
         currStageObject = InstantiateStagePrefab(stagePrefabs.stage_1, new Vector2(0.0f, 0.0f));
     }
-    // Use this for initialization
-    void Start () {
 
-        StartCoroutine(StageChange());
-    }
-	
-
-    IEnumerator StageChange()
+    public void AdvanceStage()
     {
-        yield return new WaitForSeconds(stageChangeTime);
-
-        ChangeStage(currStageNumber+1);
-
-        StartCoroutine(StageChange());
+        ChangeStage(currStageNumber + 1);
     }
 
     void ChangeStage(StageNumber stage)

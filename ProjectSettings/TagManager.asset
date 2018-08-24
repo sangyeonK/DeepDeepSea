@@ -21,6 +21,7 @@ TagManager:
   - UI
   - SpeedBtn
   - MoveBtn
+  - BackgroundCtrl
   layers:
   - Default
   - TransparentFX

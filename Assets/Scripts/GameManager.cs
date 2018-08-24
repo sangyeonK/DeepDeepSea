@@ -141,5 +141,10 @@ public class GameManager : MonoBehaviour {
         FileManager.Instance.SaveGameData(gameData);
     }
 
+    public void AdvanceStage()
+    {
+        GameObject backgroundCtrl = GameObject.FindGameObjectWithTag("BackgroundCtrl");
+        backgroundCtrl.GetComponent<BackgroundCtrl>().AdvanceStage();
+    }
 
 }

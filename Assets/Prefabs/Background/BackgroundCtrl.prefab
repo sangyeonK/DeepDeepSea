@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 114605137780327514}
   m_Layer: 0
   m_Name: BackgroundCtrl
-  m_TagString: Untagged
+  m_TagString: BackgroundCtrl
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -68,4 +68,3 @@ MonoBehaviour:
       type: 2}
     stage_4_to_5: {fileID: 1363413159328438, guid: d7e9b3efdc3bcd74282574dfe8ddb629,
       type: 2}
-  stageChangeTime: 30
