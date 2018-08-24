@@ -23,21 +23,34 @@ public class GameSceneManager : MonoBehaviour {
     public GameObject gameOverPanel;
     public GameObject playguidePanel;
 
-    private GameObject depthText;
+    // private GameObject depthText;
+    // private GameObject stageText;
+    // private Slider depthSlider;
+    public GameObject StageUI;
 
     private void Awake()
     {
         _instance = this;
 
-        GameObject[] uiObjects = GameObject.FindGameObjectsWithTag("UI");
+        // GameObject[] uiObjects = GameObject.FindGameObjectsWithTag("UI");
 
-        foreach(GameObject uiObject in uiObjects)
-        {
-            if(uiObject.name == "moveText")
-            {
-                depthText = uiObject;
-            }
-        }
+        // foreach(GameObject uiObject in uiObjects)
+        // {
+        //     if( uiObject.name == "StageUI") {
+        //         StageUI = uiObject;
+        //     }
+
+        //     if(uiObject.name == "moveText")
+        //     {
+        //         depthText = uiObject;
+        //     } 
+        //     if (uiObject.name == "stageText") {
+        //         stageText = uiObject;
+        //     }
+        //     if (uiObject.name == "Meter Slider") {
+        //         depthSlider = uiObject;
+        //     }
+        // }
     }
 
 #if (UNITY_IPHONE || UNITY_ANDROID)
@@ -79,7 +92,7 @@ public class GameSceneManager : MonoBehaviour {
 
     public void UpdateDepthText(int playDepth)
     {
-        depthText.GetComponent<UIMoveText>().UpdateDepth(playDepth);
+        StageUI.GetComponent<UIStage>().UpdateDepth(playDepth);
     }
 
     public void StartPlayGuide()
