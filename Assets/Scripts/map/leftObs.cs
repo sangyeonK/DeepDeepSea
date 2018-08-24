@@ -6,17 +6,15 @@ public class leftObs : MonoBehaviour
 {
 
 
-private GameObject player;
 
     private float moveSpeed;
     private int x;
-    private int y;
-    private int z;
+  
 
      void Start()
     {
        
-        transform.position=new Vector3( Random.Range(-5,5),y,z);
+        transform.position=new Vector3( Random.Range(-5,5),this.transform.position.y,this.transform.position.z);
         x = Random.Range(1, 3);
     }
 
