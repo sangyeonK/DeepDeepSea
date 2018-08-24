@@ -32,6 +32,13 @@ public class Character : MonoBehaviour {
     float horizontalImpact;
 
     public Slider playerSlider;
+    public Image playerStatusImage;
+    public Sprite[] statusSprites;
+    private const int HEALTH_NORMAL = 0;
+    private const int HEALTH_SOSO = 1;
+    private const int HEALTH_BAD = 2;
+    private int currStatus;
+
 
     private float playTime = 0.0f;
     private int playDepth = 0;
@@ -126,11 +133,26 @@ public class Character : MonoBehaviour {
         if (slider != null)
         {
             slider.value = health > 0 ? health : 0;
+            Debug.Log("SLIDER ###" + slider.value);
+            if (slider.value > 50 ) {
+                CharacterStatus(HEALTH_NORMAL);
+            } else if (slider.value > 30) {
+                CharacterStatus(HEALTH_SOSO);
+            } else {
+                CharacterStatus(HEALTH_BAD);
+            }
         }
         yield return new WaitForSeconds(1);
 
         if(!death)
             StartCoroutine(DecreseSlider(playerSlider));
+    }
+
+    private void CharacterStatus(int status) {
+        if (status != currStatus) {
+            currStatus = status;
+            playerStatusImage.sprite = statusSprites[status];
+        }
     }
 
     // float moveSpeedBoostTime = 0.0f;

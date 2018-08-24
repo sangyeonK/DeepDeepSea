@@ -2285,6 +2285,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114625089055375356, guid: 655031113311c3d47afe4ec72139e30e,
+        type: 2}
+      propertyPath: statusSprites.Array.size
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4387655015396572, guid: 655031113311c3d47afe4ec72139e30e, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -2322,6 +2327,29 @@ Prefab:
       propertyPath: playerSlider
       value: 
       objectReference: {fileID: 770435939}
+    - target: {fileID: 114625089055375356, guid: 655031113311c3d47afe4ec72139e30e,
+        type: 2}
+      propertyPath: playerStatusImage
+      value: 
+      objectReference: {fileID: 748446677}
+    - target: {fileID: 114625089055375356, guid: 655031113311c3d47afe4ec72139e30e,
+        type: 2}
+      propertyPath: statusSprites.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: 0956ca9d1cf0541bb80a243e795e6f03,
+        type: 3}
+    - target: {fileID: 114625089055375356, guid: 655031113311c3d47afe4ec72139e30e,
+        type: 2}
+      propertyPath: statusSprites.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: 5acb54195a5154fcbabc4004c003fdd8,
+        type: 3}
+    - target: {fileID: 114625089055375356, guid: 655031113311c3d47afe4ec72139e30e,
+        type: 2}
+      propertyPath: statusSprites.Array.data[2]
+      value: 
+      objectReference: {fileID: 21300000, guid: 9765e6638ba984e198e468bc4e1278dd,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 655031113311c3d47afe4ec72139e30e, type: 2}
   m_IsPrefabAsset: 0
