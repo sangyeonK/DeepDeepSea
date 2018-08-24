@@ -12,7 +12,7 @@ public class rightObs : MonoBehaviour
 
     private void Start()
     {
-        transform.position=new Vector3( Random.Range(-5,5),Random.Range(-17,-5),z);
+        transform.position=new Vector3( Random.Range(-5,5),y,z);
 
         x = Random.Range(-1, -3);
     }

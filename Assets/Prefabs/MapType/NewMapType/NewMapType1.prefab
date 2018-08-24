@@ -422,7 +422,7 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0.0000019073486}
-  m_Size: {x: 2.93, y: 7.4099994}
+  m_Size: {x: 3.49, y: 7.4099994}
   m_Direction: 0
 --- !u!70 &70857650399304318
 CapsuleCollider2D:
@@ -452,7 +452,7 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0.0000019073486}
-  m_Size: {x: 2.93, y: 7.5299997}
+  m_Size: {x: 3.16, y: 7.5299997}
   m_Direction: 0
 --- !u!70 &70938289492528188
 CapsuleCollider2D:
@@ -480,9 +480,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb02092958d104fd3b231cc3a988f165, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 0
-  x: 0
-  y: 0
 --- !u!114 &114017844021415410
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -494,9 +491,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a9ba85b4051c435bbf80db287b692bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 0
-  x: 0
-  y: 0
 --- !u!114 &114289435370070854
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -508,9 +502,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56a9d088c0ba34ea1b14c3a929277ae8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 0
-  x: 0
-  y: 0
 --- !u!114 &114379609128915222
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -534,9 +525,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb02092958d104fd3b231cc3a988f165, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 0
-  x: 0
-  y: 0
 --- !u!114 &114830688213310946
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -548,9 +536,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a9ba85b4051c435bbf80db287b692bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 0
-  x: 0
-  y: 0
 --- !u!212 &212096172554085396
 SpriteRenderer:
   m_ObjectHideFlags: 1

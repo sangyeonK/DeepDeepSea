@@ -16,7 +16,7 @@ private GameObject player;
      void Start()
     {
        
-        transform.position=new Vector3( Random.Range(-5,5),Random.Range(-15,-5),z);
+        transform.position=new Vector3( Random.Range(-5,5),y,z);
         x = Random.Range(1, 3);
     }
 
