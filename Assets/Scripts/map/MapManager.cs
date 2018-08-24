@@ -108,7 +108,7 @@ public class MapManager : MonoBehaviour
         }
         else if (gameover == false && totalTime < 240)
         {
-            GameObject maptype = (GameObject)Instantiate(Maptype[Random.Range(4, Maptype.Length)], screenObject.transform.position + new Vector3(0, -25), Quaternion.identity);
+            GameObject maptype = (GameObject)Instantiate(Maptype[Random.Range(4, Maptype.Length)], screenObject.transform.position + new Vector3(0, -35), Quaternion.identity);
         }
     }
 

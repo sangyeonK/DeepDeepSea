@@ -635,6 +635,8 @@ MonoBehaviour:
   Maptype:
   - {fileID: 1623641309654122, guid: df48f8debb5ec41e3b50165612eebc19, type: 2}
   - {fileID: 1211475851511698, guid: 7a5fa20c2168d44c7bc76364109cdae6, type: 2}
+  - {fileID: 1843816875948584, guid: 645a71548c0304424a561348e33f3adb, type: 2}
+  - {fileID: 1037428015921026, guid: 64534ff0b3b84437791c63214799f1e5, type: 2}
   - {fileID: 1588166330018738, guid: 21f54c5665d2342059b16bb0c11cd349, type: 2}
   - {fileID: 1226239706516876, guid: 0e7e4eb6c51e34e44aba042d7902d9ec, type: 2}
   - {fileID: 1308461777506300, guid: 0455a157c380c468c8be03c51dbea297, type: 2}
