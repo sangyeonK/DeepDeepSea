@@ -60,6 +60,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1384461984995832
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4257392110694956}
+  - component: {fileID: 114170690346150108}
+  m_Layer: 0
+  m_Name: CreatureGenerator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1420756188843598
 GameObject:
   m_ObjectHideFlags: 1
@@ -145,6 +161,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!4 &4257392110694956
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1384461984995832}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4779181784810332}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4310766210807320
 Transform:
   m_ObjectHideFlags: 1
@@ -200,6 +229,7 @@ Transform:
   - {fileID: 4538960549065966}
   - {fileID: 4310766210807320}
   - {fileID: 4855013829669062}
+  - {fileID: 4257392110694956}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -474,6 +504,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item: {fileID: 1055340634989706, guid: 2d9e725df9a7a824d981b88e3522c469, type: 2}
+--- !u!114 &114170690346150108
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1384461984995832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aac8428bbcde11745af28081664b1dcf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  creatures:
+  - {fileID: 114808076049852512, guid: 4871dce6469f277448a9a8d46a3fed87, type: 2}
+  - {fileID: 114433882881816668, guid: ef39ec9064009b244967eac4e80bf2b5, type: 2}
+  - {fileID: 114161818089199282, guid: 5dd8ce3646a87714da0c691ccd5b349e, type: 2}
+  - {fileID: 114908049375136354, guid: 30c3ca2c7cc47fa439e3f29ec7afcb89, type: 2}
+  - {fileID: 114852695863903544, guid: a97a96e494a9eb147901e157c3244c24, type: 2}
+  - {fileID: 114491213611041700, guid: d5097215e924b3f4f9cb4590620aa56f, type: 2}
 --- !u!114 &114182840086068090
 MonoBehaviour:
   m_ObjectHideFlags: 1
