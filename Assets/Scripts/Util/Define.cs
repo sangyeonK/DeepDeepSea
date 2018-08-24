@@ -24,6 +24,16 @@ public class Define
 			public const int HADALPELAGIC = int.MaxValue;
 		}
 
+        enum LEVEL
+        {
+            EPIPELAGIC = 1,
+            MESOPELAGIC,
+            BATHYPELAGIC,
+            ABYSSOPELAGIC,
+            HADALPELAGIC
+
+        }
+
 		public static string GetName(int depth)
 		{
 			if (depth < DEPTH.EPIPELAGIC)
@@ -51,6 +61,20 @@ public class Define
 			else
 				return DEPTH.HADALPELAGIC;
 		}
+
+        public static int GetLevel(int depth)
+        {
+            if (depth < DEPTH.EPIPELAGIC)
+                return (int)LEVEL.EPIPELAGIC;
+            else if (depth < DEPTH.MESOPELAGIC)
+                return (int)LEVEL.MESOPELAGIC;
+            else if (depth < DEPTH.BATHYPELAGIC)
+                return (int)LEVEL.BATHYPELAGIC;
+            else if (depth < DEPTH.ABYSSOPELAGIC)
+                return (int)LEVEL.ABYSSOPELAGIC;
+            else
+                return (int)LEVEL.HADALPELAGIC;
+        }
 	}
 
 	public static string DepthToName(int depth)

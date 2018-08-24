@@ -15,10 +15,14 @@ public class UIPlayHistoryPanel : MonoBehaviour {
     public Text bestDepthText;
     public Text bestStage;
 
-    public RawImage averageImage;
     public Text averageStage;
     public Text averageMeter;
     public Text averageDepth;
+
+    public Sprite[] backImages;
+    public RawImage backImage;
+    public Sprite[] mapImages;
+    public RawImage mapImage;
 
 
     GameData gameData;
@@ -65,6 +69,19 @@ public class UIPlayHistoryPanel : MonoBehaviour {
 
         bestStage.text = Define.DepthToName(bestDepth);
         averageStage.text = Define.DepthToName(average_depth);
+
+        int bestLevel = Define.PELAGIC.GetLevel(bestDepth);
+        int averageLevel = Define.PELAGIC.GetLevel(average_depth);
+
+        // 플레이어 기록에 따라 이미지 변경
+        if (bestLevel - 1 < backImages.Length)
+        {
+            backImage.texture = backImages[bestLevel - 1].texture;
+        }
+        if (averageLevel - 1 < mapImages.Length)
+        {
+            mapImage.texture = mapImages[averageLevel - 1].texture;
+        }
 
     }
 }

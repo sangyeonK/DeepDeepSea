@@ -96,7 +96,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1330957878443498
 GameObject:
   m_ObjectHideFlags: 0
@@ -296,7 +296,7 @@ GameObject:
   - component: {fileID: 222024028563428768}
   - component: {fileID: 114606896754333078}
   m_Layer: 5
-  m_Name: AverageImage
+  m_Name: MapImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -458,7 +458,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Texture: {fileID: 2800000, guid: 82667eec7bcfc4c9f9b60268040644e8, type: 3}
+  m_Texture: {fileID: 2800000, guid: bb61f28b040b8d548a38aac17234d834, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -780,7 +780,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Texture: {fileID: 2800000, guid: c02b7c3ebf744403eb7af4fcbc07f266, type: 3}
+  m_Texture: {fileID: 2800000, guid: 9070969ce84ed594095fe4e668dd7e8b, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -970,10 +970,23 @@ MonoBehaviour:
   meter: {fileID: 114274137030099946}
   bestDepthText: {fileID: 114339889654858336}
   bestStage: {fileID: 114948639944752540}
-  averageImage: {fileID: 114606896754333078}
   averageStage: {fileID: 114246337273304848}
   averageMeter: {fileID: 114754157221586946}
   averageDepth: {fileID: 114753348606810056}
+  backImages:
+  - {fileID: 21300000, guid: bb61f28b040b8d548a38aac17234d834, type: 3}
+  - {fileID: 21300000, guid: d2a080e7f3f1b284b8097df9b868ad9d, type: 3}
+  - {fileID: 21300000, guid: 24fdf026ee1603a4680dca3cb60969e0, type: 3}
+  - {fileID: 21300000, guid: fc2194127f32f9c4a9840666b131ea1b, type: 3}
+  - {fileID: 21300000, guid: 7cac81db053def04f939b546e80f35ad, type: 3}
+  backImage: {fileID: 114121753513488420}
+  mapImages:
+  - {fileID: 21300000, guid: 9070969ce84ed594095fe4e668dd7e8b, type: 3}
+  - {fileID: 21300000, guid: 97ae61a83141bb144b5f3463b193d3b0, type: 3}
+  - {fileID: 21300000, guid: d0fde1b629d78404fbfbdeaada2a9c90, type: 3}
+  - {fileID: 21300000, guid: 0e7ad579e75592044b0389527a8205d0, type: 3}
+  - {fileID: 21300000, guid: 0012819ada835c042a8950d0e754cc64, type: 3}
+  mapImage: {fileID: 114606896754333078}
 --- !u!114 &114922768737400200
 MonoBehaviour:
   m_ObjectHideFlags: 1
