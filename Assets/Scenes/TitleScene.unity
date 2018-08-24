@@ -257,7 +257,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: dprocess@naver.com
+  m_Text: 'shypang@naver.com
+
+'
 --- !u!222 &157643254
 CanvasRenderer:
   m_ObjectHideFlags: 0
