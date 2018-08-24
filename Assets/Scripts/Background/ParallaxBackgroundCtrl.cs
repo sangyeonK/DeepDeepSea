@@ -88,8 +88,8 @@ public class ParallaxBackgroundCtrl : MonoBehaviour
 
     private float CalcParallelCameraPosY()
     {
-        float posY = player.transform.position.y / 4;
-        return posY % Define.SCREEN_HEIGHT;
+        float posY = player.transform.position.y / parallexRatio;
+        return posY % (Define.SCREEN_HEIGHT * 2);
         
     }
 }
