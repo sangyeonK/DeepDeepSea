@@ -289,7 +289,7 @@ public class Character : MonoBehaviour {
             if (collision.tag == "floating")
             {
                 ani.SetTrigger("Damage");
-                health -= 5;
+                health -= 3;
                 shockedTime = SHOCK_TIME;
                 ani.SetTrigger("transparent");
                 PlaySound(SOUND_EFFECT.HURT);
