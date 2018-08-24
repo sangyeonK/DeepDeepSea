@@ -37,6 +37,20 @@ public class Define
 			else
 				return NAME.HADALPELAGIC;
 		}
+		
+		public static int GetMaxMeter(int depth)
+		{
+			if (depth < DEPTH.EPIPELAGIC)
+				return DEPTH.EPIPELAGIC;
+			else if (depth < DEPTH.MESOPELAGIC)
+				return DEPTH.MESOPELAGIC;
+			else if (depth < DEPTH.BATHYPELAGIC)
+				return DEPTH.BATHYPELAGIC;
+			else if (depth < DEPTH.ABYSSOPELAGIC)
+				return DEPTH.ABYSSOPELAGIC;
+			else
+				return DEPTH.HADALPELAGIC;
+		}
 	}
 
 	public static string DepthToName(int depth)
