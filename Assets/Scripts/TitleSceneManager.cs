@@ -1,15 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class TitleSceneManager : MonoBehaviour {
 
-    public GameObject mTeamView;
-
     [Header("Canvas UI")]
-    public GameObject quitPanel;
-    public GameObject startButton;
+    public RectTransform mTeamView;
+    public RectTransform quitPanel;
+    public RectTransform startButton;
+    public RectTransform playHistoryPanel;
 
     private void Start()
     {
@@ -19,8 +20,8 @@ public class TitleSceneManager : MonoBehaviour {
     IEnumerator ActiveStartButton()
     {
         yield return new WaitForSeconds(3f);
-
-        startButton.SetActive(true);
+        
+        startButton.gameObject.SetActive(true);
     }
 
     public void OnStartButton()
@@ -30,28 +31,21 @@ public class TitleSceneManager : MonoBehaviour {
 
     public void OnClickTeamButton()
     {
-        mTeamView.SetActive(true);
-		FileManager.Instance.Remove();
-
+        mTeamView.gameObject.SetActive(true);
     }
 
-    public void OnClickRankButton()
+    public void OnClickPlayHistoryButton()
     {
-		SceneManager.LoadScene("RankScene");
-    }
-
-    public void OnClickBackButton()
-    {
-        mTeamView.SetActive(false);
+        playHistoryPanel.gameObject.SetActive(true);
     }
 
     private void Update()
     {
         if(Input.GetKeyDown(KeyCode.Escape))
         {
-            if(quitPanel.activeSelf == false)
+            if(quitPanel.gameObject.activeSelf == false)
             {
-                quitPanel.SetActive(true);
+                quitPanel.gameObject.SetActive(true);
             }
 
         }
