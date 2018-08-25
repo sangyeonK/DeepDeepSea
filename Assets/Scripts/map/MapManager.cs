@@ -75,7 +75,7 @@ public class MapManager : MonoBehaviour
         EpilagicZone = true;
         gameover = false;
         seameter = 0;
-        InvokeRepeating("SpawnMapType", 7, 8.5f);
+        InvokeRepeating("SpawnMapType", 7, 7.0f);
 
         if (gamestageType == GAMESTAGETYPE.GameStart)
         {
