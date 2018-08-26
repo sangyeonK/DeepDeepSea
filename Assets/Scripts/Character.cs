@@ -81,6 +81,7 @@ public class Character : MonoBehaviour {
         swimSoundRunning = false;
         DecreseEnemySlider();
 
+        transform.position = new Vector2(0f, 0f);
         // OnStartPlay 가 호출되기 전까지는 script 및 sprite renderer 비활성화
         this.enabled = false;
         GetComponentInChildren<SpriteRenderer>().enabled = false;
