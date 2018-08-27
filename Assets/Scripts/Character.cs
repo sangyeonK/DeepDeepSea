@@ -38,7 +38,9 @@ public class Character : MonoBehaviour {
     private const int HEALTH_SOSO = 1;
     private const int HEALTH_BAD = 2;
     private int currStatus;
-
+    public int randNum;
+    
+ 
 
     private float playTime = 0.0f;
     private int playDepth = 0;
@@ -292,6 +294,39 @@ public class Character : MonoBehaviour {
                 shockedTime = SHOCK_TIME;
                 Debug.Log("collider mine");
                 PlaySound(SOUND_EFFECT.HURT);
+            }
+            if (collision.tag == "lobster")
+            {
+                
+                health += 10;
+               itemSound.Play();
+            }
+            if (collision.tag == "rand")
+            {
+                int minrandom =0;
+                int maxrandom =3;
+               randNum=Random.Range(minrandom,maxrandom);
+               itemSound.Play();
+               switch(randNum){
+
+                   case 0:
+                   transform.localScale+=new Vector3(0.1f,0.1f,0);
+                   break;
+                   case 1:
+                   transform.localScale-=new Vector3(0.1f,0.1f,0);
+                   break;
+                    case 2:
+                   GameManager.Instance.playerVerticalSpeed+=0.1f;
+                   GameManager.Instance.playerHorizontalSpeed+=0.1f;
+
+                   break;
+                    case 3:
+                 GameManager.Instance.playerVerticalSpeed-=0.1f;
+                   GameManager.Instance.playerHorizontalSpeed-=0.1f;
+                   break;
+
+               }
+
             }
             if (collision.tag == "floating")
             {

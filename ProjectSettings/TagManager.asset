@@ -22,6 +22,9 @@ TagManager:
   - SpeedBtn
   - MoveBtn
   - BackgroundCtrl
+  - rand
+  - lobster
+  - octo
   layers:
   - Default
   - TransparentFX

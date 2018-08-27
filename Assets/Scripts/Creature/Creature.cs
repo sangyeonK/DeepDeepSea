@@ -23,8 +23,8 @@ public class Creature : MonoBehaviour {
 
     private void OnBecameInvisible()
     {
-        GameObject.Destroy(gameObject);
-        GameObject.Destroy(root.gameObject);
+     //GameObject.Destroy(gameObject);
+      //  GameObject.Destroy(root.gameObject);
     }
 
 }

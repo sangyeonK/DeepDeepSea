@@ -9,7 +9,10 @@ public class rotate : MonoBehaviour
       // Use this for initialization
       void Start()
       {
-              rotFl= Random.Range(-60,360);
+              
+            
+                  rotFl= Random.Range(1,360);
+              
       }
       
       void Update()

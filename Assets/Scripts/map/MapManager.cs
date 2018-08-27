@@ -13,9 +13,6 @@ public enum GAMESTAGETYPE
 public class MapManager : MonoBehaviour
 {
 
-
-
-
     public GameObject[] Maptype;
     private GameObject screenObject;
 
@@ -29,9 +26,6 @@ public class MapManager : MonoBehaviour
     public Text seameterText;
     public string zoneName;
 
-
-
-
     private int waittime;
     float interval = 0;
     public bool gameover;
@@ -40,8 +34,6 @@ public class MapManager : MonoBehaviour
     float totalTime = 300f; //2 minutes
 
     public Text timer;
-
-
 
     public void UpdateLevelTimer(float totalSeconds)
     {
@@ -65,10 +57,6 @@ public class MapManager : MonoBehaviour
 
         screenObject = GameObject.FindGameObjectWithTag("ScreenObject");
     }
-
-
-
-
 
     void Start()
     {
@@ -104,7 +92,7 @@ public class MapManager : MonoBehaviour
 
         if (gameover == false && totalTime > 260)
         {
-            GameObject maptype = (GameObject)Instantiate(Maptype[Random.Range(0, 3)], screenObject.transform.position + new Vector3(0, -25), Quaternion.identity);
+            GameObject maptype = (GameObject)Instantiate(Maptype[Random.Range(0, 3)], screenObject.transform.position + new Vector3(0, -20), Quaternion.identity);
         }
         else if (gameover == false && totalTime < 260)
         {
@@ -113,6 +101,7 @@ public class MapManager : MonoBehaviour
     }
 
 
+    
     /* 
  public IEnumerator maprandom(float waitTime){
 

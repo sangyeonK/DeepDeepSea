@@ -9,8 +9,7 @@ public class big_small : MonoBehaviour {
         if (collision.tag == "Player")
         {
 
-            Destroy(gameObject);
-
+            GameObject.Destroy(gameObject);
         }
 
 
