@@ -130,7 +130,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4637965473926048}
-  - component: {fileID: 114041495563722046}
   m_Layer: 0
   m_Name: creature
   m_TagString: Untagged
@@ -249,22 +248,6 @@ Transform:
   m_Father: {fileID: 4027996215992026}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114041495563722046
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1930568326203218}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb52ed72cde23457293eb7c48da45a19, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  obj:
-  - {fileID: 1827304825821688, guid: 4871dce6469f277448a9a8d46a3fed87, type: 2}
-  - {fileID: 1974461119320552, guid: ef39ec9064009b244967eac4e80bf2b5, type: 2}
-  - {fileID: 1750547475861832, guid: 5dd8ce3646a87714da0c691ccd5b349e, type: 2}
-  - {fileID: 1265024503373838, guid: a97a96e494a9eb147901e157c3244c24, type: 2}
 --- !u!114 &114180604933295256
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -301,6 +301,7 @@ public class Character : MonoBehaviour {
                 health += 10;
                itemSound.Play();
             }
+            //랜덤박스 충돌시 
             if (collision.tag == "rand")
             {
                 int minrandom =0;
@@ -310,19 +311,19 @@ public class Character : MonoBehaviour {
                switch(randNum){
 
                    case 0:
-                   transform.localScale+=new Vector3(0.1f,0.1f,0);
+                   transform.localScale+=new Vector3(0.05f,0.05f,0);
                    break;
                    case 1:
-                   transform.localScale-=new Vector3(0.1f,0.1f,0);
+                   transform.localScale-=new Vector3(0.02f,0.02f,0);
                    break;
                     case 2:
-                   GameManager.Instance.playerVerticalSpeed+=0.1f;
-                   GameManager.Instance.playerHorizontalSpeed+=0.1f;
+                   GameManager.Instance.playerVerticalSpeed+=0.5f;
+                   GameManager.Instance.playerHorizontalSpeed+=0.5f;
 
                    break;
                     case 3:
-                 GameManager.Instance.playerVerticalSpeed-=0.1f;
-                   GameManager.Instance.playerHorizontalSpeed-=0.1f;
+                   GameManager.Instance.playerVerticalSpeed-=0.2f;
+                   GameManager.Instance.playerHorizontalSpeed-=0.2f;
                    break;
 
                }
