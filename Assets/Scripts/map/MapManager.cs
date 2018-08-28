@@ -35,7 +35,7 @@ public class MapManager : MonoBehaviour
 
     public Text timer;
 
-    public void UpdateLevelTimer(float totalSeconds)
+/*public void UpdateLevelTimer(float totalSeconds)
     {
         int minutes = Mathf.FloorToInt(totalSeconds / 60f);
         int seconds = Mathf.RoundToInt(totalSeconds % 60f);
@@ -48,7 +48,8 @@ public class MapManager : MonoBehaviour
 
         timer.text = minutes.ToString("00") + ":" + seconds.ToString("00");
     }
-
+*/ 
+    
 
     void Awake()
     {
@@ -83,7 +84,7 @@ public class MapManager : MonoBehaviour
         }
 
         totalTime -= Time.deltaTime;
-        UpdateLevelTimer(totalTime);
+      //  UpdateLevelTimer(totalTime);
 
     }
 
