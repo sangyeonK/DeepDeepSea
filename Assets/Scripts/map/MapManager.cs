@@ -92,7 +92,7 @@ public class MapManager : MonoBehaviour
 
         if (gameover == false && totalTime > 260)
         {
-            GameObject maptype = (GameObject)Instantiate(Maptype[Random.Range(0, 3)], screenObject.transform.position + new Vector3(0, -20), Quaternion.identity);
+            GameObject maptype = (GameObject)Instantiate(Maptype[Random.Range(0, 1)], screenObject.transform.position + new Vector3(0, -20), Quaternion.identity);
         }
         else if (gameover == false && totalTime < 260)
         {
@@ -101,40 +101,7 @@ public class MapManager : MonoBehaviour
     }
 
 
-    
-    /* 
- public IEnumerator maprandom(float waitTime){
-
-        // FIX ME : refactoring please...
-
-        Debug.Log(gameover);
-
-        while(gameover==false){
-
-            waitTime = 5.0f;
-            yield return new WaitForSecondsRealtime(waitTime);
-            Vector3[] location =new Vector3[4];
-            
-            location[0] = screenObject.transform.position + new Vector3(0, -25);
-
-            Instantiate(Maptype[Random.Range(0, Maptype.Length)], location[0], Quaternion.identity);
-
-            yield return new WaitForSecondsRealtime(waitTime);
-
-            if (gameover==true){
-                yield break;
-            }
-
-
-        }
-    }
-
-    */
-
-
-
-    /*
-
+/* 
      public void InstantiateMapType(float posY)
     {
         Vector2 location = new Vector2(0.0f, posY);
