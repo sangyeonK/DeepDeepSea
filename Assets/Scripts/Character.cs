@@ -222,28 +222,7 @@ public class Character : MonoBehaviour {
                 break;
         }
 
-        // 기존에 남아있던 아이템 처리 코드
-        //if (collision.tag == "fast")
-        //{
-        //    GameManager.Instance.playerHorizontalSpeed += 0.01f;
-        //    GameManager.Instance.playerVerticalSpeed += 0.01f;
-
-        //}
-        //if (collision.tag == "slow")
-        //{
-        //    GameManager.Instance.playerHorizontalSpeed -= 0.01f;
-        //    GameManager.Instance.playerVerticalSpeed -= 0.01f;
-        //}
-        //if (collision.tag == "big")
-        //{
-        //    transform.localScale += new Vector3(0.1F, 0.1F, 0);
-        //    health -= 5;
-        //}
-        //if (collision.tag == "small")
-        //{
-        //    transform.localScale += new Vector3(-0.1F, -0.1F, 0);
-        //    health += 5;
-        //}
+       
         PlaySound(SOUND_EFFECT.ITEM);
     }
 

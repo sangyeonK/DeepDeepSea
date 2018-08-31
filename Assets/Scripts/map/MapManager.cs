@@ -15,14 +15,14 @@ public class MapManager : MonoBehaviour
 
     public GameObject[] Maptype;
     private GameObject screenObject;
-
+    public GameObject player;
     public GAMESTAGETYPE gamestageType;
-    public bool EpilagicZone;//표해수층
-    public bool MesopelagicZone;//중심해층
-    public bool BathypelagicZone;//점심해층
-    public bool AbyssopelagicZone;//심해저대
-    public bool HadalpelagicZone;//초심해저대
-    public int seameter;
+    public float EpilagicZone=200;//표해수층 0~200m
+    public  float MesopelagicZone=1000;//중심해층 200~1000m
+    public float BathypelagicZone=3000;//점심해층 1000~3000m
+    public float AbyssopelagicZone=6000;//심해저대 3000m~6000m
+    public float HadalpelagicZone=10000;//초심해저대 6000m~
+    
     public Text seameterText;
     public string zoneName;
 
@@ -30,93 +30,109 @@ public class MapManager : MonoBehaviour
     float interval = 0;
     public bool gameover;
     private Image moveIMG;
-
-    float totalTime = 300f; //2 minutes
+   
 
     public Text timer;
-
-/*public void UpdateLevelTimer(float totalSeconds)
-    {
-        int minutes = Mathf.FloorToInt(totalSeconds / 60f);
-        int seconds = Mathf.RoundToInt(totalSeconds % 60f);
-
-        if (seconds == 60)
-        {
-            seconds = 0;
-            minutes += 1;
-        }
-
-        timer.text = minutes.ToString("00") + ":" + seconds.ToString("00");
-    }
-*/ 
     
-
-    void Awake()
-    {
-        gamestageType = GAMESTAGETYPE.GameStart;
-        //Debug.Log(gamestageType);
-
-        screenObject = GameObject.FindGameObjectWithTag("ScreenObject");
-    }
-
+    [SerializeField]
+    public GameObject[] stage1Obj;
+    public GameObject[] stage1Ob2;
+    public GameObject[] stage1Ob3;
+    public GameObject[] stage1Ob4;
+    public GameObject[] stage1Ob5;
+    public int rand;
+   private float starttime;
+    
     void Start()
     {
-        EpilagicZone = true;
         gameover = false;
-        seameter = 0;
-        InvokeRepeating("SpawnMapType", 6, 5.5f);
-
-        if (gamestageType == GAMESTAGETYPE.GameStart)
-        {
-            gamestageType = GAMESTAGETYPE.GamePlay;
-            //      StartCoroutine(maprandom(5.0f));
-        }
-
-        //InstantiateMapType(Define.SCREEN_HEIGHT * -3);
+       screenObject = GameObject.FindGameObjectWithTag("ScreenObject");
+        
+      StartCoroutine(startMap());
+    
+     
     }
+    void update(){
 
-    public void Update()
+        
+     
+     
+       
+     Debug.Log("gameover"+ " " +gameover);
+
+     Debug.Log("screenObject.transform.position.y"+ " " +screenObject.transform.position.y);
+    }
+    
+    public IEnumerator startMap(){
+            yield return new WaitForSeconds(5.0f);
+             StartCoroutine(MapCreate());
+             yield break;
+    }
+    
+    public IEnumerator MapCreate()
+
     {
-        if (gamestageType == GAMESTAGETYPE.GamePlay)
-        {
+        
+       
+           Debug.Log("screenObject.transform.position.y " +""+screenObject.transform.position.y );
+           
+          if(   screenObject.transform.position.y >-200.0f){
+            GameObject maptype = (GameObject)Instantiate(Maptype[Random.Range(0, 5)],
+             screenObject.transform.position + 
+            new Vector3(0, -10), Quaternion.identity);  
+            
+            
+          }
+          else if(  screenObject.transform.position.y<-200.0f &&screenObject.transform.position.y>-500.0f){
+           GameObject maptype1 = (GameObject)Instantiate(Maptype[Random.Range(5, 11)],
+             screenObject.transform.position + 
+            new Vector3(0, -10), Quaternion.identity);  
+           
+          }
+           
+          
+            else if(screenObject.transform.position.y<-500.0f &&screenObject.transform.position.y>-1000.0f ){
+                  GameObject maptype4 = (GameObject)Instantiate(Maptype[Random.Range(18, 22)], 
+            screenObject.transform.position + new Vector3(0, -10), Quaternion.identity);
+ 
+            }
+              
+            else if(screenObject.transform.position.y<-1000 &&screenObject.transform.position.y >-3000){
+            GameObject maptype5 = (GameObject)Instantiate(Maptype[Random.Range(22, Maptype.Length)], 
+            screenObject.transform.position + new Vector3(0, -10), Quaternion.identity);
+ 
+              
+            }
+            else if (screenObject.transform.position.y<-3000){
+            GameObject maptype6 = (GameObject)Instantiate(Maptype[Random.Range(0, Maptype.Length)], 
+            screenObject.transform.position + new Vector3(0, -10), Quaternion.identity);
+            }
+              yield return new WaitForSeconds(7.0f);
+
+              StartCoroutine(MapCreate());
+ 
+              
+           }
 
 
-        }
-
-        totalTime -= Time.deltaTime;
-      //  UpdateLevelTimer(totalTime);
-
-    }
-
-    void SpawnMapType()
-    {
-
-        if (gameover == false && totalTime > 260)
-        {
-            GameObject maptype = (GameObject)Instantiate(Maptype[Random.Range(0, 1)], screenObject.transform.position + new Vector3(0, -20), Quaternion.identity);
-        }
-        else if (gameover == false && totalTime < 260)
-        {
-            GameObject maptype = (GameObject)Instantiate(Maptype[Random.Range(4, Maptype.Length)], screenObject.transform.position + new Vector3(0, -35), Quaternion.identity);
-        }
-    }
-
-
-/* 
-     public void InstantiateMapType(float posY)
-    {
-        Vector2 location = new Vector2(0.0f, posY);
-        GameObject mapTypeObj = Instantiate(Maptype[Random.Range(0, Maptype.Length)], location, Quaternion.identity);
-        mapTypeObj.GetComponent<MapPreset>().SetMapManager(gameObject);
-    }
-
-    */
+           }
+          
+          
+       
+            
+ 
+        
+          
+         
+      
+           
 
 
 
 
-}
 
 
 
 
+    
+  
