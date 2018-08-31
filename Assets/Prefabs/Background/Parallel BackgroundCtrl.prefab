@@ -51,7 +51,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4344231924157128}
   - component: {fileID: 212690488038384934}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: left
   m_TagString: Background_LeftRock
   m_Icon: {fileID: 0}
@@ -83,7 +83,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4641699282911650}
   - component: {fileID: 212017933874240034}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: right
   m_TagString: Background_RightRock
   m_Icon: {fileID: 0}
@@ -129,7 +129,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4572845791809988}
   - component: {fileID: 212968539737987806}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: left
   m_TagString: Background_LeftRock
   m_Icon: {fileID: 0}
@@ -145,7 +145,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4013807410955766}
   - component: {fileID: 212883231998237208}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: right
   m_TagString: Background_RightRock
   m_Icon: {fileID: 0}
@@ -364,7 +364,7 @@ Camera:
   m_Depth: -9
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 1024
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0

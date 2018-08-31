@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 212259908724232578}
   - component: {fileID: 114160405213949738}
   - component: {fileID: 95148864315686908}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: BGDeco_Whale
   m_TagString: Untagged
   m_Icon: {fileID: 0}

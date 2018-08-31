@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 212250570344241760}
   - component: {fileID: 114441501368436742}
   - component: {fileID: 95184762052768278}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: BGDeco_Fish
   m_TagString: Untagged
   m_Icon: {fileID: 0}
