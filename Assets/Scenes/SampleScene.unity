@@ -670,7 +670,6 @@ MonoBehaviour:
   BathypelagicZone: 0
   AbyssopelagicZone: 0
   HadalpelagicZone: 0
-  seameter: 0
   seameterText: {fileID: 89373019}
   zoneName: 
   gameover: 0
@@ -706,7 +705,6 @@ MonoBehaviour:
   - {fileID: 1202412462540324, guid: 0a1b25f63135548a5af64eb2903722b3, type: 2}
   - {fileID: 1593171255696650, guid: 03c9b25e2e8114a80963062cba0acabd, type: 2}
   rand: 0
-  seam: 0
 --- !u!4 &728100551
 Transform:
   m_ObjectHideFlags: 0

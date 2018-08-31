@@ -107,7 +107,7 @@ public class MapManager : MonoBehaviour
             GameObject maptype6 = (GameObject)Instantiate(Maptype[Random.Range(0, Maptype.Length)], 
             screenObject.transform.position + new Vector3(0, -10), Quaternion.identity);
             }
-              yield return new WaitForSeconds(7.0f);
+              yield return new WaitForSeconds(5.0f);
 
               StartCoroutine(MapCreate());
  
