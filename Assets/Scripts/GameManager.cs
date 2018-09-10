@@ -126,7 +126,7 @@ public class GameManager : MonoBehaviour {
         GameSceneManager sceneManager = GameObject.FindGameObjectWithTag("SceneManager").GetComponent<GameSceneManager>();
         sceneManager.OnGameOver(playTime, playDepth);
         AddPlayRecord(playTime, playDepth);
-
+        StartCoroutine(NetworkManager.PostScore(playDepth, null, null));
     }
 
     public void MarkSeePlayGuide()

@@ -7,7 +7,8 @@ using System;
 using System.Reflection;
 using System.Linq;
 
-public class TitleSceneManager : MonoBehaviour {
+public class TitleSceneManager : MonoBehaviour
+{
 
     [AttributeUsage(AttributeTargets.Field)]
     class PopUpAttribute : Attribute { };
@@ -20,6 +21,8 @@ public class TitleSceneManager : MonoBehaviour {
     public RectTransform startButton;
     [PopUp]
     public RectTransform playHistoryPanel;
+    [PopUp]
+    public RectTransform bestScorePanel;
 
     private List<RectTransform> popups = new List<RectTransform>();
     private void Start()
@@ -31,7 +34,7 @@ public class TitleSceneManager : MonoBehaviour {
     IEnumerator ActiveStartButton()
     {
         yield return new WaitForSeconds(3f);
-        
+
         startButton.gameObject.SetActive(true);
     }
 
@@ -50,11 +53,16 @@ public class TitleSceneManager : MonoBehaviour {
         playHistoryPanel.gameObject.SetActive(true);
     }
 
+    public void OnClickBestScoreButton()
+    {
+        bestScorePanel.gameObject.SetActive(true);
+    }
+
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if(popups.All(popup => !popup.gameObject.activeSelf))
+            if (popups.All(popup => !popup.gameObject.activeSelf))
             {
                 quitPanel.gameObject.SetActive(true);
             }
@@ -80,7 +88,7 @@ public class TitleSceneManager : MonoBehaviour {
                     RectTransform obj = field.GetValue(this) as RectTransform;
                     if (obj != null)
                         popups.Add(obj);
-                    
+
                 }
             }
         }

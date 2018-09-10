@@ -4,13 +4,14 @@ using UnityEngine;
 using System;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
- 
 
-public class FileManager {
 
-	public static String FILE_PATH;
+public class FileManager
+{
 
-	public static FileManager Instance
+    public static String FILE_PATH;
+
+    public static FileManager Instance
     {
         get
         {
@@ -22,12 +23,12 @@ public class FileManager {
             return _instance;
         }
     }
-	private static FileManager _instance;
+    private static FileManager _instance;
 
-	public void Remove()
-	{
-		File.Delete(FILE_PATH);
-	}
+    public void Remove()
+    {
+        File.Delete(FILE_PATH);
+    }
 
     public void SaveGameData(GameData gameData)
     {
@@ -36,21 +37,18 @@ public class FileManager {
 
         file = File.Open(FILE_PATH, FileMode.Create);
 
-        Debug.Log("before filelength: " + file.Length);
-
         binaryFormatter.Serialize(file, gameData);
-
-        Debug.Log("after filelength: " + file.Length);
 
         file.Close();
 
     }
 
     public GameData LoadGameData()
-	{
-		GameData gameData = new GameData();
+    {
+        GameData gameData = new GameData();
 
-		if (File.Exists(FILE_PATH)){
+        if (File.Exists(FILE_PATH))
+        {
             try
             {
                 var binaryFormatter = new BinaryFormatter();
@@ -59,13 +57,13 @@ public class FileManager {
                     gameData = (GameData)binaryFormatter.Deserialize(file);
                 }
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 Debug.LogError(e);
             }
-		}
+        }
 
-		return gameData;
-	}
-    
+        return gameData;
+    }
+
 }
