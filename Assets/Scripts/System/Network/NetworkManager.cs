@@ -142,8 +142,9 @@ public class NetworkManager : MonoBehaviour
         };
     }
 
-    static public IEnumerator PostScore(int score, Action OnSuccess, Action OnFailed)
+    static public IEnumerator PostScore(string documentId, int score, Action OnSuccess, Action OnFailed)
     {
+        string url = PostScoreVars.URL + "?documentId=" + documentId;
         byte[] query = Encoding.UTF8.GetBytes(
             @"{
             ""fields"" :{
@@ -152,7 +153,7 @@ public class NetworkManager : MonoBehaviour
                 }
             }
         }");
-        yield return RequestRestfulAPI(PostScoreVars.URL,
+        yield return RequestRestfulAPI(url,
             query,
             PostScoreVars.HEADERS,
             (result) =>
@@ -162,6 +163,13 @@ public class NetworkManager : MonoBehaviour
             },
             (code, reason) =>
             {
+                // if the error code is 409, it means it already exists. so, this requst is considered successful.
+                if (code == HttpStatusCode.Conflict)
+                {
+                    if (OnSuccess != null)
+                        OnSuccess();
+                    return;
+                }
                 Debug.LogError(String.Format("Cannot Complete PostScore - StatusCode : ({0}){1}\nMessage : {2}", code, (int)code, reason));
                 if (OnFailed != null)
                     OnFailed();

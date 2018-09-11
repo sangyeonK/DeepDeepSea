@@ -68,7 +68,7 @@ public class GameManager : MonoBehaviour {
         instance = this;
         DontDestroyOnLoad(gameObject);
         SceneManager.sceneLoaded += OnSceneLoaded;
-        gameData = FileManager.Instance.LoadGameData();
+        gameData = Global.Instance.LocalPlayHistoryManager.LoadGameData();
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
@@ -126,19 +126,20 @@ public class GameManager : MonoBehaviour {
         GameSceneManager sceneManager = GameObject.FindGameObjectWithTag("SceneManager").GetComponent<GameSceneManager>();
         sceneManager.OnGameOver(playTime, playDepth);
         AddPlayRecord(playTime, playDepth);
-        StartCoroutine(NetworkManager.PostScore(playDepth, null, null));
     }
 
     public void MarkSeePlayGuide()
     {
         gameData.seePlayGuide = true;
-        FileManager.Instance.SaveGameData(gameData);
+        Global.Instance.LocalPlayHistoryManager.SaveGameData(gameData);
     }
 
     private void AddPlayRecord(float playTime, int playDepth)
     {
         gameData.history.Add(new GameData.Record(Mathf.FloorToInt(playTime), playDepth));
-        FileManager.Instance.SaveGameData(gameData);
+        Global.Instance.LocalPlayHistoryManager.SaveGameData(gameData);
+        Global.Instance.TemporarySavedDataManager.AddData(playDepth);
+        StartCoroutine(Global.Instance.TemporarySavedDataManager.SaveToOnline());
     }
 
     public void AdvanceStage()

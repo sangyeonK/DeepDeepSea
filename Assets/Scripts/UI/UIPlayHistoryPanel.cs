@@ -29,7 +29,7 @@ public class UIPlayHistoryPanel : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        gameData = FileManager.Instance.LoadGameData();
+        gameData = Global.Instance.LocalPlayHistoryManager.LoadGameData();
 
         SetDatas();
     }

@@ -6,12 +6,17 @@ using UnityEngine.UI;
 public class UIBestScoreCtrl : MonoBehaviour
 {
     [Header("Canvas UI")]
-    public List<Text> scoreBoardTexts  ;
-    private Coroutine crtFetchBestScores = null;
+    public List<Text> scoreBoardTexts;
 
     private void OnEnable()
     {
+        TemporarySavedDataToOnline();
         RefreshBestScores();
+    }
+
+    private void TemporarySavedDataToOnline()
+    {
+        StartCoroutine(Global.Instance.TemporarySavedDataManager.SaveToOnline());
     }
     private void ResetBestScores()
     {
@@ -25,10 +30,7 @@ public class UIBestScoreCtrl : MonoBehaviour
     {
         ResetBestScores();
 
-        if (crtFetchBestScores != null)
-            StopCoroutine(crtFetchBestScores);
-
-        crtFetchBestScores = StartCoroutine(NetworkManager.FetchBestScores((results) =>
+        StartCoroutine(NetworkManager.FetchBestScores((results) =>
         {
             for (int i = 0; i < results.Count; i++)
             {

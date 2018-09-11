@@ -27,8 +27,10 @@ public class TitleSceneManager : MonoBehaviour
     private List<RectTransform> popups = new List<RectTransform>();
     private void Start()
     {
-        StartCoroutine(ActiveStartButton());
         CollectPopups();
+
+        StartCoroutine(ActiveStartButton());
+        StartCoroutine(Global.Instance.TemporarySavedDataManager.SaveToOnline());
     }
 
     IEnumerator ActiveStartButton()
