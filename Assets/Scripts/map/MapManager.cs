@@ -15,7 +15,7 @@ public class MapManager : MonoBehaviour
 
     public GameObject[] Maptype;
     private GameObject screenObject;
-    public GameObject player;
+    private GameObject player;
     public GAMESTAGETYPE gamestageType;
     public float EpilagicZone=200;//표해수층 0~200m
     public  float MesopelagicZone=1000;//중심해층 200~1000m
@@ -26,12 +26,13 @@ public class MapManager : MonoBehaviour
     public Text seameterText;
     public string zoneName;
 
-    private int waittime;
+    
     float interval = 0;
     public bool gameover;
     private Image moveIMG;
-   
-
+    private float waittime;
+    private   float creatDistance;
+    private float destroyTime;
     public Text timer;
     
     [SerializeField]
@@ -43,71 +44,66 @@ public class MapManager : MonoBehaviour
     public int rand;
    private float starttime;
     
-    void Start()
+    private void Awake(){
+      player = GameObject.FindGameObjectWithTag("Player");
+    }
+   private  void Start()
     {
         gameover = false;
-       screenObject = GameObject.FindGameObjectWithTag("ScreenObject");
-        
+      screenObject = GameObject.FindGameObjectWithTag("ScreenObject");
+      
       StartCoroutine(startMap());
     
      
     }
-    void update(){
+   private void update(){
 
-        
-     
-     
+        Vector3 pos = transform.position;
+        pos.y = screenObject.transform.position.y - 5.0f;
+        transform.position = pos;
        
      Debug.Log("gameover"+ " " +gameover);
 
-     Debug.Log("screenObject.transform.position.y"+ " " +screenObject.transform.position.y);
+   
     }
     
     public IEnumerator startMap(){
             yield return new WaitForSeconds(5.0f);
              StartCoroutine(MapCreate());
+             Debug.Log("startmap");
              yield break;
     }
     
-    public IEnumerator MapCreate()
+    private void Destroy( ){
+      Destroy(gameObject);
+    }
+
+       public IEnumerator MapCreate()
 
     {
-        
-       
-           Debug.Log("screenObject.transform.position.y " +""+screenObject.transform.position.y );
-           
-          if(   screenObject.transform.position.y >-200.0f){
-            GameObject maptype = (GameObject)Instantiate(Maptype[Random.Range(0, 5)],
-             screenObject.transform.position + 
-            new Vector3(0, -10), Quaternion.identity);  
-            
-            
-          }
-          else if(  screenObject.transform.position.y<-200.0f &&screenObject.transform.position.y>-500.0f){
-           GameObject maptype1 = (GameObject)Instantiate(Maptype[Random.Range(5, 11)],
-             screenObject.transform.position + 
-            new Vector3(0, -10), Quaternion.identity);  
-           
-          }
-           
+             Debug.Log("mapcreate");
+
           
-            else if(screenObject.transform.position.y<-500.0f &&screenObject.transform.position.y>-1000.0f ){
-                  GameObject maptype4 = (GameObject)Instantiate(Maptype[Random.Range(18, 22)], 
-            screenObject.transform.position + new Vector3(0, -10), Quaternion.identity);
- 
-            }
-              
-            else if(screenObject.transform.position.y<-1000 &&screenObject.transform.position.y >-3000){
-            GameObject maptype5 = (GameObject)Instantiate(Maptype[Random.Range(22, Maptype.Length)], 
-            screenObject.transform.position + new Vector3(0, -10), Quaternion.identity);
- 
-              
-            }
-            else if (screenObject.transform.position.y<-3000){
-            GameObject maptype6 = (GameObject)Instantiate(Maptype[Random.Range(0, Maptype.Length)], 
-            screenObject.transform.position + new Vector3(0, -10), Quaternion.identity);
-            }
-              yield return new WaitForSeconds(5.0f);
+           if(GameManager.Instance.isSpeedMode==false){
+             waittime=4.0f;
+             creatDistance=-8.0f;
+          }
+           else if(GameManager.Instance.isSpeedMode==true){
+             waittime=3.0f;
+             creatDistance=-5.0f;
+           }
+        
+  
+          int random=Random.Range(0,Maptype.Length);
+            GameObject maptype = (GameObject)Instantiate(Maptype[random],
+             screenObject.transform.position + new Vector3(0,creatDistance)
+             , Quaternion.identity);  
+            
+
+            
+          
+
+              yield return new WaitForSeconds(waittime);
 
               StartCoroutine(MapCreate());
  

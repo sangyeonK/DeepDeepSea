@@ -386,11 +386,6 @@ Camera:
   m_CorrespondingSourceObject: {fileID: 20216202427436244, guid: 759fb396acc051944aa3277d2ed694f4,
     type: 2}
   m_PrefabInternal: {fileID: 1489515465}
---- !u!1 &553675108 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1369915557566906, guid: 655031113311c3d47afe4ec72139e30e,
-    type: 2}
-  m_PrefabInternal: {fileID: 1212451736}
 --- !u!1 &580848537
 GameObject:
   m_ObjectHideFlags: 0
@@ -454,8 +449,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isSpeedMode: 0
   isPaused: 0
-  playerVerticalSpeed: 6
-  playerHorizontalSpeed: 6
+  playerVerticalSpeed: 10
+  playerHorizontalSpeed: 10
   AlwaysSeePlayGuide: 0
 --- !u!4 &619382096
 Transform:
@@ -618,6 +613,7 @@ GameObject:
   m_Component:
   - component: {fileID: 728100551}
   - component: {fileID: 728100550}
+  - component: {fileID: 728100552}
   m_Layer: 0
   m_Name: MapManager
   m_TagString: Untagged
@@ -663,7 +659,6 @@ MonoBehaviour:
   - {fileID: 1109443498780846, guid: 18674f683d2494e1ca7efa5d0f3a6385, type: 2}
   - {fileID: 1786286957001116, guid: 80e4a3bd7494c485e9b3c597dae409e5, type: 2}
   - {fileID: 1707129989604986, guid: c605d431974d04a3d839faaac0715e67, type: 2}
-  player: {fileID: 553675108}
   gamestageType: 0
   EpilagicZone: 0
   MesopelagicZone: 0
@@ -717,6 +712,71 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &728100552
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 728100549}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf3ee407d48f13549bc68672ed7301ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &747273384
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 747273386}
+  - component: {fileID: 747273385}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!61 &747273385
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 747273384}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 35.87, y: 1}
+  m_EdgeRadius: 0
+--- !u!4 &747273386
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 747273384}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 12.39, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &748446675
 GameObject:
@@ -2071,7 +2131,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4387655015396572, guid: 655031113311c3d47afe4ec72139e30e, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0.28
+      value: 2.52
       objectReference: {fileID: 0}
     - target: {fileID: 4387655015396572, guid: 655031113311c3d47afe4ec72139e30e, type: 2}
       propertyPath: m_LocalPosition.z
@@ -2731,6 +2791,34 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.Slider+SliderEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!1 &1682038119
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1682038121}
+  m_Layer: 0
+  m_Name: Map1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1682038121
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1682038119}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1712588366
 GameObject:
   m_ObjectHideFlags: 0
