@@ -39,9 +39,12 @@ GameObject:
   m_Component:
   - component: {fileID: 4351315895661846}
   - component: {fileID: 114161818089199282}
+  - component: {fileID: 70132357852314620}
+  - component: {fileID: 58038862250517594}
+  - component: {fileID: 58593981308592584}
   m_Layer: 0
   m_Name: lobster
-  m_TagString: lobster
+  m_TagString: Obstacle_Fish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -66,13 +69,43 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1750547475861832}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.19, y: -5.86, z: 0}
+  m_LocalPosition: {x: 0.19, y: -6.78, z: 0}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_Children:
   - {fileID: 4029241900734438}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &58038862250517594
+CircleCollider2D:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1750547475861832}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.29142672, y: 0.64660215}
+  serializedVersion: 2
+  m_Radius: 0.20857401
+--- !u!58 &58593981308592584
+CircleCollider2D:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1750547475861832}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.30053362, y: 0.62383527}
+  serializedVersion: 2
+  m_Radius: 0.21312737
 --- !u!70 &70092087122369436
 CapsuleCollider2D:
   m_ObjectHideFlags: 1
@@ -87,6 +120,21 @@ CapsuleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 1.01, y: 1.81}
+  m_Direction: 0
+--- !u!70 &70132357852314620
+CapsuleCollider2D:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1750547475861832}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.1548203}
+  m_Size: {x: 0.5, y: 0.96357125}
   m_Direction: 0
 --- !u!95 &95122066075569956
 Animator:

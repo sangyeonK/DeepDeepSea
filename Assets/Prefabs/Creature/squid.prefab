@@ -38,9 +38,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4012493223637326}
   - component: {fileID: 114491213611041700}
+  - component: {fileID: 60094917267008616}
   m_Layer: 0
   m_Name: squid
-  m_TagString: Untagged
+  m_TagString: Obstacle_Fish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -52,7 +53,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1465138889613604}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.27, y: 0.31, z: 0}
+  m_LocalPosition: {x: -3.27, y: -2.19, z: 0}
   m_LocalScale: {x: 4, y: 4, z: 1}
   m_Children:
   - {fileID: 4884729075446450}
@@ -72,6 +73,39 @@ Transform:
   m_Father: {fileID: 4012493223637326}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!60 &60094917267008616
+PolygonCollider2D:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1465138889613604}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.1478656, y: 0.76747566}
+      - {x: 0.008813322, y: 0.9206789}
+      - {x: -0.15481335, y: 0.76572603}
+      - {x: -0.29004633, y: 0.45003247}
+      - {x: -0.19163716, y: 0.34716856}
+      - {x: -0.15592521, y: -0.3947841}
+      - {x: 0.12948495, y: -0.41241086}
+      - {x: 0.14747524, y: 0.2933441}
+      - {x: 0.29885966, y: 0.4588461}
 --- !u!95 &95067106552126550
 Animator:
   serializedVersion: 3
