@@ -647,59 +647,9 @@ MonoBehaviour:
   - {fileID: 1498084055609840, guid: 404044bb3a9004015a9075f59614f41a, type: 2}
   - {fileID: 1264400367056524, guid: dd006ffa166c548a990fc44263bd4561, type: 2}
   - {fileID: 1561106150388462, guid: ed86efe7e5abe456c9a262c611ea5f8e, type: 2}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  gamestageType: 0
-  EpilagicZone: 0
-  MesopelagicZone: 0
-  BathypelagicZone: 0
-  AbyssopelagicZone: 0
-  HadalpelagicZone: 0
-  seameterText: {fileID: 89373019}
-  zoneName: 
   gameover: 0
-  timer: {fileID: 1001571625}
-  stage1Obj:
-  - {fileID: 1451429181462856, guid: f2389c0d473f14de8994e499b3005360, type: 2}
-  - {fileID: 1929062907461628, guid: 578883df534ec4abb8712cbb73aa9eee, type: 2}
-  - {fileID: 1321933186703826, guid: 496d1002501bc49caa8f66d79e69a3b8, type: 2}
-  - {fileID: 1475274021572004, guid: 5d203bf009d1340b99b4d5caa3b2db78, type: 2}
-  - {fileID: 1964797681660716, guid: 61535204ccc0f4f99be7203ca00581cb, type: 2}
-  stage1Ob2:
-  - {fileID: 1332571096949926, guid: 053dbffe9e6fe4da89b3b0a9ffa99452, type: 2}
-  - {fileID: 1362399131471612, guid: a820a3591092741e1a5f514116ec7bb3, type: 2}
-  - {fileID: 1861255503088650, guid: b8d4a0fb304834080bc8b858dff3b461, type: 2}
-  - {fileID: 1030577655560772, guid: 85ec5f609953d4821960013b178a35ed, type: 2}
-  - {fileID: 1912967534316960, guid: 64f69f48f230c4a19811d3a85a2ff051, type: 2}
-  stage1Ob3:
-  - {fileID: 1972160712992390, guid: 5dce866142cde4bd5ad1a85df232c260, type: 2}
-  - {fileID: 1304608533342318, guid: 8159789affeef486f9b783cb56640de3, type: 2}
-  - {fileID: 1518520215491030, guid: a0377c8be1a064abfae533b0e9085e42, type: 2}
-  - {fileID: 1949532856174518, guid: c152f4acbe1c8499cb3fbf3c6b289ca6, type: 2}
-  - {fileID: 1588482761858138, guid: ea1b9b2581bcc4e249d193ecbb93d935, type: 2}
-  stage1Ob4:
-  - {fileID: 1862062247754702, guid: a2ea62805d8c24ae392ecd3d5daf6d8d, type: 2}
-  - {fileID: 1137694414585750, guid: 399801d23607b4ca08300b62e5d525ec, type: 2}
-  - {fileID: 1112436105895794, guid: 19f7fb81cee79470a85eebbbdc702193, type: 2}
-  - {fileID: 1509239834301998, guid: d545d2ec74fc7489983dfddf1a74d849, type: 2}
-  - {fileID: 1570166208328124, guid: d6b0b070438ee4356b5252728378348f, type: 2}
-  stage1Ob5:
-  - {fileID: 1615676710283920, guid: 00b81900ea1634abd8cee7bb2072528e, type: 2}
-  - {fileID: 1501957838916002, guid: 05efea2e6369c4a23ab54471b08b880b, type: 2}
-  - {fileID: 1974689988078214, guid: 0a0402b3196604d038c7000430024d47, type: 2}
-  - {fileID: 1202412462540324, guid: 0a1b25f63135548a5af64eb2903722b3, type: 2}
-  - {fileID: 1593171255696650, guid: 03c9b25e2e8114a80963062cba0acabd, type: 2}
   rand: 0
+  count: 0
 --- !u!4 &728100551
 Transform:
   m_ObjectHideFlags: 0
@@ -2131,7 +2081,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4387655015396572, guid: 655031113311c3d47afe4ec72139e30e, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 2.52
+      value: -21.61
       objectReference: {fileID: 0}
     - target: {fileID: 4387655015396572, guid: 655031113311c3d47afe4ec72139e30e, type: 2}
       propertyPath: m_LocalPosition.z
