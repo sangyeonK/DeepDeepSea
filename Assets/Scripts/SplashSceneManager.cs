@@ -17,6 +17,10 @@ public class SplashSceneManager : MonoBehaviour
     {
         Camera mainCarema = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         movieClip.targetCamera = mainCarema;
+        movieClip.loopPointReached += (VideoPlayer source) =>
+        {
+            OnStartGame();
+        };
         loadingComplete = false;
         StartCoroutine(LoadData());
     }
