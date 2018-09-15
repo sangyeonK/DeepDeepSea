@@ -62,9 +62,8 @@ public class GameSceneManager : MonoBehaviour {
 
     public void OnPauseButton()
     {
-        if (!GameManager.Instance.isPaused)
+        if (!GameManager.Instance.isPaused && GameManager.Instance.CanPaused)
         {
-
             pausePanel.SetActive(true);
             GameManager.Instance.SetPause(true);
         }

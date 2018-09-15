@@ -346,6 +346,7 @@ public class Character : MonoBehaviour {
             {
                 health = 0;
                 //player is died
+                GameManager.Instance.CanPaused = false;
                 StartCoroutine(DiePlayer());
             }
         }

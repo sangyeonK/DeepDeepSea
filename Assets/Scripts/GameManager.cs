@@ -24,6 +24,12 @@ public class GameManager : MonoBehaviour {
     [HideInInspector]
     public bool isPaused = false;
 
+    public bool CanPaused
+    {
+        get;
+        set;
+    }
+
     public delegate void StartPlayHandler();
     event StartPlayHandler onStartPlay;
     /// <summary>
@@ -76,6 +82,7 @@ public class GameManager : MonoBehaviour {
         // GameScene 로딩되었을 때 처리
         InitGameData();
         SetPause(false);
+        CanPaused = false;
     }
     
     void InitGameData()
@@ -104,6 +111,7 @@ public class GameManager : MonoBehaviour {
 
     public void StartPlay()
     {
+        CanPaused = true;
         onStartPlay();
         if(!gameData.seePlayGuide || AlwaysSeePlayGuide)
         {
