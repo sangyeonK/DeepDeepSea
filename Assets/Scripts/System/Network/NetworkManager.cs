@@ -11,6 +11,14 @@ using System.Text;
 /// </summary>
 public class NetworkManager : MonoBehaviour
 {
+
+    const string PLAYRECORD_COLLECTION_ID =
+#if UNITY_EDITOR
+        "playrecord_developoment";
+#else
+        "playrecord";
+#endif
+
     static private IEnumerator RequestRestfulAPI(string url, byte[] postData, Dictionary<string, string> headers, Action<string> OnSuccess, Action<HttpStatusCode, string> OnFailed)
     {
         using (WWW www = (headers != null) ? new WWW(url, postData, headers) : (postData != null) ? new WWW(url, postData) : new WWW(url))
@@ -92,7 +100,7 @@ public class NetworkManager : MonoBehaviour
                 ""select"": {
                     ""fields"":[{""fieldPath"":""score""}]
                 },
-                ""from"": [{""collectionId"":""playrecord""}],
+                ""from"": [{""collectionId"":""" + NetworkManager.PLAYRECORD_COLLECTION_ID + @"""}],
                 ""orderBy"": [{
                     ""field"":{""fieldPath"":""score""},
                     ""direction"":""DESCENDING""
@@ -134,7 +142,7 @@ public class NetworkManager : MonoBehaviour
 
     static class PostScoreVars
     {
-        public static string URL = "https://firestore.googleapis.com/v1beta1/projects/mrwaves-mrwaves/databases/(default)/documents/playrecord";
+        public static string URL = "https://firestore.googleapis.com/v1beta1/projects/mrwaves-mrwaves/databases/(default)/documents/" + NetworkManager.PLAYRECORD_COLLECTION_ID;
         public static Dictionary<string, string> HEADERS = new Dictionary<string, string>
         {
             {"Content-Type", "application/json" },
