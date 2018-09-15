@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Character : MonoBehaviour {
+public class Character : MonoBehaviour
+{
 
     public static Character Instance
     {
@@ -39,8 +40,8 @@ public class Character : MonoBehaviour {
     private const int HEALTH_BAD = 2;
     private int currStatus;
     public int randNum;
-    
- 
+
+
 
     private float playTime = 0.0f;
     private int playDepth = 0;
@@ -99,7 +100,7 @@ public class Character : MonoBehaviour {
 
     void PlaySound(SOUND_EFFECT sound)
     {
-        switch(sound)
+        switch (sound)
         {
             case SOUND_EFFECT.ITEM:
                 itemSound.Play();
@@ -138,22 +139,29 @@ public class Character : MonoBehaviour {
         {
             slider.value = health > 0 ? health : 0;
             Debug.Log("SLIDER ###" + slider.value);
-            if (slider.value > 50 ) {
+            if (slider.value > 50)
+            {
                 CharacterStatus(HEALTH_NORMAL);
-            } else if (slider.value > 30) {
+            }
+            else if (slider.value > 30)
+            {
                 CharacterStatus(HEALTH_SOSO);
-            } else {
+            }
+            else
+            {
                 CharacterStatus(HEALTH_BAD);
             }
         }
         yield return new WaitForSeconds(1);
 
-        if(!death)
+        if (!death)
             StartCoroutine(DecreseSlider(playerSlider));
     }
 
-    private void CharacterStatus(int status) {
-        if (status != currStatus) {
+    private void CharacterStatus(int status)
+    {
+        if (status != currStatus)
+        {
             currStatus = status;
             playerStatusImage.sprite = statusSprites[status];
         }
@@ -162,7 +170,8 @@ public class Character : MonoBehaviour {
     // float moveSpeedBoostTime = 0.0f;
 
     // Update is called once per frame
-    void Update () {
+    void Update()
+    {
 
         CheckHealth();
 
@@ -181,7 +190,7 @@ public class Character : MonoBehaviour {
                     horizontalMove = horizontalMove * -1;
                 }
                 playDepth = Mathf.FloorToInt(gameObject.transform.position.y * -1);
-                if(playDepth > nextStageDepth)
+                if (playDepth > nextStageDepth)
                 {
                     GameManager.Instance.AdvanceStage();
                     nextStageDepth = Define.PELAGIC.GetMaxMeter(playDepth);
@@ -206,13 +215,34 @@ public class Character : MonoBehaviour {
         {
             currPosition.x = clampedX;
             transform.localPosition = currPosition;
-        }        
+        }
+
+#if UNITY_EDITOR
+        #region development(testing) support feature
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            SpeedModeOn();
+        }
+        else if (Input.GetKeyUp(KeyCode.Q))
+        {
+            SpeedModeOff();
+        }
+        else if (Input.GetKey(KeyCode.W))
+        {
+            MoveReverseOn();
+        }
+        else if (Input.GetKeyUp(KeyCode.W))
+        {
+            MoveReverseOff();
+        }
+        #endregion
+#endif
     }
 
     public void GetItem(Item.ItemKind itemKind, float value)
     {
         // 아이템 처리는 이 함수에서 수행한다.
-        switch (itemKind) 
+        switch (itemKind)
         {
             case Item.ItemKind.SPEED_BOOST:
                 GameManager.Instance.SpeedPlus();
@@ -222,37 +252,45 @@ public class Character : MonoBehaviour {
                 break;
         }
 
-       
+
         PlaySound(SOUND_EFFECT.ITEM);
     }
 
 
-    private void ShockPlayer() {
-        if(shockedTime > 0.0f) {
+    private void ShockPlayer()
+    {
+        if (shockedTime > 0.0f)
+        {
             saveMode = true;
-            if(shockedTime > 1.2f){
+            if (shockedTime > 1.2f)
+            {
                 shockMode = true;
                 transform.Translate(horizontalImpact * Time.deltaTime, verticalImpact * Time.deltaTime, 0.0f);
-            } else {
+            }
+            else
+            {
                 shockMode = false;
             }
-            
+
             shockedTime = Mathf.Max(shockedTime - Time.deltaTime, 0.0f);
-        } else  {
+        }
+        else
+        {
             saveMode = false;
             verticalImpact = SHOCK_POWER;
         }
-        if (saveMode) {
+        if (saveMode)
+        {
             Animator ani = GetComponentInChildren<Animator>();
             ani.SetTrigger("transparent");
         }
     }
 
-    
 
 
 
-   
+
+
 
 
 
@@ -265,7 +303,8 @@ public class Character : MonoBehaviour {
         Animator ani = GetComponentInChildren<Animator>();
 
         //obstacle
-        if( !saveMode ) {
+        if (!saveMode)
+        {
             if (collision.tag == "MINE")
             {
                 ani.SetTrigger("Damage");
@@ -276,36 +315,37 @@ public class Character : MonoBehaviour {
             }
             if (collision.tag == "lobster")
             {
-                
+
                 health += 10;
-               itemSound.Play();
+                itemSound.Play();
             }
             //랜덤박스 충돌시 
             if (collision.tag == "rand")
             {
-                int minrandom =0;
-                int maxrandom =3;
-               randNum=Random.Range(minrandom,maxrandom);
-               itemSound.Play();
-               switch(randNum){
+                int minrandom = 0;
+                int maxrandom = 3;
+                randNum = Random.Range(minrandom, maxrandom);
+                itemSound.Play();
+                switch (randNum)
+                {
 
-                   case 0:
-                   transform.localScale+=new Vector3(0.05f,0.05f,0);
-                   break;
-                   case 1:
-                   transform.localScale-=new Vector3(0.02f,0.02f,0);
-                   break;
+                    case 0:
+                        transform.localScale += new Vector3(0.05f, 0.05f, 0);
+                        break;
+                    case 1:
+                        transform.localScale -= new Vector3(0.02f, 0.02f, 0);
+                        break;
                     case 2:
-                   GameManager.Instance.playerVerticalSpeed+=0.5f;
-                   GameManager.Instance.playerHorizontalSpeed+=0.5f;
+                        GameManager.Instance.playerVerticalSpeed += 0.5f;
+                        GameManager.Instance.playerHorizontalSpeed += 0.5f;
 
-                   break;
+                        break;
                     case 3:
-                   GameManager.Instance.playerVerticalSpeed-=0.2f;
-                   GameManager.Instance.playerHorizontalSpeed-=0.2f;
-                   break;
+                        GameManager.Instance.playerVerticalSpeed -= 0.2f;
+                        GameManager.Instance.playerHorizontalSpeed -= 0.2f;
+                        break;
 
-               }
+                }
 
             }
             if (collision.tag == "floating")
@@ -339,7 +379,8 @@ public class Character : MonoBehaviour {
 
     public void CheckHealth()
     {
-        if (!death) {
+        if (!death)
+        {
             health -= Time.deltaTime * healthLossRate;
 
             if (health <= 0)
@@ -354,7 +395,7 @@ public class Character : MonoBehaviour {
 
     IEnumerator DiePlayer()
     {
-        if(GameManager.Instance.isSpeedMode)
+        if (GameManager.Instance.isSpeedMode)
             SpeedModeOff();
 
         death = true;
@@ -369,22 +410,25 @@ public class Character : MonoBehaviour {
 
 
     //Right Button
-    public void MoveReverseOn() {
+    public void MoveReverseOn()
+    {
         horizontalImpact = SHOCK_RIGHT;
         reverse = true;
     }
 
-    public void MoveReverseOff() {
+    public void MoveReverseOff()
+    {
         horizontalImpact = SHOCK_LEFT;
         reverse = false;
     }
 
     //Left Button
-    public void SpeedModeOn() {
+    public void SpeedModeOn()
+    {
         if (this.enabled && !death)
-        {   
+        {
             Debug.Log("SpeedModeOn");
-            verticalImpact *= 2.0f; 
+            verticalImpact *= 2.0f;
             GameManager.Instance.isSpeedMode = true;
             Animator ani = GetComponentInChildren<Animator>();
             ani.SetBool("SpeedBoost", true);
@@ -394,9 +438,10 @@ public class Character : MonoBehaviour {
             }
         }
     }
-    public void SpeedModeOff() {
+    public void SpeedModeOff()
+    {
         if (this.enabled && !death)
-        {   
+        {
             verticalImpact = SHOCK_POWER;
             Debug.Log("SpeedModeOff");
             GameManager.Instance.isSpeedMode = false;
