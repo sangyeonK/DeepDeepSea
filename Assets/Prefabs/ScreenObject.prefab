@@ -329,7 +329,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1872642757759402}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -10, z: 0}
+  m_LocalPosition: {x: 0, y: -12, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children:
   - {fileID: 4909898738755032}
@@ -593,7 +593,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item: {fileID: 1055340634989706, guid: 2d9e725df9a7a824d981b88e3522c469, type: 2}
-  rand: {fileID: 1432601828232620, guid: 1d356f584f64643f7a7458580d414438, type: 2}
 --- !u!114 &114170690346150108
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -635,8 +634,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sprite: {fileID: 1420756188843598}
-  floatOnFactor: 0.25
-  floatOffFactor: 3
+  minY: -12
+  maxY: 2
+  floatOnFactor: 0.2
+  floatOffFactor: 5
 --- !u!114 &114640373183138508
 MonoBehaviour:
   m_ObjectHideFlags: 1
