@@ -1,10 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
 // GameManager Class - Singleton Object
-public class GameManager : MonoBehaviour {
+public class GameManager : MonoBehaviour
+{
+    #region static members
 
     public static GameManager Instance
     {
@@ -13,25 +13,32 @@ public class GameManager : MonoBehaviour {
             return instance;
         }
     }
+
     private static GameManager instance = null;
 
-    private float speedMode = 2.0f;
+    #endregion
 
-    private float boostedBackgroundSpeed = 0.001f;
+    #region public members
+
     [HideInInspector]
     public bool isSpeedMode = false;
-
     [HideInInspector]
     public bool isPaused = false;
+
+    public int timeoutSecond = 300;
+    public float playerVerticalSpeed = 3.0f;   // 플레이어의 세로축 이동 속도
+    public float playerHorizontalSpeed = 3.0f;  // 플레이어의 가로축 이동 속도
+    public bool alwaysSeePlayGuide = false;
+
+    #endregion
+
+    #region attribute members
 
     public bool CanPaused
     {
         get;
         set;
     }
-
-    public delegate void StartPlayHandler();
-    event StartPlayHandler onStartPlay;
     /// <summary>
     /// 플레이어의 세로축 이동 속도
     /// </summary>
@@ -41,7 +48,7 @@ public class GameManager : MonoBehaviour {
         {
             if (isSpeedMode)
             {
-                return playerVerticalSpeed * speedMode;
+                return playerVerticalSpeed * _speedMode;
             }
             else
             {
@@ -49,23 +56,54 @@ public class GameManager : MonoBehaviour {
             }
         }
     }
-    [SerializeField]
-    public float playerVerticalSpeed = 3.0f;   // 플레이어의 세로축 이동 속도 ( private )
-    public float playerHorizontalSpeed = 3.0f;  // 플레이어의 가로축 이동 속도
-    public bool AlwaysSeePlayGuide = false;
-
-    private GameData gameData;
-
     public float BackgroundRockTranslated
     {
         get;
         set;
     }
+    public float GamePlaySecondTimer
+    {
+        get
+        {
+            return _gamePlayTimer;
+        }
+    }
+
+    #endregion
+
+    #region private members
+
+    private float _speedMode = 2.0f;
+    private float _boostedBackgroundSpeed = 0.001f;
+    private GAMEPLAY_STATE _gamePlayState;
+    private float _gamePlayTimer;
+    private GameData _gameData;
+
+    #endregion
+
+    #region delegate & event members
+
+    public delegate void StartGamePlayHandler();
+    event StartGamePlayHandler OnStartGamePlay;
+
+    public delegate void EndGamePlayHandler();
+    event EndGamePlayHandler OnEndGamePlay;
+
+    #endregion
+
+    #region enums
+    enum GAMEPLAY_STATE
+    {
+        NONE,
+        PLAYING,
+        END,
+    }
+    #endregion
 
     private void Awake()
     {
         // 이미 해당 인스턴스 가 존재한다면 현재 오브젝트는 삭제
-        if(instance)
+        if (instance)
         {
             DestroyImmediate(gameObject);
             return;
@@ -74,7 +112,7 @@ public class GameManager : MonoBehaviour {
         instance = this;
         DontDestroyOnLoad(gameObject);
         SceneManager.sceneLoaded += OnSceneLoaded;
-        gameData = Global.Instance.LocalPlayHistoryManager.LoadGameData();
+        _gameData = Global.Instance.LocalPlayHistoryManager.LoadGameData();
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
@@ -84,15 +122,18 @@ public class GameManager : MonoBehaviour {
         SetPause(false);
         CanPaused = false;
     }
-    
+
     void InitGameData()
     {
         BackgroundRockTranslated = 0.0f;
         isSpeedMode = false;
+        _gamePlayState = GAMEPLAY_STATE.NONE;
+        _gamePlayTimer = (float)timeoutSecond;
     }
 
-    public void SpeedPlus() {
-        playerVerticalSpeed += boostedBackgroundSpeed;
+    public void SpeedPlus()
+    {
+        playerVerticalSpeed += _boostedBackgroundSpeed;
     }
 
     public void SetPause(bool pause)
@@ -109,28 +150,47 @@ public class GameManager : MonoBehaviour {
         }
     }
 
-    public void StartPlay()
+    public void StartGamePlay()
     {
         CanPaused = true;
-        onStartPlay();
-        if(!gameData.seePlayGuide || AlwaysSeePlayGuide)
+        _gamePlayState = GAMEPLAY_STATE.PLAYING;
+        OnStartGamePlay();
+        if (!_gameData.seePlayGuide || alwaysSeePlayGuide)
         {
             GameSceneManager.Instance.StartPlayGuide();
         }
     }
 
-    public void AddStartPlayListener(StartPlayHandler listener)
+    public void EndGamePlay()
     {
-        onStartPlay += listener;
+        CanPaused = false;
+        _gamePlayState = GAMEPLAY_STATE.END;
+        OnEndGamePlay();
     }
 
-    public void RemoveStartPlayListener(StartPlayHandler listener)
+    public void AddStartGamePlayListener(StartGamePlayHandler listener)
     {
-        onStartPlay -= listener;
+        OnStartGamePlay += listener;
     }
 
-    public void GameOver(float playTime, int playDepth)
+    public void RemoveStartGamePlayListener(StartGamePlayHandler listener)
     {
+        OnStartGamePlay -= listener;
+    }
+
+    public void AddEndGamePlayListener(EndGamePlayHandler listener)
+    {
+        OnEndGamePlay += listener;
+    }
+
+    public void RemoveEndGamePlayListener(EndGamePlayHandler listener)
+    {
+        OnEndGamePlay -= listener;
+    }
+
+    public void GameOver(int playDepth)
+    {
+        float playTime = timeoutSecond - GamePlaySecondTimer;
         GameSceneManager sceneManager = GameObject.FindGameObjectWithTag("SceneManager").GetComponent<GameSceneManager>();
         sceneManager.OnGameOver(playTime, playDepth);
         AddPlayRecord(playTime, playDepth);
@@ -138,14 +198,14 @@ public class GameManager : MonoBehaviour {
 
     public void MarkSeePlayGuide()
     {
-        gameData.seePlayGuide = true;
-        Global.Instance.LocalPlayHistoryManager.SaveGameData(gameData);
+        _gameData.seePlayGuide = true;
+        Global.Instance.LocalPlayHistoryManager.SaveGameData(_gameData);
     }
 
     private void AddPlayRecord(float playTime, int playDepth)
     {
-        gameData.history.Add(new GameData.Record(Mathf.FloorToInt(playTime), playDepth));
-        Global.Instance.LocalPlayHistoryManager.SaveGameData(gameData);
+        _gameData.history.Add(new GameData.Record(Mathf.FloorToInt(playTime), playDepth));
+        Global.Instance.LocalPlayHistoryManager.SaveGameData(_gameData);
         Global.Instance.TemporarySavedDataManager.AddData(playDepth);
         StartCoroutine(Global.Instance.TemporarySavedDataManager.SaveToOnline());
     }
@@ -154,6 +214,19 @@ public class GameManager : MonoBehaviour {
     {
         GameObject backgroundCtrl = GameObject.FindGameObjectWithTag("BackgroundCtrl");
         backgroundCtrl.GetComponent<BackgroundCtrl>().AdvanceStage();
+    }
+
+    private void Update()
+    {
+        if (_gamePlayState == GAMEPLAY_STATE.PLAYING)
+        {
+            _gamePlayTimer -= Time.deltaTime;
+            if (_gamePlayTimer < 0)
+            {
+                _gamePlayTimer = 0;
+                EndGamePlay();
+            }
+        }
     }
 
 }

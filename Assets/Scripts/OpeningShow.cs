@@ -40,7 +40,7 @@ public class OpeningShow : MonoBehaviour {
     {
         yield return null;
 
-        GameManager.Instance.StartPlay();
+        GameManager.Instance.StartGamePlay();
         GameObject.Destroy(gameObject);
     }
 }

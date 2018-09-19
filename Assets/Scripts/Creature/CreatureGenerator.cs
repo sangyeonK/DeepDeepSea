@@ -24,7 +24,7 @@ public class CreatureGenerator : MonoBehaviour {
 
     void Start ()
     {
-        GameManager.Instance.AddStartPlayListener(OnStartPlay);
+        GameManager.Instance.AddStartGamePlayListener(OnStartPlay);
     }
 
     void OnStartPlay()
@@ -34,6 +34,6 @@ public class CreatureGenerator : MonoBehaviour {
 
     private void OnDestroy()
     {
-        GameManager.Instance.RemoveStartPlayListener(OnStartPlay);
+        GameManager.Instance.RemoveStartGamePlayListener(OnStartPlay);
     }
 }

@@ -1,24 +1,17 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using DeepDeepSeaSystem;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UIGameOverPanel : MonoBehaviour {
-
+public class UIGameOverPanel : MonoBehaviour
+{
     public Text playTime;
     public Text playDepth;
 
     public void SetData(int playTime, int playDepth)
     {
-        TimeSpan ts = new TimeSpan(0, 0, playTime);
-        
-        this.playTime.text = ts.ToString();
+        this.playTime.text = Utils.MakeTimeString(playTime);
         this.playDepth.text = Define.PELAGIC.GetName(playDepth);
     }
-
-    
-
 }
 
 

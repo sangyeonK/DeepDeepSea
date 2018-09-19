@@ -6,7 +6,7 @@ public class BGMCtrl : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        GameManager.Instance.AddStartPlayListener(OnStartPlay);
+        GameManager.Instance.AddStartGamePlayListener(OnStartPlay);
 	}
 	
 	void OnStartPlay()
@@ -16,6 +16,6 @@ public class BGMCtrl : MonoBehaviour {
 
     private void OnDestroy()
     {
-        GameManager.Instance.RemoveStartPlayListener(OnStartPlay);
+        GameManager.Instance.RemoveStartGamePlayListener(OnStartPlay);
     }
 }

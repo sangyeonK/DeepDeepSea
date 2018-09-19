@@ -78,7 +78,6 @@ public class Character : MonoBehaviour
         shockedTime = 0.0f;
         verticalImpact = SHOCK_POWER;
         horizontalImpact = 0.0f;
-        playTime = 0.0f;
         playDepth = 0;
         nextStageDepth = Define.PELAGIC.GetMaxMeter(playDepth);
         swimSoundRunning = false;
@@ -89,13 +88,18 @@ public class Character : MonoBehaviour
         this.enabled = false;
         GetComponentInChildren<SpriteRenderer>().enabled = false;
 
-        GameManager.Instance.AddStartPlayListener(OnStartPlay);
+        InjectEventListeners();
     }
 
-    void OnStartPlay()
+    void OnStartGamePlay()
     {
         this.enabled = true;
         GetComponentInChildren<SpriteRenderer>().enabled = true;
+    }
+
+    void OnEndGamePlay()
+    {
+        StartCoroutine(DiePlayer());
     }
 
     void PlaySound(SOUND_EFFECT sound)
@@ -198,9 +202,6 @@ public class Character : MonoBehaviour
                 GameSceneManager.Instance.UpdateDepthText(playDepth);
                 transform.Translate(horizontalMove, verticalMove, 0.0f);
             }
-
-            // 플레이어 사망상태가 아니면 플레이시간은 계속 증가
-            playTime += Time.deltaTime;
         }
         else
         {
@@ -387,8 +388,7 @@ public class Character : MonoBehaviour
             {
                 health = 0;
                 //player is died
-                GameManager.Instance.CanPaused = false;
-                StartCoroutine(DiePlayer());
+                GameManager.Instance.EndGamePlay();
             }
         }
     }
@@ -405,7 +405,7 @@ public class Character : MonoBehaviour
         PlaySound(SOUND_EFFECT.GAME_OVER);
         yield return new WaitForSeconds(3f);
 
-        GameManager.Instance.GameOver(playTime, playDepth);
+        GameManager.Instance.GameOver(playDepth);
     }
 
 
@@ -450,10 +450,14 @@ public class Character : MonoBehaviour
         }
     }
 
-    private void OnDestroy()
+    private void InjectEventListeners()
     {
-        GameManager.Instance.RemoveStartPlayListener(OnStartPlay);
+        GameManager.Instance.AddStartGamePlayListener(OnStartGamePlay);
+        GameManager.Instance.AddEndGamePlayListener(OnEndGamePlay);
     }
-
-
+    private void OnDestroy()    // RemoveEventListeners
+    {
+        GameManager.Instance.RemoveStartGamePlayListener(OnStartGamePlay);
+        GameManager.Instance.RemoveEndGamePlayListener(OnEndGamePlay);
+    }
 }
