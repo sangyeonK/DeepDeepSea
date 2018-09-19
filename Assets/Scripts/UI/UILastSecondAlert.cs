@@ -1,21 +1,27 @@
-﻿using DeepDeepSeaSystem;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
-public class UIGamePlayTimer : MonoBehaviour
+public class UILastSecondAlert : MonoBehaviour
 {
-    public Text gamePlayTimer;
+    public Texture[] numbers = new Texture[NUMBERS_SIZE];
+
+    private const int NUMBERS_SIZE = 10;
+    private RawImage image;
 
     private void Start()
     {
-        gamePlayTimer.text = Utils.MakeTimeString((int)GameManager.Instance.GamePlaySecondTimer);
+        image = GetComponent<RawImage>();
 
         InjectEventListeners();
     }
 
     private void OnGamePlaySecondTick(int remainSecond)
     {
-        gamePlayTimer.text = Utils.MakeTimeString(remainSecond);
+        if (remainSecond < NUMBERS_SIZE)
+        {
+            image.texture = numbers[remainSecond];
+            image.SetNativeSize();
+        }
     }
 
     private void InjectEventListeners()

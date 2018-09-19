@@ -77,6 +77,7 @@ public class GameManager : MonoBehaviour
     private float _boostedBackgroundSpeed = 0.001f;
     private GAMEPLAY_STATE _gamePlayState;
     private float _gamePlayTimer;
+    private int _lastRemainSecond;
     private GameData _gameData;
 
     #endregion
@@ -88,6 +89,9 @@ public class GameManager : MonoBehaviour
 
     public delegate void EndGamePlayHandler();
     event EndGamePlayHandler OnEndGamePlay;
+
+    public delegate void GamePlaySecondTickHandler(int remainSecond);
+    event GamePlaySecondTickHandler OnGamePlaySecondTick;
 
     #endregion
 
@@ -129,6 +133,7 @@ public class GameManager : MonoBehaviour
         isSpeedMode = false;
         _gamePlayState = GAMEPLAY_STATE.NONE;
         _gamePlayTimer = (float)timeoutSecond;
+        _lastRemainSecond = Mathf.FloorToInt(_gamePlayTimer);
     }
 
     public void SpeedPlus()
@@ -188,6 +193,16 @@ public class GameManager : MonoBehaviour
         OnEndGamePlay -= listener;
     }
 
+    public void AddGamePlaySecondTickListener(GamePlaySecondTickHandler listener)
+    {
+        OnGamePlaySecondTick += listener;
+    }
+
+    public void RemoveGamePlaySecondTickListener(GamePlaySecondTickHandler listener)
+    {
+        OnGamePlaySecondTick -= listener;
+    }
+
     public void GameOver(int playDepth)
     {
         float playTime = timeoutSecond - GamePlaySecondTimer;
@@ -221,10 +236,18 @@ public class GameManager : MonoBehaviour
         if (_gamePlayState == GAMEPLAY_STATE.PLAYING)
         {
             _gamePlayTimer -= Time.deltaTime;
-            if (_gamePlayTimer < 0)
+            _gamePlayTimer = _gamePlayTimer < 0 ? 0 : _gamePlayTimer;
+
+            if (_gamePlayTimer == 0)
             {
-                _gamePlayTimer = 0;
                 EndGamePlay();
+            }
+
+            int remainSecond = Mathf.FloorToInt(_gamePlayTimer);
+            if (_lastRemainSecond != remainSecond)
+            {
+                OnGamePlaySecondTick(remainSecond);
+                _lastRemainSecond = remainSecond;
             }
         }
     }
