@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -25,12 +24,11 @@ public class Character : MonoBehaviour
     private const float SHOCK_POWER = 2.0f;
     private const float SHOCK_LEFT = 3.0f * -1;
     private const float SHOCK_RIGHT = 3.0f;
-
-    bool saveMode;
-    bool shockMode;
-    float shockedTime;
-    float verticalImpact;
-    float horizontalImpact;
+    private bool saveMode;
+    private bool shockMode;
+    private float shockedTime;
+    private float verticalImpact;
+    private float horizontalImpact;
 
     public Slider playerSlider;
     public Image playerStatusImage;
@@ -47,7 +45,7 @@ public class Character : MonoBehaviour
     private int playDepth = 0;
     private int nextStageDepth = 0;
 
-    enum SOUND_EFFECT
+    private enum SOUND_EFFECT
     {
         ITEM,
         HURT,
@@ -69,7 +67,7 @@ public class Character : MonoBehaviour
     [SerializeField]
     private float healthLossRate = 2f;
 
-    void Start()
+    private void Start()
     {
         death = false;
         reverse = false;
@@ -85,24 +83,24 @@ public class Character : MonoBehaviour
 
         transform.position = new Vector2(0f, 0f);
         // OnStartPlay 가 호출되기 전까지는 script 및 sprite renderer 비활성화
-        this.enabled = false;
+        enabled = false;
         GetComponentInChildren<SpriteRenderer>().enabled = false;
 
         InjectEventListeners();
     }
 
-    void OnStartGamePlay()
+    private void OnStartGamePlay()
     {
-        this.enabled = true;
+        enabled = true;
         GetComponentInChildren<SpriteRenderer>().enabled = true;
     }
 
-    void OnEndGamePlay()
+    private void OnEndGamePlay()
     {
         StartCoroutine(DiePlayer());
     }
 
-    void PlaySound(SOUND_EFFECT sound)
+    private void PlaySound(SOUND_EFFECT sound)
     {
         switch (sound)
         {
@@ -121,7 +119,7 @@ public class Character : MonoBehaviour
         }
     }
 
-    IEnumerator PlaySwimSound()
+    private IEnumerator PlaySwimSound()
     {
         swimSoundRunning = true;
         while (GameManager.Instance.isSpeedMode)
@@ -137,12 +135,11 @@ public class Character : MonoBehaviour
         StartCoroutine(DecreseSlider(playerSlider));
     }
 
-    IEnumerator DecreseSlider(Slider slider)
+    private IEnumerator DecreseSlider(Slider slider)
     {
         if (slider != null)
         {
             slider.value = health > 0 ? health : 0;
-            Debug.Log("SLIDER ###" + slider.value);
             if (slider.value > 50)
             {
                 CharacterStatus(HEALTH_NORMAL);
@@ -159,7 +156,9 @@ public class Character : MonoBehaviour
         yield return new WaitForSeconds(1);
 
         if (!death)
+        {
             StartCoroutine(DecreseSlider(playerSlider));
+        }
     }
 
     private void CharacterStatus(int status)
@@ -174,7 +173,7 @@ public class Character : MonoBehaviour
     // float moveSpeedBoostTime = 0.0f;
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
 
         CheckHealth();
@@ -287,19 +286,12 @@ public class Character : MonoBehaviour
         }
     }
 
-
-
-
-
-
-
-
-
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (death)
+        {
             return;
+        }
 
         Animator ani = GetComponentInChildren<Animator>();
 
@@ -311,7 +303,6 @@ public class Character : MonoBehaviour
                 ani.SetTrigger("Damage");
                 health -= 5;
                 shockedTime = SHOCK_TIME;
-                Debug.Log("collider mine");
                 PlaySound(SOUND_EFFECT.HURT);
             }
             if (collision.tag == "lobster")
@@ -363,7 +354,6 @@ public class Character : MonoBehaviour
                 health -= 5;
                 horizontalImpact = SHOCK_RIGHT;
                 shockedTime = SHOCK_TIME;
-                Debug.Log("playerleft");
                 PlaySound(SOUND_EFFECT.HURT);
             }
             if (collision.tag == "rightwall")
@@ -372,7 +362,6 @@ public class Character : MonoBehaviour
                 health -= 5;
                 horizontalImpact = SHOCK_LEFT;
                 shockedTime = SHOCK_TIME;
-                Debug.Log("playerright");
                 PlaySound(SOUND_EFFECT.HURT);
             }
         }
@@ -393,10 +382,12 @@ public class Character : MonoBehaviour
         }
     }
 
-    IEnumerator DiePlayer()
+    private IEnumerator DiePlayer()
     {
         if (GameManager.Instance.isSpeedMode)
+        {
             SpeedModeOff();
+        }
 
         death = true;
 
@@ -425,9 +416,8 @@ public class Character : MonoBehaviour
     //Left Button
     public void SpeedModeOn()
     {
-        if (this.enabled && !death)
+        if (enabled && !death)
         {
-            Debug.Log("SpeedModeOn");
             verticalImpact *= 2.0f;
             GameManager.Instance.isSpeedMode = true;
             Animator ani = GetComponentInChildren<Animator>();
@@ -440,10 +430,9 @@ public class Character : MonoBehaviour
     }
     public void SpeedModeOff()
     {
-        if (this.enabled && !death)
+        if (enabled && !death)
         {
             verticalImpact = SHOCK_POWER;
-            Debug.Log("SpeedModeOff");
             GameManager.Instance.isSpeedMode = false;
             Animator ani = GetComponentInChildren<Animator>();
             ani.SetBool("SpeedBoost", false);

@@ -77,7 +77,6 @@ public class GameSceneManager : MonoBehaviour {
 
     public void OnRestartButton()
     {
-        Debug.Log("SceneCount" + SceneManager.sceneCount);
         SceneManager.LoadScene("SampleScene");
     }
 
