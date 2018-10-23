@@ -77,7 +77,7 @@ public class GameSceneManager : MonoBehaviour {
 
     public void OnRestartButton()
     {
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("PlayScene");
     }
 
     public void OnTitleButton()

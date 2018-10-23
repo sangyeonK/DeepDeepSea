@@ -42,7 +42,7 @@ public class TitleSceneManager : MonoBehaviour
 
     public void OnStartButton()
     {
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("PlayScene");
     }
 
     public void OnClickTeamButton()
