@@ -73,7 +73,7 @@ public class GameManager : MonoBehaviour
 
     #region private members
 
-    private float _speedMode = 2.0f;
+    private float _speedMode = 1.3f;
     private float _boostedBackgroundSpeed = 0.001f;
     private GAMEPLAY_STATE _gamePlayState;
     private float _gamePlayTimer;

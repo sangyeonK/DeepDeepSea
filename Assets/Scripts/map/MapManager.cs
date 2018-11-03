@@ -14,7 +14,7 @@ public class MapManager : MonoBehaviour
     private GameObject player;
 
     public bool gameover;
-    private float waittime;
+    private float waitTime;
     private int creatDistance;
 
     public int rand;
@@ -29,7 +29,6 @@ public class MapManager : MonoBehaviour
     private void Start()
     {
         gameover = false;
-
     }
 
     private void Update()
@@ -40,9 +39,10 @@ public class MapManager : MonoBehaviour
             count++;
             creatDistance = -28;
             int random = Random.Range(0, Maptype.Length);
-            GameObject maptype = Instantiate(Maptype[random],
-             new Vector3(0, count * creatDistance)
-             , Quaternion.identity);
+
+            Debug.Log("MapType : " + random);
+
+            GameObject maptype = Instantiate(Maptype[random], new Vector3(0, count * creatDistance), Quaternion.identity);
 
             time = 0;
         }

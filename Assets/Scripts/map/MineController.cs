@@ -9,19 +9,12 @@ public class MineController : MonoBehaviour {
     {
         if (collision.tag == "Player")
         {
-
             Destroy(gameObject);
-
         }
-
-
     }
+
     private void OnBecameInvisible()
     {
         Destroy(gameObject);
     }
-
-
-
-   
 }

@@ -9,8 +9,6 @@ public class move_wall : MonoBehaviour {
     public int y;
 	// Update is called once per frame
 	void Update () {
-
-
         moveSpeed = Random.Range(6.0f, 6.5f);
         transform.Translate(x, y* moveSpeed * Time.deltaTime, 0);
     }
@@ -19,7 +17,4 @@ public class move_wall : MonoBehaviour {
         Destroy(gameObject);
     }
 */
-
-   
-   
 }

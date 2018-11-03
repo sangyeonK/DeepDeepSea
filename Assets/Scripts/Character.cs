@@ -428,6 +428,7 @@ public class Character : MonoBehaviour
             }
         }
     }
+
     public void SpeedModeOff()
     {
         if (enabled && !death)
@@ -444,6 +445,7 @@ public class Character : MonoBehaviour
         GameManager.Instance.AddStartGamePlayListener(OnStartGamePlay);
         GameManager.Instance.AddEndGamePlayListener(OnEndGamePlay);
     }
+
     private void OnDestroy()    // RemoveEventListeners
     {
         GameManager.Instance.RemoveStartGamePlayListener(OnStartGamePlay);

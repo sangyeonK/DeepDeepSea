@@ -15,7 +15,8 @@ public class MapPreset : MonoBehaviour {
     {
         this.mapManager = mapManager.GetComponent<MapManager>();
     }
-     private void OnTriggerEnter2D(Collider2D collision)
+
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.layer == screenBorder.value)
         {

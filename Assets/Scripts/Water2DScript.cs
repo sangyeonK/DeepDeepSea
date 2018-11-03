@@ -15,7 +15,7 @@ public class Water2DScript : MonoBehaviour {
         mat = rend.material;
     }
 
-    private void LateUpdate()
+    private void ₩()
     {
         Vector2 scroll = Time.deltaTime * speed;
         mat.mainTextureOffset += scroll;
