@@ -40,7 +40,7 @@ GameObject:
   - component: {fileID: 114491213611041700}
   - component: {fileID: 60094917267008616}
   m_Layer: 0
-  m_Name: shrimp
+  m_Name: blowfish_2
   m_TagString: Obstacle_Fish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -115,7 +115,7 @@ Animator:
   m_GameObject: {fileID: 1288771185614578}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: bb9dadb85ec70214099f0462a270f2dd, type: 2}
+  m_Controller: {fileID: 9100000, guid: 3ddbec830384d47bd8bb29c5702a84d7, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -136,7 +136,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minVelocity: {x: 0, y: 0}
-  maxVelocity: {x: -5, y: 0}
+  maxVelocity: {x: 5, y: 0}
   child: {fileID: 114777621345644026}
   patterns: 03000000
 --- !u!114 &114777621345644026
@@ -186,7 +186,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 9c54495e5c09647419c37740dab96602, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4f1a43debf35d4c3c891814129876d01, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

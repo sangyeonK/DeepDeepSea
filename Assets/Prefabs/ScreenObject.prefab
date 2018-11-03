@@ -605,12 +605,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   creatures:
-  - {fileID: 114808076049852512, guid: 4871dce6469f277448a9a8d46a3fed87, type: 2}
-  - {fileID: 114433882881816668, guid: ef39ec9064009b244967eac4e80bf2b5, type: 2}
-  - {fileID: 114161818089199282, guid: 5dd8ce3646a87714da0c691ccd5b349e, type: 2}
-  - {fileID: 114908049375136354, guid: 30c3ca2c7cc47fa439e3f29ec7afcb89, type: 2}
-  - {fileID: 114852695863903544, guid: a97a96e494a9eb147901e157c3244c24, type: 2}
-  - {fileID: 114491213611041700, guid: d5097215e924b3f4f9cb4590620aa56f, type: 2}
+  - {fileID: 114491213611041700, guid: e19743404e65c4900b56c4d621997f3a, type: 2}
+  - {fileID: 114491213611041700, guid: 1ed57e9bcd9a248508d1a182885e6154, type: 2}
+  - {fileID: 114491213611041700, guid: ded81302a3a5c4e93a0622d7ff66c030, type: 2}
 --- !u!114 &114182840086068090
 MonoBehaviour:
   m_ObjectHideFlags: 1
