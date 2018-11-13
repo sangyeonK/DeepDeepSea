@@ -40,7 +40,7 @@ GameObject:
   - component: {fileID: 114491213611041700}
   - component: {fileID: 60094917267008616}
   m_Layer: 0
-  m_Name: shrimp
+  m_Name: Shrimp
   m_TagString: Obstacle_Fish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
