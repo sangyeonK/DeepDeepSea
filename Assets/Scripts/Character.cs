@@ -1,22 +1,10 @@
 ﻿using System.Collections;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class Character : MonoBehaviour
 {
 
-    public static Character Instance
-    {
-        get
-        {
-            return instance;
-        }
-    }
-    private static Character instance = null;
-
-
     public float health = 100.0f;
-    private const float coef = 0.2f;
     private bool death;
     private bool reverse;
 
@@ -29,19 +17,13 @@ public class Character : MonoBehaviour
     private float shockedTime;
     private float verticalImpact;
     private float horizontalImpact;
-
-    public Slider playerSlider;
-    public Image playerStatusImage;
-    public Sprite[] statusSprites;
+    [Header("Canvas UI")]
+    public UIHealthGauge uiHealthGauge;
     private const int HEALTH_NORMAL = 0;
     private const int HEALTH_SOSO = 1;
     private const int HEALTH_BAD = 2;
     private int currStatus;
-    public int randNum;
-
-
-
-    private float playTime = 0.0f;
+    private int randNum;
     private int playDepth = 0;
     private int nextStageDepth = 0;
 
@@ -79,7 +61,6 @@ public class Character : MonoBehaviour
         playDepth = 0;
         nextStageDepth = Define.PELAGIC.GetMaxMeter(playDepth);
         swimSoundRunning = false;
-        DecreseEnemySlider();
 
         transform.position = new Vector2(0f, 0f);
         // OnStartPlay 가 호출되기 전까지는 script 및 sprite renderer 비활성화
@@ -129,48 +110,6 @@ public class Character : MonoBehaviour
         }
         swimSoundRunning = false;
     }
-
-    public void DecreseEnemySlider()
-    {
-        StartCoroutine(DecreseSlider(playerSlider));
-    }
-
-    private IEnumerator DecreseSlider(Slider slider)
-    {
-        if (slider != null)
-        {
-            slider.value = health > 0 ? health : 0;
-            if (slider.value > 50)
-            {
-                CharacterStatus(HEALTH_NORMAL);
-            }
-            else if (slider.value > 30)
-            {
-                CharacterStatus(HEALTH_SOSO);
-            }
-            else
-            {
-                CharacterStatus(HEALTH_BAD);
-            }
-        }
-        yield return new WaitForSeconds(1);
-
-        if (!death)
-        {
-            StartCoroutine(DecreseSlider(playerSlider));
-        }
-    }
-
-    private void CharacterStatus(int status)
-    {
-        if (status != currStatus)
-        {
-            currStatus = status;
-            playerStatusImage.sprite = statusSprites[status];
-        }
-    }
-
-    // float moveSpeedBoostTime = 0.0f;
 
     // Update is called once per frame
     private void Update()
@@ -372,6 +311,8 @@ public class Character : MonoBehaviour
         if (!death)
         {
             health -= Time.deltaTime * healthLossRate;
+
+            uiHealthGauge.UpdateHealth(health);
 
             if (health <= 0)
             {

@@ -27,7 +27,7 @@ public class BackgroundCtrl : MonoBehaviour {
     }
 
     [SerializeField]
-    private StagePrefab stagePrefabs;
+    private StagePrefab stagePrefabs = new StagePrefab();
 
     [System.Serializable]
     public struct StageChangePrefab
@@ -39,7 +39,7 @@ public class BackgroundCtrl : MonoBehaviour {
     }
 
     [SerializeField]
-    private StageChangePrefab stageChangePrefabs;
+    private StageChangePrefab stageChangePrefabs = new StageChangePrefab();
     private StageNumber currStageNumber;
     private GameObject currStageObject;
 

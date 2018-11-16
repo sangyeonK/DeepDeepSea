@@ -14,7 +14,8 @@ public class CreatureGenerator : MonoBehaviour {
             bool toRight = x < 0f ? true : false;
             Vector3 location = transform.position + new Vector3(x, 19.2f / 2 * -1);
             GameObject creature = Instantiate(prefab, location, Quaternion.identity);
-            creature.GetComponent<CreatureRoot>().SetAnimationDirection(toRight);
+            // TODO : need to set animation direction correctly
+            // creature.GetComponent<CreatureRoot>().SetAnimationDirection(toRight);
 
             yield return new WaitForSeconds(Random.Range(1f, 3f));
 
